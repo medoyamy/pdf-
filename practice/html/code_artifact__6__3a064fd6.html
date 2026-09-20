@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ساحة العدالة | القضاء الإداري والدستوري</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cairo & Amiri & Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            court: {
+              bg: '#0a0e17',
+              card: '#131b2e',
+              cardHover: '#1c2842',
+              amber: '#d97706',
+              gold: '#f59e0b',
+              goldLight: '#fbbf24',
+              emerald: '#10b981',
+              paper: '#fcfbf7',
+              paperBorder: '#e2e8f0'
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            amiri: ['Amiri', 'serif'],
+            tajawal: ['Tajawal', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #0a0e17;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    
+    .font-amiri { font-family: 'Amiri', serif; }
+    .font-cairo { font-family: 'Cairo', sans-serif; }
+    .font-tajawal { font-family: 'Tajawal', sans-serif; }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0e17;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #d97706;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f59e0b;
+    }
+
+    /* Glow utilities */
+    .gold-glow {
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.25);
+    }
+    .gold-text-glow {
+      text-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+    .paper-texture {
+      background-color: #fcfbf7;
+      background-image: radial-gradient(#e2e8f0 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-cairo selection:bg-amber-500 selection:text-slate-900">
+
+  <header class="border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      
+      <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('dashboard')">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center text-slate-950 shadow-md">
+          <i class="fa-solid fa-scale-balanced text-xl"></i>
+        </div>
+        <div>
+          <h1 class="font-amiri text-2xl font-bold text-amber-400 leading-none">ساحة العدالة</h1>
+          <p class="text-xs text-slate-400 mt-0.5">القضاء الإداري والدستوري 2026</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div id="userRankBadge" class="hidden sm:flex items-center gap-2 bg-slate-900 border border-amber-500/30 px-3 py-1.5 rounded-lg text-sm">
+          <i class="fa-solid fa-award text-amber-400"></i>
+          <span class="text-slate-400">الرتبة:</span>
+          <span id="rankTitleText" class="font-bold text-amber-400">محامي تحت التمرين</span>
+        </div>
+
+        <button onclick="switchView('dashboard')" class="text-slate-300 hover:text-amber-400 text-sm font-semibold px-3 py-1.5 rounded-lg border border-slate-800 hover:border-amber-500/40 transition">
+          <i class="fa-solid fa-folder-open ml-1"></i> الأرشيف
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="appContent" class="flex-1 flex flex-col">
+    
+    <!-- Hero / Welcome View -->
+    <section id="heroView" class="flex-1 flex flex-col items-center justify-center px-4 py-16 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500 via-transparent to-transparent"></div>
+      
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 font-semibold text-sm mb-6">
+          <i class="fa-solid fa-certificate"></i> الموسوعة التعليمية التفاعلية الشاملة
+        </div>
+        
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-amiri text-amber-400 mb-6 leading-tight gold-text-glow">
+          صرح القضاء الإداري والدستوري
+        </h1>
+        
+        <p class="text-lg sm:text-2xl text-slate-300 mb-10 font-light leading-relaxed max-w-3xl mx-auto">
+          تأهيل قانوني احترافي مصمم وفق أرقى التقاليد القضائية. تدرّج في مسيرتك العلمية والمهنية من 
+          <span class="text-amber-400 font-semibold">"محامي تحت التمرين"</span> حتى <span class="text-amber-400 font-semibold">"رئيس المحكمة"</span>.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="switchView('dashboard')" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-600 via-amber-500 to-amber-400 hover:from-amber-500 hover:to-amber-300 text-slate-950 font-extrabold text-lg rounded-xl shadow-lg gold-glow transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+            <i class="fa-solid fa-gavel text-xl"></i> دخول قاعة القضايا
+          </button>
+        </div>
+
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 text-slate-400">
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <i class="fa-solid fa-book-bookmark text-amber-400 text-2xl mb-2"></i>
+            <div class="text-lg font-bold text-slate-200">15 قضية</div>
+            <div class="text-xs">تغطي المنهج بالكامل</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <i class="fa-solid fa-lightbulb text-amber-400 text-2xl mb-2"></i>
+            <div class="text-lg font-bold text-slate-200">شفرات وحفظ</div>
+            <div class="text-xs">مفاتيح الإجابة النموذجية</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <i class="fa-solid fa-[#10b981] fa-circle-question text-emerald-400 text-2xl mb-2"></i>
+            <div class="text-lg font-bold text-slate-200">أسئلة الامتحانات</div>
+            <div class="text-xs">تطبيقات صح وخطأ ومقالي</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <i class="fa-solid fa-trophy text-amber-400 text-2xl mb-2"></i>
+            <div class="text-lg font-bold text-slate-200">نظام الرتب</div>
+            <div class="text-xs">تتبع تقدمك في الدراسة</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard View -->
+    <section id="dashboardView" class="hidden flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- Top Banner Status -->
+      <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 p-6 rounded-2xl border border-slate-800 shadow-xl mb-8 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4 text-right">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl shrink-0">
+            <i class="fa-solid fa-landmark"></i>
+          </div>
+          <div>
+            <h2 class="text-2xl font-bold font-amiri text-amber-400">سجل الدعاوى والأرشيف القضائي</h2>
+            <p class="text-slate-400 text-sm">اختر القضية للمطالعة والمرافعة واستكمال المتطلبات العلمية</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 bg-slate-950/80 px-6 py-3.5 rounded-xl border border-slate-800 w-full lg:w-auto justify-around">
+          <div class="text-center">
+            <div class="text-xs text-slate-400 mb-1">الرتبة القضائية</div>
+            <div id="dashRankTitle" class="font-bold text-amber-400 text-base">محامي تحت التمرين</div>
+          </div>
+          <div class="h-8 w-px bg-slate-800"></div>
+          <div class="text-center">
+            <div class="text-xs text-slate-400 mb-1">القضايا المنجزة</div>
+            <div class="font-extrabold text-xl text-amber-400">
+              <span id="completedCount">0</span> <span class="text-slate-500 text-sm font-normal">/ 15</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls: Search & Filter -->
+      <div class="mb-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+        <div class="relative w-full sm:w-80">
+          <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-slate-500"></i>
+          <input type="text" id="searchInput" oninput="filterCases()" placeholder="بحث في عناوين القضايا..." class="w-full bg-slate-900 border border-slate-800 text-slate-200 text-sm rounded-xl py-3 pr-10 pl-4 focus:outline-none focus:border-amber-500 transition">
+        </div>
+        <div class="text-xs text-slate-400 font-medium">
+          انقر على أي قضية لاستعراض المذكرات القانونية والأسئلة
+        </div>
+      </div>
+
+      <!-- Cases Grid -->
+      <div id="casesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- JS will populate cards here -->
+      </div>
+    </section>
+
+    <!-- Case Detail View -->
+    <section id="caseDetailView" class="hidden flex-1 flex flex-col max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      
+      <!-- Back Header -->
+      <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-800">
+        <button onclick="switchView('dashboard')" class="flex items-center gap-2 text-amber-400 hover:text-amber-300 font-bold bg-slate-900 border border-slate-800 hover:border-amber-500/50 px-4 py-2 rounded-xl transition">
+          <i class="fa-solid fa-arrow-right"></i> العودة للأرشيف
+        </button>
+
+        <h3 id="currentCaseTitle" class="text-xl sm:text-2xl font-bold font-amiri text-amber-400 text-center px-4 line-clamp-1"></h3>
+
+        <button id="markCompleteBtn" onclick="toggleCaseCompletion()" class="flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 font-bold px-4 py-2 rounded-xl shadow transition hover:opacity-95">
+          <i class="fa-solid fa-check"></i> <span id="markCompleteText">ختم القضية</span>
+        </button>
+      </div>
+
+      <!-- Content Layout: Sidebar Tabs + Paper View -->
+      <div class="flex-1 flex flex-col lg:flex-row gap-6">
+        
+        <!-- Tabs Navigation -->
+        <div class="w-full lg:w-72 flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 shrink-0">
+          <button onclick="setActiveTab('academic')" id="tab-academic" class="tab-btn active flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900 border border-amber-500 text-amber-400">
+            <i class="fa-solid fa-file-contract text-lg"></i> المذكرة القانونية
+          </button>
+          <button onclick="setActiveTab('simplified')" id="tab-simplified" class="tab-btn flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900/60 border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-slate-200">
+            <i class="fa-solid fa-gavel text-lg"></i> مرافعة المحامي
+          </button>
+          <button onclick="setActiveTab('questions')" id="tab-questions" class="tab-btn flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900/60 border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-slate-200">
+            <i class="fa-solid fa-shield-halved text-lg"></i> أسئلة المحكمة
+          </button>
+          <button onclick="setActiveTab('keys')" id="tab-keys" class="tab-btn flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900/60 border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-slate-200">
+            <i class="fa-solid fa-key text-lg"></i> شفرات الحفظ
+          </button>
+          <button onclick="setActiveTab('summary')" id="tab-summary" class="tab-btn flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900/60 border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-slate-200">
+            <i class="fa-solid fa-scale-balanced text-lg"></i> منطوق الحكم
+          </button>
+        </div>
+
+        <!-- Main Content Area (Paper style) -->
+        <div class="flex-1 paper-texture text-slate-900 rounded-2xl shadow-2xl border border-slate-300 p-6 sm:p-10 flex flex-col justify-between min-h-[500px]">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-300 pb-4 mb-6">
+              <span id="activeTabLabel" class="text-xl font-bold font-amiri text-amber-900 flex items-center gap-2">
+                <i class="fa-solid fa-book-open"></i> المذكرة القانونية
+              </span>
+              <span class="text-slate-400 text-xs font-semibold">جامعة الأزهر - القضاء الإداري والدستوري</span>
+            </div>
+
+            <div id="tabContentDisplay" class="prose prose-lg max-w-none text-slate-900 font-cairo leading-relaxed space-y-4">
+              <!-- Content rendered here dynamically -->
+            </div>
+          </div>
+
+          <div class="mt-10 pt-4 border-t border-slate-300 flex items-center justify-between">
+            <button id="prevTabBtn" onclick="navigateTab(-1)" class="text-slate-700 hover:text-slate-950 font-bold text-sm flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-200/80 hover:bg-slate-300 transition">
+              <i class="fa-solid fa-chevron-right"></i> القسم السابق
+            </button>
+            <button id="nextTabBtn" onclick="navigateTab(1)" class="text-slate-950 font-bold text-sm flex items-center gap-2 px-5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 transition shadow">
+              القسم التالي <i class="fa-solid fa-chevron-left"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // --- APP STATE & DATABASE ---
+    let activeCaseId = 1;
+    let currentTab = 'academic';
+    let completedCases = JSON.parse(localStorage.getItem('court_completed_cases') || '[]');
+
+    const Ranks = [
+      { threshold: 0, title: "محامي تحت التمرين", color: "text-slate-400" },
+      { threshold: 3, title: "محامي ابتدائي", color: "text-amber-500" },
+      { threshold: 6, title: "محامي استئناف", color: "text-amber-400" },
+      { threshold: 10, title: "محامي نقض", color: "text-amber-300" },
+      { threshold: 13, title: "مستشار بمجلس الدولة", color: "text-emerald-400" },
+      { threshold: 15, title: "رئيس المحكمة الإدارية العليا", color: "text-yellow-300" }
+    ];
+
+    const LAW_DATA = [
+      {
+        id: 1,
+        t: "دعوى الإلغاء وركن الصفة والمصلحة",
+        a: `تعتبر دعوى الإلغاء وسيلة قضائية لحماية المشروعية وسيادة القانون.
+• المصلحة في دعوى الإلغاء: شرط قبول يلزم توافره من وقت رفع الدعوى وحتى صدور الحكم فيه.
+• طبيعة المصلحة: يجب أن تكون شخصية ومباشرة وقائمة وحالة، أو محتملة إذا كان يقصد بها درء ضرر محدق.
+• اتساع شرط المصلحة: وسع القضاء الإداري مفهوم المصلحة في دعوى الإلغاء مقارنة بالدعاوى العادية، نظراً لطبيعتها التي تستهدف حماية المشروعية العامة.`,
+        s: `ببساطة: لو قرار إداري أضر بمركزك القانوني أو ينال من حقك مباشرة، يحق لك رفع دعوى إلغاء. القاضي الإداري يرحب بالمصلحة المحتملة لمنع الضرر قبل وقوعه.`,
+        q: `1. هل يشترط أن تكون المصلحة في دعوى الإلغاء مصلحة مباشرة فقط؟
+[خطأ] - تقبل المصلحة المحتملة أيضاً إذا كان الغرض منها درء ضرر محدق.
+2. ما حكم زوال المصلحة أثناء نظر الدعوى؟
+يقضى بعدم قبول الدعوى أو زوال شرط المصلحة لأن المصلحة شرط استمرار.`,
+        k: `مفتاح الحفظ: (شخصية + مباشرة + قائمة + درء ضرر محدق = قبول دعوى الإلغاء).`,
+        z: `قضت المحكمة بقبول الدعوى شكلاً وفي الموضوع بوقف تنفيذ وإلغاء القرار الإداري المطعون فيه.`
+      },
+      {
+        id: 2,
+        t: "ميعاد رفع دعوى الإلغاء والقطع والاحتساب",
+        a: `ميعاد رفع دعوى الإلغاء هو (ستين يوماً) من تاريخ نشر القرار الإداري أو إعلانه أو العلم اليقيني به.
+• العلم اليقيني: يقوم مقام النشر أو الإعلان بشرط أن يكون شاملاً لجميع عناصر القرار.
+• أسباب قطع الميعاد:
+1. التظلم الإداري الوجوبي أو الجوازي.
+2. طلب الإعفاء من الرسوم القضائية.
+3. رفع الدعوى إلى محكمة غير مختصة عن طريق الخطأ.`,
+        s: `عندك 60 يوم من يوم ما تعرف القرار رسمياً. لو تظلمت للإدارة، الـ 60 يوم تقف وتتحسب من جديد بعد الرد أو انقضاء مهلة التظلم.`,
+        q: `1. العلم الظني يقطع ميعاد دعوى الإلغاء.
+[خطأ] - يشترط العلم اليقيني الشامل لكافة عناصر القرار الإداري.
+2. متى يبدأ احتساب ميعاد الـ 60 يوماً؟
+من اليوم التالي للنشر أو الإعلان أو العلم اليقيني.`,
+        k: `مفتاح الحفظ: (60 يوماً - نشر - إعلان - علم يقيني - التظلم يقطع الميعاد).`,
+        z: `قبول الدعوى شكلاً لرفعها في الميعاد القانوني المحدد ستين يوماً.`
+      },
+      {
+        id: 3,
+        t: "عيب عدم الاختصاص في القرار الإداري",
+        a: `هو عدم قدرة الموظف أو الجهة الإدارية قانوناً على إبرام التصرف الإداري.
+• صور عيب عدم الاختصاص:
+1. عيب عدم الاختصاص الجسيم (غصب السلطة): صدور قرار من فرد عادي أو سلطة قضائية/تشريعية في عمل إداري، والقرار هنا يكون معدوماً.
+2. عيب عدم الاختصاص البسيط: صدور القرار من موظف إداري غير مختص مكانياً أو زمانياً أو موضوعياً، والقرار هنا يكون قابلاً للإلغاء.`,
+        s: `لو الموظف أخذ قرار مش من صلاحياته: لو الموضوع بسيط يبقى القرار باطل، ولو اعتدى على سلطة تانية تماماً يبقى القرار معدوم ولا يحميه زوال الميعاد.`,
+        q: `1. القرار الصادر بعيب عدم اختصاص جسيم يتحصن بمضي 60 يوماً.
+[خطأ] - القرار المعدوم لا يتحصن بمضي المدة ويجوز سحبه أو الطعن عليه في أي وقت.
+2. ما هي أنواع عيب عدم الاختصاص البسيط؟
+موضوعي، مكاني، وزماني.`,
+        k: `مفتاح الحفظ: (جسيم = معدوم لا يتحصن / بسيط = قابل للإلغاء خلال 60 يوم).`,
+        z: `إلغاء القرار المطعون فيه لبطلانه لصدوره من سلطة غير مختصة ولائياً.`
+      },
+      {
+        id: 4,
+        t: "عيب الشكل والإجراءات والأشكال الجوهرية",
+        a: `يقصد بعيب الشكل مخالطة القرار الإداري القواعد الشكلية أو الإجرائية التي حددها القانون.
+• الأشكال الجوهرية: هي التي تؤثر في مضمون القرار أو تسعى لحماية ضمانات الأفراد (مثل تسبيب القرار عند النص عليه قانوناً، أو تسبيب التأديب).
+• الأشكال الثانوية: إجراءات تنظيمية لا يترتب على تخلفها بطلان القرار الإداري.`,
+        s: `ليس كل خطأ شكلي يبطل القرار. إذا كان الشكل جوهرياً لحماية الموظف أو صيانة الحقوق يقع البطلان، أما الأشكال الثانوية التنظيمية فلا تبطل القرار.`,
+        q: `1. اغفال تسبيب القرار الإداري يوجب البطلان دائماً.
+[خطأ] - إلا إذا نص القانون صراحة على وجوب التسبيب، أو كان القرار تأديبياً.
+2. ما الفرق بين الشكل الجوهري والشكل الثانوي؟
+الجوهري يترتب على مخالفته البطلان، والثانوي لا يبطل القرار.`,
+        k: `مفتاح الحفظ: (شكل جوهري = بطلان / شكل ثانوي = تنظيمي لا يبطل).`,
+        z: `إلغاء القرار المطعون فيه لشائبة عيب الشكل والإجراءات الجوهرية.`
+      },
+      {
+        id: 5,
+        t: "عيب المخالفة للقانون والخطأ في التفسير",
+        a: `ينصب هذا العيب على محل القرار الإداري ومضمونه الأثر القانوني المباشر الناجم عنه.
+• صور عيب المخالفة:
+1. المخالفة المباشرة للقانون.
+2. الخطأ في تأويل وتفسير القاعدة القانونية.
+3. الخطأ في تطبيق القانون على الواقعة.
+• يجب أن يكون محل القرار ممكناً وجائزاً قانوناً.`,
+        s: `القرار بيطلع سليم شكلاً ومن جهة مختصة، بس المضمون بتاعه بيخالف القانون أو بيفسر نص القانون بطريقة غلط.`,
+        q: `1. يشترط في عيب المحل أن يكون القرار معيباً في شكله.
+[خطأ] - عيب المحل ينصب على مضمون القرار وأثره القانوني لا شكله.
+2. ماذا يعني الخطأ في التأويل؟
+تفسير النص القانوني على نحو يخرجه عن مقصوده ومراده الأصلي.`,
+        k: `مفتاح الحفظ: (محل القرار = أثره القانوني / مخالفة - تأويل - تطبيق).`,
+        z: `إلغاء القرار الإداري لمخالفته المباشرة للترتيب والأنظمة القانونية النافذة.`
+      },
+      {
+        id: 6,
+        t: "عيب انحراف السلطة وإساءة استعمالها",
+        a: `هو استخدام الموظف الإداري لسلطته التقديرية لتحقيق غرض غير المصلحة العامة، أو غرض مغاير للغرض الذي حدده القانون.
+• خصائص عيب الانحراف:
+1. عيب قصدي يتصل بنيات الموظف.
+2. عيب احتياطي لا يلجأ إليه القاضي إلا عند تعذر إثبات العيوب الأخرى.
+3. عبء الإثبات يقع على عاتق المدعي بجميع طرق الإثبات.`,
+        s: `لو الموظف استخدم صلاحياته ينتقم من حد أو يحقق مصلحة شخصية، ده اسمه انحراف بالسلطة. بس عشان القاضي يحكم بيه لازم أثر ودليل واضح.`,
+        q: `1. يقع عبء إثبات الانحراف بالسلطة على جهة الإدارة.
+[خطأ] - يقع عبء الإثبات على المدعي لأن قرارات الإدارة تفترض فيها السلامة والمصلحة العامة.
+2. لماذا يعتبر عيب الانحراف عيباً احتياطياً؟
+لأن القاضي يستثبت أولاً العيوب الظاهرة كالاختصاص والشكل قبل التفتيش في النوايا.`,
+        k: `مفتاح الحفظ: (انحراف = سوء نية + عيب احتياطي + عبء الإثبات على المدعي).`,
+        z: `إلغاء القرار المطعون فيه لانحراف السلطة والخروج عن مقتضيات المصلحة العامة.`
+      },
+      {
+        id: 7,
+        t: "عيب السبب في القرار الإداري والرقابة عليه",
+        a: `السبب هو الحالة الواقعية أو القانونية السابقة على القرار والتي تدفع الإدارة لإصداره.
+• شروط السبب:
+1. أن يكون موجوداً ومستثمراً حتى صدور القرار.
+2. أن يكون صحيحاً ومشروعاً.
+• الرقابة القضائية تمتد من وجود الوقائع، إلى التكييف القانوني لها، وصولاً للتناسب بين السبب والقرار (التناسب في التأديب).`,
+        s: `السبب هو "ليه الإدارة أخذت القرار؟". لازم يكون فيه واقعة حقيقية حصلت فعلاً وتستدعي القرار بدون مبالغة أو تجني.`,
+        q: `1. الإدارة غير ملزمة بوجود سبب حقيقي لقراراتها غير المسببة.
+[خطأ] - كل قرار إداري يجب أن يستند لسبب صحيح حتى وإن لم ينص القانون على كتابة التسبيب.
+2. ما معنى التكييف القانوني للسبب؟
+إسبوغ الوصف القانوني الصحيح على الواقعة المادية التي استندت إليها الإدارة.`,
+        k: `مفتاح الحفظ: (السبب = الواقعة المادية / وجود + صحة + تكييف + تناسب).`,
+        z: `إلغاء القرار الإداري لعدم صحة الأسباب التي بني عليها وانعدام سندها.`
+      },
+      {
+        id: 8,
+        t: "العقد الإداري ومعايير تمييزه عن الخاص",
+        a: `العقد الإداري هو العقد الذي يبرمه شخص معنوي عام بقصد إدارة أو تسيير مرفق عام، وتظهر فيه نية الإدارة في الأخذ بأحكام القانون العام.
+• أرکان العقد الإداري:
+1. أن تكون الإدارة طرفاً فيه (شخص معنوي عام).
+2. أن يتصل بالمرفق العام (تسييراً أو تنظيماً).
+3. اتباع أساليب القانون العام (تضمين العقد شروطاً استثنائية غير مألوفة في المعاملات الخاصة).`,
+        s: `عشان العقد يبقى إداري وتختص بيه محاكم مجلس الدولة، لازم الحكومة تكون طرف، ويتعلق بمرفق عام، وفيه شروط غير مألوفة في عقود الأفراد.`,
+        q: `1. يعتبر العقد إدارياً لمجرد أن أحد أطرافه شخص معنوي عام.
+[خطأ] - يجب توافر الأركان الثلاثة مجتمعة (شخص عام + مرفق عام + شروط استثنائية).
+2. ما هي الشروط الاستثنائية؟
+شروط تمنح الإدارة سلطات غير مألوفة في القانون الخاص مثل فسخ العقد بالإرادة المنفردة.`,
+        k: `مفتاح الحفظ: (شخص عام + مرفق عام + شروط غير مألوفة = عقد إداري).`,
+        z: `اختصاص القضاء الإداري بنظر النزاع باعتبار العقد المحرر عقداً إدارياً صحيحاً.`
+      },
+      {
+        id: 9,
+        t: "سلطات الإدارة الاستثنائية في العقد الإداري",
+        a: `تتمتع الإدارة بسلطات واسعة لا نظير لها في عقود القانون الخاص ضماناً لسير المرفق العام بانتظام والاطراد.
+• أهم هذه السلطات:
+1. سلطة الرقابة والتوجيه أثناء التنفيذ.
+2. سلطة تعديل العقد بالإرادة المنفردة (بما يتفق مع حاجة المرفق).
+3. سلطة توقيع الجزاءات الإدارية (الغرامات، مصادرة التأمين، الفسخ).`,
+        s: `في العقد الإداري الإدارة مش زي الفرد؛ تقدر تعدل الشروط أو تغرّم المتعاقد لو قصر من غير ما تلجأ للقضاء الأول، لحماية المصلحة العامة.`,
+        q: `1. يحق للمتعاقد الامتناع عن التنفيذ إذا قامت الإدارة بتعديل العقد منفردة.
+[خطأ] - يجب على المتعاقد الاستمرار في التنفيذ وله المطالبة بالتعويض وتعديل التوازن المالي.
+2. ما حد سلطة الإدارة في التعديل المنفرد؟
+أن يكون التعديل لدواعي المرفق العام وألا يغير من طبيعة العقد الجوهرية.`,
+        k: `مفتاح الحفظ: (تعديل منفرد + توقيع جزاءات + رقابة = سير المرفق العام).`,
+        z: `تأييد حق الإدارة في توقيع الجزاء مع إلزامها بالتعويض عن الأعباء الإضافية.`
+      },
+      {
+        id: 10,
+        t: "حقوق المتعاقد والتوازن المالي للعقد",
+        a: `مقابل سلطات الإدارة، يضمن القانون للمتعاقد التوازن المالي للعقد عبر ثلاث نظريات رئيسية:
+1. نظرية فعل الأمير: عمل مشروع أو غير مشروع صادر من الإدارة العاقدة يزيد أعباء المتعاقد فيستحق تعويضاً كاملاً.
+2. نظرية الظروف الطارئة: حوادث استثنائية عامة غير متوقعة تجعل التنفيذ مرهقاً لا مستحيلاً، فيعوض تعويضاً جزئياً لمشاركة الخسارة.
+3. نظرية الصعوبات المادية غير المتوقعة: صعوبات طبيعية استثنائية أثناء التنفيذ.`,
+        s: `لو الظروف اتغيرت بعد العقد: "فعل الأمير" تعويض كامل، أما "الظروف الطارئة" زي الوباء أو الحرب تعويض جزئي عشان يشيلوا الخسارة سوا.`,
+        q: `1. تعوض نظرية الظروف الطارئة المتعاقد تعويضاً كاملاً عن كافة الأضرار.
+[خطأ] - تعوض تعويضاً جزئياً يهدف إلى مشاركة الخسارة وتخفيف العبء ليتحقق التوازن المالي.
+2. ما الفرق بين الظروف الطارئة والقوة القاهرة؟
+القوة القاهرة تجعل التنفيذ مستحيلاً وتفسخ العقد، أما الظروف الطارئة تجعله مرهقاً فقط.`,
+        k: `مفتاح الحفظ: (فعل الأمير = تعويض كامل / ظروف طارئة = تعويض جزئي ومرهق).`,
+        z: `إلزام جهة الإدارة بإعادة التوازن المالي للعقد وتأدية التعويض الجزئي المستحق.`
+      },
+      {
+        id: 11,
+        t: "المسؤولية الإدارية على أساس الخطأ",
+        a: `تقوم مسؤولية الإدارة التعويضية على ثلاثة أركان: (الخطأ، الضرر، وعلاقة السببية).
+• التمييز بين الخطأ الشخصي والخطأ المرفقي:
+1. الخطأ المرفقي: خطأ يتصل بتقديم الخدمة أو إهمال سير المرفق، وتتحمل الإدارة التعويض من أموالها.
+2. الخطأ الشخصي: خطأ ينفصل عن الوظيفة بدافع النكاية أو القصد أو النزوة الشخصية، ويسأل عنه الموظف في ماله الخاص.`,
+        s: `لو الموظف غلط وهو بيؤدي شغله بدون نية سيئة ده خطأ مرفقي تحاسب عليه الدولة. لكن لو قصد يؤذي حد أو ارتكب خطأ جسيم جداً يسأل هو شخصياً.`,
+        q: `1. تتحمل الدولة دائماً التعويض عن الخطأ الشخصي للموظف.
+[خطأ] - يسأل الموظف في ماله الخاص عن الخطأ الشخصي، وتتحمل الدولة الخطأ المرفقي.
+2. ما هو معيار التمييز بين الخطأين وفقاً لرأي الفقيه هوريوه؟
+الخطأ الشخصي يكشف عن الإنسان بضعفه ونزواته، والمرفقي يكشف عن الموظف غير المتقن.`,
+        k: `مفتاح الحفظ: (خطأ مرفقي = تعويض من الدولة / خطأ شخصي = مال الموظف الخاص).`,
+        z: `إلزام جهة الإدارة بأن تؤدي للمدعي تعويضاً جابراً للأضرار التي لحقت به.`
+      },
+      {
+        id: 12,
+        t: "المسؤولية الإدارية على أساس المخاطر وبدون خطأ",
+        a: `مسؤولية استثنائية تقوم على فكرة تحمل المخاطر والمساواة أمام الأعباء العامة بدون إثبات خطأ في جانب الإدارة.
+• تطبيقاتها:
+1. المسؤولية عن استخدام الأشياء والأنشطة الخطرة (الأسلحة النارية، المواد التفجيرية، نقل الكهرباء).
+2. المسؤولية عن القرارات والأنظمة المشروعة التي ترتب ضرراً خاصاً وجسيماً.
+3. المسؤولية عن الأضرار الجسدية التي تصيب المساعدين المتطوعين.`,
+        s: `هنا الإدارة مش غلطانة في حاجة، بس استخدامها لأشياء خطرة أو إصدار قوانين معينة تسبب في ضرر خاص استثنائي لشخص، فيستحق تعويضاً للمساواة.`,
+        q: `1. يشترط لقيام المسؤولية بلا خطأ إثبات سوء نية الإدارة.
+[خطأ] - تقوم بدون خطأ مطلقاً بناء على عنصر المخاطر والمساواة أمام التكاليف.
+2. ما شرط التعويض عن الأضرار الناجمة عن القرارات المشروعة؟
+أن يكون الضرر خاصاً استثنائياً وجسيماً يصيب فرداً أو فئة محددة.`,
+        k: `مفتاح الحفظ: (بدون خطأ = مخاطر + نشاط خطر + مساواة أمام الأعباء العامة).`,
+        z: `إلزام الإدارة بالتعويض على أساس المسؤولية عن المخاطر دون إثبات الخطأ.`
+      },
+      {
+        id: 13,
+        t: "أحكام القضاء المستعجل ووقف التنفيذ",
+        a: `وقف تنفيذ القرار الإداري هو إجراء وقتي مستعجل يهدف لترتيب آثار عدم نفاذ القرار لحين الفصل في دعوى الإلغاء.
+• شروط وقوف التنفيذ:
+1. الركن الجدي (جدية الطلب): أن يقام الطلب على أسباب يرجح معها إلغاء القرار عند الفصل في الموضوع.
+2. الركن الاستعجالي (الاستعجال): أن يترتب على تنفيذ القرار نتائج يتعذر تداركها.`,
+        s: `عشان القاضي يوقف تنفيذ قرار إداري فوراً: لازم يكون في احتمال كبير إن القرار باطل، وتنفيذه دلوقتي هيعمل مصيبة صعب تصليحها بعدين.`,
+        q: `1. يكفي توافر ركن الاستعجال وحده لوقف تنفيذ القرار الإداري.
+[خطأ] - يوجب القضاء الإداري توافر الركنين مجتمعين (الجدية + الاستعجال).
+2. ما معنى النتائج التي يتعذر تداركها؟
+الأضرار المالية أو المادية أو المعنوية التي لا يمحوها الحكم الصادر بالإلغاء لاحقاً.`,
+        k: `مفتاح الحفظ: (وقف التنفيذ = ركن جدية + ركن استعجال يتعذر تداركه).`,
+        z: `الأمر بوقف تنفيذ القرار المطعون فيه شقاً عاجلاً لحين الفصل في الموضوُع.`
+      },
+      {
+        id: 14,
+        t: "حجية أحكام القضاء الإداري وطرق الطعن",
+        a: `تحوز الأحكام الصادرة في دعاوى الإلغاء حجية مطلقة بالنسبة للكافة، لأنها تتصل بالمشروعية والنظام العام.
+• طرق الطعن في أحكام القضاء الإداري:
+1. الطعن أمام المحكمة الإدارية العليا: خلال 60 يوماً من صدور الحكم، لأسباب خطأ في تطبيق القانون أو بطلان الحكم.
+2. التماس إعادة النظر: في حالات محددة كالتزوير أو الحصول على أوراق قاطعة.`,
+        s: `حكم إلغاء القرار الإداري يسري على مصر كلها مش بس على طرفي الدعوى، عشان القرار أصلح معدوم بالنسبة للجميع. والطعن عليه خلال 60 يوم.`,
+        q: `1. حجية الحكم الصادر بإلغاء القرار الإداري حجية نسبية بين أطرافه فقط.
+[خطأ] - حجية مطلقة تسري في مواجهة الكافة وتلزم جميع السلطات.
+2. ما ميعاد الطعن أمام المحكمة الإدارية العليا؟
+ستون يوماً من تاريخ صدور الحكم المطعون فيه.`,
+        k: `مفتاح الحفظ: (حكم الإلغاء = حجية مطلقة للكافة / الطعن = 60 يوم عليا).`,
+        z: `قبول الطعن شكلاً وفي الموضوع بتعديل الحكم المطعون فيه وإعادة الحق لنصابه.`
+      },
+      {
+        id: 15,
+        t: "الرقابة على دستورية القوانين والمحكمة الدستورية",
+        a: `المحكمة الدستورية العليا هي الهيئة القضائية المستقلة المختصة بالرقابة على دستورية القوانين واللوائح.
+• طرق الدفع بعدم الدستورية:
+1. الدفع الفرعي أثناء نظر دعوى موضوعية، فتقدر المحكمة جديته وتمنح رافعه مهلة 3 أشهر لرفع الدعوى الدستورية.
+2. الاحالة المباشرة من محكمة الموضوع عند شكها في دستورية نص.
+3. التصدي المباشر من المحكمة الدستورية لنص مرتبط بدعوى مطروحة عليها.`,
+        s: `لو النص القانوني بيخالف الدستور، بتدفع بعدم الدستورية أمام القاضي، ولو اقتنع بيديك 3 شهور ترفع قضية أمام المحكمة الدستورية العليا.`,
+        q: `1. يجوز للأفراد رفع دعوى مباشرة أمام المحكمة الدستورية العليا دون دعوى موضوعية.
+[خطأ] - لا يوجد طعن مباشر للأفراد؛ يلزم وجود دفع فرعي في نزاع موضوعي قائم أو إحالة.
+2. ما المهل الممنوحة لرفع الدعوى الدستورية بعد إقرار الجدية؟
+مهلة لا تجاوز ثلاثة أشهر لرفع الدعوى الدستورية.`,
+        k: `مفتاح الحفظ: (دفع فرعي + مهلة 3 أشهر + إحالة + تصدي = رقابة الدستورية).`,
+        z: `بعدم دستورية النص المطعون فيه وسقوط اللائحة التنفيذية المرتبطة به.`
+      }
+    ];
+
+    // --- UI FUNCTIONS ---
+    
+    function initApp() {
+      updateRankDisplay();
+      renderCasesGrid(LAW_DATA);
+    }
+
+    function switchView(viewName) {
+      document.getElementById('heroView').classList.add('hidden');
+      document.getElementById('dashboardView').classList.add('hidden');
+      document.getElementById('caseDetailView').classList.add('hidden');
+
+      if (viewName === 'hero') {
+        document.getElementById('heroView').classList.remove('hidden');
+      } else if (viewName === 'dashboard') {
+        document.getElementById('dashboardView').classList.remove('hidden');
+        renderCasesGrid(LAW_DATA);
+      } else if (viewName === 'case') {
+        document.getElementById('caseDetailView').classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateRankDisplay() {
+      const count = completedCases.length;
+      document.getElementById('completedCount').innerText = count;
+
+      let currentRank = Ranks[0];
+      for (let i = Ranks.length - 1; i >= 0; i--) {
+        if (count >= Ranks[i].threshold) {
+          currentRank = Ranks[i];
+          break;
+        }
+      }
+
+      document.getElementById('rankTitleText').innerText = currentRank.title;
+      document.getElementById('dashRankTitle').innerText = currentRank.title;
+      document.getElementById('dashRankTitle').className = `font-bold text-base ${currentRank.color}`;
+    }
+
+    function renderCasesGrid(cases) {
+      const container = document.getElementById('casesGrid');
+      container.innerHTML = '';
+
+      cases.forEach((item) => {
+        const isDone = completedCases.includes(item.id);
+        
+        const card = document.createElement('div');
+        card.className = `p-6 rounded-2xl border transition-all duration-300 cursor-pointer flex flex-col justify-between relative overflow-hidden group ${
+          isDone 
+          ? 'bg-slate-900/90 border-amber-500/50 shadow-md' 
+          : 'bg-court-card border-slate-800 hover:border-amber-500/60 hover:bg-court-cardHover hover:-translate-y-1'
+        }`;
+
+        card.onclick = () => openCase(item.id);
+
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold px-2.5 py-1 rounded-md ${isDone ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'bg-slate-800 text-slate-400'}">
+                قضية #${item.id}
+              </span>
+              ${isDone ? '<i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>' : '<i class="fa-regular fa-folder text-slate-500 group-hover:text-amber-400 transition"></i>'}
+            </div>
+
+            <h3 class="text-xl font-bold font-amiri text-slate-100 mb-3 leading-snug group-hover:text-amber-400 transition">
+              ${item.t}
+            </h3>
+            
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+              ${item.s}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-book-open text-amber-500"></i> 5 أقسام شمولية</span>
+            <span class="text-amber-400 font-semibold group-hover:translate-x-[-4px] transition-transform flex items-center gap-1">
+              مطالعة <i class="fa-solid fa-chevron-left text-[10px]"></i>
+            </span>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function filterCases() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const filtered = LAW_DATA.filter(c => c.t.toLowerCase().includes(query) || c.a.toLowerCase().includes(query));
+      renderCasesGrid(filtered);
+    }
+
+    function openCase(id) {
+      activeCaseId = id;
+      const caseObj = LAW_DATA.find(c => c.id === id);
+      if (!caseObj) return;
+
+      document.getElementById('currentCaseTitle').innerText = caseObj.t;
+      updateCompletionButtonState();
+      setActiveTab('academic');
+      switchView('case');
+    }
+
+    function updateCompletionButtonState() {
+      const isDone = completedCases.includes(activeCaseId);
+      const btn = document.getElementById('markCompleteBtn');
+      const text = document.getElementById('markCompleteText');
+
+      if (isDone) {
+        btn.className = "flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl shadow transition";
+        text.innerText = "تمت المرافعة (مكتمل)";
+      } else {
+        btn.className = "flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl shadow transition";
+        text.innerText = "ختم القضية";
+      }
+    }
+
+    function toggleCaseCompletion() {
+      if (completedCases.includes(activeCaseId)) {
+        completedCases = completedCases.filter(id => id !== activeCaseId);
+      } else {
+        completedCases.push(activeCaseId);
+      }
+      localStorage.setItem('court_completed_cases', JSON.stringify(completedCases));
+      updateRankDisplay();
+      updateCompletionButtonState();
+    }
+
+    const tabKeysOrder = ['academic', 'simplified', 'questions', 'keys', 'summary'];
+    const tabLabels = {
+      academic: 'المذكرة القانونية الشاملة',
+      simplified: 'مرافعة المحامي التبسيطية',
+      questions: 'استجواب وتطبيقات المحكمة',
+      keys: 'شفرات ومفاتيح الحفظ',
+      summary: 'منطوق الحكم النهائي'
+    };
+
+    function setActiveTab(tabKey) {
+      currentTab = tabKey;
+      
+      // Update UI tabs state
+      tabKeysOrder.forEach(k => {
+        const btn = document.getElementById(`tab-${k}`);
+        if (k === tabKey) {
+          btn.className = "tab-btn active flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900 border border-amber-500 text-amber-400 shadow-lg";
+        } else {
+          btn.className = "tab-btn flex items-center gap-3 p-4 rounded-xl text-right font-bold transition w-full whitespace-nowrap bg-slate-900/60 border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-slate-200";
+        }
+      });
+
+      document.getElementById('activeTabLabel').innerHTML = `<i class="fa-solid fa-bookmark text-amber-600"></i> ${tabLabels[tabKey]}`;
+
+      // Render tab text
+      const caseObj = LAW_DATA.find(c => c.id === activeCaseId);
+      if (!caseObj) return;
+
+      const rawText = caseObj[tabKey === 'academic' ? 'a' : tabKey === 'simplified' ? 's' : tabKey === 'questions' ? 'q' : tabKey === 'keys' ? 'k' : 'z'];
+      
+      document.getElementById('tabContentDisplay').innerHTML = formatLegalText(rawText);
+    }
+
+    function navigateTab(direction) {
+      const idx = tabKeysOrder.indexOf(currentTab);
+      const newIdx = idx + direction;
+      if (newIdx >= 0 && newIdx < tabKeysOrder.length) {
+        setActiveTab(tabKeysOrder[newIdx]);
+      }
+    }
+
+    function formatLegalText(text) {
+      if (!text) return '';
+
+      const lines = text.split('\n');
+      return lines.map(line => {
+        const trimmed = line.trim();
+        if (!trimmed) return '';
+
+        if (trimmed.startsWith('•')) {
+          return `<div class="flex items-start gap-3 my-2 text-slate-800 font-semibold text-lg">
+                    <span class="text-amber-600 font-bold mt-1 text-xl">•</span>
+                    <span>${trimmed.substring(1).trim()}</span>
+                  </div>`;
+        }
+
+        if (trimmed.includes('[صح]') || trimmed.includes('[خطأ]')) {
+          const isCorrect = trimmed.includes('[صح]');
+          return `<div class="p-4 my-3 rounded-xl border-r-4 ${isCorrect ? 'bg-emerald-50 border-emerald-500 text-emerald-900' : 'bg-rose-50 border-rose-500 text-rose-900'} font-bold flex items-center gap-3 shadow-sm">
+                    <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-xmark text-rose-600'} text-xl"></i>
+                    <div>${trimmed}</div>
+                  </div>`;
+        }
+
+        if (/^\d+\./.test(trimmed)) {
+          return `<h4 class="font-bold text-amber-900 text-xl mt-6 mb-2 border-b border-amber-200/60 pb-1">${trimmed}</h4>`;
+        }
+
+        return `<p class="text-slate-800 text-lg leading-relaxed my-2">${trimmed}</p>`;
+      }).join('');
+    }
+
+    // Initialize on window load
+    window.onload = function() {
+      initApp();
+    };
+  </script>
+</body>
+</html>
