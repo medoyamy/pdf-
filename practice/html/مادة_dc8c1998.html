@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة القضاء الإداري والدستوري 2026 | الأكاديمية القضائية التفاعلية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Cairo & Amiri for Legal Aesthetic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        court: {
+                            dark: '#0f172a',
+                            navy: '#1e293b',
+                            gold: '#d97706',
+                            goldLight: '#fef3c7',
+                            wood: '#2c1810',
+                            woodLight: '#422517',
+                            parchment: '#fefcf6',
+                            borderGold: '#b45309'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        amiri: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        .font-amiri { font-family: 'Amiri', serif; }
+        .gold-gradient {
+            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .wood-card {
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border: 1px solid rgba(217, 119, 6, 0.2);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .wood-card:hover {
+            border-color: rgba(217, 119, 6, 0.5);
+        }
+        .parchment-box {
+            background-color: #fefcf6;
+            color: #1e293b;
+            border-right: 5px solid #b45309;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #b45309; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d97706; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-court-dark text-slate-100 selection:bg-amber-600 selection:text-white">
+
+    <!-- Top Header / Courtroom Navigation -->
+    <header class="sticky top-0 z-50 bg-court-navy/95 backdrop-blur-md border-b border-amber-600/30 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Title -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-amber-700 to-amber-500 flex items-center justify-center text-white shadow-lg border border-amber-300">
+                        <i class="fa-solid font-scale-balanced text-2xl text-amber-100"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl sm:text-2xl font-bold font-amiri tracking-wide text-amber-400 flex items-center gap-2">
+                            محكمة القضاء الإداري <span class="text-xs px-2 py-0.5 rounded bg-amber-900/60 text-amber-200 border border-amber-600/50">2026</span>
+                        </h1>
+                        <p class="text-xs text-slate-400 hidden sm:block">الموسوعة الشاملة وبنك الاختبارات القضائية التفاعلي</p>
+                    </div>
+                </div>
+
+                <!-- User Rank & Stats Badge -->
+                <div class="flex items-center gap-3 bg-court-dark/80 px-4 py-2 rounded-xl border border-amber-600/30">
+                    <div class="text-right">
+                        <div class="text-xs text-slate-400">الرتبة القضائية</div>
+                        <div id="user-rank" class="text-sm font-bold text-amber-400">محامي تحت التمرين</div>
+                    </div>
+                    <div class="h-8 w-px bg-slate-700"></div>
+                    <div class="text-center">
+                        <div class="text-xs text-slate-400">الهيبة (نقاط)</div>
+                        <div id="user-points" class="text-sm font-bold text-emerald-400">0</div>
+                    </div>
+                    <div class="w-10 h-10 rounded-full bg-amber-900/40 border border-amber-500/40 flex items-center justify-center text-amber-400 text-lg">
+                        <i id="rank-icon" class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nav Tabs -->
+            <nav class="flex space-x-1 space-x-reverse overflow-x-auto pb-2 pt-1 no-scrollbar border-t border-slate-800">
+                <button onclick="switchTab('textbook')" id="tab-textbook" class="nav-tab px-4 py-2.5 rounded-lg font-medium text-sm transition flex items-center gap-2 whitespace-nowrap bg-amber-600 text-white shadow-md">
+                    <i class="fa-solid fa-book-bookmark"></i> موسوعة الفصول والمواد
+                </button>
+                <button onclick="switchTab('exambank')" id="tab-exambank" class="nav-tab px-4 py-2.5 rounded-lg font-medium text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-800 hover:text-amber-400">
+                    <i class="fa-solid fa-file-signature"></i> بنك أسئلة الامتحانات والإجابات
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="nav-tab px-4 py-2.5 rounded-lg font-medium text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-800 hover:text-amber-400">
+                    <i class="fa-solid fa-gavel"></i> الجلسة التفاعلية (التحدي)
+                </button>
+                <button onclick="switchTab('search')" id="tab-search" class="nav-tab px-4 py-2.5 rounded-lg font-medium text-sm transition flex items-center gap-2 whitespace-nowrap text-slate-300 hover:bg-slate-800 hover:text-amber-400">
+                    <i class="fa-solid fa-magnifying-glass"></i> البحث والسجل القانوني
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- TAB 1: TEXTBOOK (كتاب المقرر مقسم بالكامل) -->
+        <section id="sec-textbook" class="space-y-8">
+            <!-- Welcome Banner -->
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-950/80 via-court-navy to-slate-900 border border-amber-600/40 shadow-2xl relative overflow-hidden">
+                <div class="absolute -left-10 -bottom-10 opacity-10 text-amber-500 pointer-events-none">
+                    <i class="fa-solid fa-gavel text-9xl"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl">
+                    <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-300 rounded-full text-xs font-semibold mb-3 border border-amber-500/30">
+                        مقرر جامعة الأزهر بنين بالقاهرة 2026
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-amiri text-amber-300 mb-2">موسوعة شرح وتبسيط القانون الإداري والقضاء الإداري</h2>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                        تمت صياغة هذا المحتوى بدقة أكاديمية حرفية عالية، مقسماً إلى فصول وعناوين وفروع تفصيلية، مدعمة بشفرات الحفظ السحرية، النقاط القاتلة في الامتحانات، والشرح المبسط بالعامية للربط الذهني.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="bg-slate-800 text-amber-200 px-3 py-1 rounded-md border border-slate-700">6 أجزاء كاملة</span>
+                        <span class="bg-slate-800 text-emerald-300 px-3 py-1 rounded-md border border-slate-700">شفرات تثبيت الذاكرة</span>
+                        <span class="bg-slate-800 text-rose-300 px-3 py-1 rounded-md border border-slate-700">أسئلة وتريكات امتحانات</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter Buttons for Parts -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+                <button onclick="filterPart('all')" class="part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-amber-600 text-white">الكل (6 أجزاء)</button>
+                <button onclick="filterPart(1)" class="part-part-1 part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-300 hover:bg-slate-700">الجزء 1: مبدأ المشروعية</button>
+                <button onclick="filterPart(2)" class="part-part-2 part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-300 hover:bg-slate-700">الجزء 2: المصادر غير المكتوبة</button>
+                <button onclick="filterPart(3)" class="part-part-3 part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-300 hover:bg-slate-700">الجزء 3: موازنات المشروعية</button>
+                <button onclick="filterPart(4)" class="part-part-4 part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-300 hover:bg-slate-700">الجزء 4: الرقابة ونظم القضاء</button>
+                <button onclick="filterPart(5)" class="part-part-5 part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-300 hover:bg-slate-700">الجزء 5: مجلس الدولة المصري</button>
+                <button onclick="filterPart(6)" class="part-part-6 part-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-800 text-slate-300 hover:bg-slate-700">الجزء 6: التنازع والتعويض</button>
+            </div>
+
+            <!-- Dynamic Content Accordions / Cards -->
+            <div id="textbook-content" class="space-y-6">
+                <!-- Rendered dynamically or standard hardcoded interactive blocks -->
+            </div>
+        </section>
+
+        <!-- TAB 2: EXAM BANK (بنك أسئلة الـ 30 صفحة والحلول المنظمة) -->
+        <section id="sec-exambank" class="hidden space-y-8">
+            <div class="p-6 rounded-2xl bg-gradient-to-r from-amber-900/60 via-slate-900 to-amber-950/80 border border-amber-600/40">
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-2xl bg-amber-600/20 border border-amber-500/50 flex items-center justify-center text-amber-400 text-2xl shrink-0">
+                        <i class="fa-solid fa-scroll"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold font-amiri text-amber-300">بنك أسئلة الامتحانات الشامل والإجابات النموذجية</h2>
+                        <p class="text-slate-300 text-sm">مجموعة أسئلة الامتحانات المباشرة والمقالية، وأسئلة الصح والخطأ والاختياري بالتعليل القانوني الشامل المتوافق مع الكتاب الجامعي.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Bank Filter Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-4 bg-court-navy p-4 rounded-xl border border-slate-800">
+                <div class="flex gap-2">
+                    <button onclick="filterExamType('all')" id="eb-all" class="eb-btn px-4 py-1.5 rounded-lg text-xs font-bold bg-amber-600 text-white">جميع الأسئلة</button>
+                    <button onclick="filterExamType('essay')" id="eb-essay" class="eb-btn px-4 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700">أسئلة مقالية متوقعة</button>
+                    <button onclick="filterExamType('mcq')" id="eb-mcq" class="eb-btn px-4 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700">صح / خطأ واختياري</button>
+                </div>
+                <div class="text-xs text-slate-400">
+                    عدد الأسئلة: <span id="exam-count-badge" class="text-amber-400 font-bold">0</span> سؤال ببنك الامتحانات
+                </div>
+            </div>
+
+            <!-- Exam Questions Accordion Container -->
+            <div id="exambank-container" class="space-y-4">
+                <!-- Exam cards loaded via JS -->
+            </div>
+        </section>
+
+        <!-- TAB 3: INTERACTIVE QUIZ GAME (جلسة التحدي القضائي) -->
+        <section id="sec-quiz" class="hidden space-y-8">
+            <div id="quiz-intro" class="wood-card p-8 rounded-2xl text-center space-y-6 max-w-3xl mx-auto border border-amber-500/30">
+                <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-amber-600 to-amber-400 flex items-center justify-center text-court-dark text-4xl shadow-lg shadow-amber-600/30">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold font-amiri text-amber-300 mb-2">جلسة المرافعة التفاعلية (اختبارات الامتحانات)</h2>
+                    <p class="text-slate-300 text-sm max-w-xl mx-auto leading-relaxed">
+                        اختبر معلوماتك القانونية في شروط المشروعية، اللوائح، العرف، مجلس الدولة، وتنازع الاختصاص. كل إجابة صحيحة تمنحك **نقاط هيبة قضائية** وترقيك في الرتب القضائية!
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto py-4">
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                        <div class="text-amber-400 text-lg font-bold">10</div>
+                        <div class="text-xs text-slate-400">أسئلة بالجلسة</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                        <div class="text-emerald-400 text-lg font-bold">+10</div>
+                        <div class="text-xs text-slate-400">لكل إجابة سديدة</div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                        <div class="text-rose-400 text-lg font-bold">-2</div>
+                        <div class="text-xs text-slate-400">خصم خطأ المحاماة</div>
+                    </div>
+                </div>
+
+                <button onclick="startQuiz()" class="px-8 py-4 bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-black text-lg rounded-xl shadow-xl transition transform hover:scale-105 flex items-center justify-center gap-3 mx-auto">
+                    <i class="fa-solid fa-gavel text-xl"></i> لبس الرداء القضائي وبدء الجلسة
+                </button>
+            </div>
+
+            <!-- Active Quiz Box -->
+            <div id="quiz-box" class="hidden wood-card p-6 sm:p-8 rounded-2xl max-w-3xl mx-auto border border-amber-600/40 space-y-6">
+                <!-- Quiz Header -->
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div class="flex items-center gap-3">
+                        <span id="quiz-step" class="w-8 h-8 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center text-sm">1</span>
+                        <span class="text-slate-400 text-sm">السؤال الحالي</span>
+                    </div>
+                    <div class="text-amber-400 text-sm font-semibold flex items-center gap-2">
+                        <i class="fa-solid fa-trophy"></i> النقاط الحالية: <span id="quiz-score" class="text-emerald-400 font-bold">0</span>
+                    </div>
+                </div>
+
+                <!-- Question Text -->
+                <div class="space-y-2">
+                    <span id="quiz-category" class="text-xs px-2.5 py-1 rounded bg-amber-900/50 text-amber-300 border border-amber-700/50 font-semibold">
+                        تصنيف السؤال
+                    </span>
+                    <h3 id="quiz-question" class="text-xl sm:text-2xl font-bold font-amiri text-slate-100 leading-relaxed pt-2">
+                        نص السؤال يظهر هنا؟
+                    </h3>
+                </div>
+
+                <!-- Options -->
+                <div id="quiz-options" class="space-y-3 pt-2">
+                    <!-- Dynamic option buttons -->
+                </div>
+
+                <!-- Feedback Area -->
+                <div id="quiz-feedback" class="hidden parchment-box p-4 rounded-xl text-slate-900 space-y-2">
+                    <div id="feedback-title" class="font-bold flex items-center gap-2"></div>
+                    <p id="feedback-text" class="text-sm leading-relaxed"></p>
+                </div>
+
+                <!-- Next Button -->
+                <div class="flex justify-end pt-4 border-t border-slate-800">
+                    <button id="next-btn" onclick="nextQuestion()" class="hidden px-6 py-2.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl transition flex items-center gap-2">
+                        السؤال التالي <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Result Box -->
+            <div id="quiz-result" class="hidden wood-card p-8 rounded-2xl text-center max-w-2xl mx-auto space-y-6 border border-amber-500/50">
+                <div class="w-24 h-24 mx-auto rounded-full bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-amber-400 text-5xl">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h3 class="text-3xl font-bold font-amiri text-amber-300">انتهت المرافعة وصدر الحكم!</h3>
+                <p id="result-message" class="text-slate-300 text-base"></p>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-2xl font-bold text-emerald-400">
+                    مجموع النقاط المكتسبة: <span id="final-points">0</span>
+                </div>
+                <div class="flex justify-center gap-4 pt-4">
+                    <button onclick="startQuiz()" class="px-6 py-3 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded-xl transition flex items-center gap-2">
+                        <i class="fa-solid fa-rotate-right"></i> جلسة مرافعة جديدة
+                    </button>
+                    <button onclick="switchTab('textbook')" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl transition">
+                        مراجعة الدفاتر
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: SEARCH & ACHIEVEMENTS (البحث القانوني والدرجات) -->
+        <section id="sec-search" class="hidden space-y-8">
+            <div class="wood-card p-6 rounded-2xl space-y-4 border border-amber-600/30">
+                <h2 class="text-xl font-bold font-amiri text-amber-300 flex items-center gap-2">
+                    <i class="fa-solid fa-magnifying-glass"></i> محرك البحث الشامل في المبادئ والتريكات القانونية
+                </h2>
+                <div class="relative">
+                    <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="ابحث عن كلمة (مثلاً: العرف، اللوائح، مفوضي الدولة، الموظف الفعلي)..." class="w-full bg-slate-900 border border-amber-600/40 rounded-xl py-3 px-11 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition">
+                    <i class="fa-solid fa-search absolute right-4 top-4 text-slate-500"></i>
+                </div>
+            </div>
+
+            <div id="search-results" class="space-y-4">
+                <div class="text-center text-slate-400 py-8">
+                    أدخل كلمة البحث أعلاه لاستخراج النصوص والقواعد والأسئلة الخاصة بها فوراً.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Gavel Sound Effect simulation modal or notification toast -->
+    <div id="toast" class="fixed bottom-5 left-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 border border-amber-500 text-slate-100 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <div id="toast-text" class="text-sm font-semibold">إشعار قضائي</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-court-navy border-t border-slate-800 py-6 mt-12 text-center text-xs text-slate-400 space-y-2">
+        <div class="flex justify-center items-center gap-2 text-amber-400 font-amiri text-base">
+            <i class="fa-solid fa-balance-scale"></i> مادة القضاء الإداري والدستوري 2026 - جامعة الأزهر بالقاهرة
+        </div>
+        <p>التطبيق مصمم وفق أحدث منهج أكاديمي مع محاكاة كاملة للجلسات والامتحانات</p>
+    </footer>
+
+    <!-- JS Logic Scripts -->
+    <script>
+
+        // Raw PDF Material Data Encapsulated into Structured Objects
+        const pdfData = [
+            {
+                part: 1,
+                title: "الجزء الأول: مبدأ المشروعية والمصادر المكتوبة للقانون الإداري",
+                sections: [
+                    {
+                        subTitle: "أولاً: الصياغة الأكاديمية للحفظ والمراجعة السريعة",
+                        content: [
+                            {
+                                head: "أ. ماهية مبدأ المشروعية",
+                                items: [
+                                    "<strong>التعريف:</strong> خضوع الجميع، حكاماً ومحكومين، لأحكام القانون.",
+                                    "<strong>مصطلحات مرادفة:</strong> مبدأ الشرعية - مبدأ الخضوع للقانون - سيادة حكم القانون.",
+                                    "<strong>الأساس الدستوري:</strong> أكد دستور 2014 أن سيادة القانون هي ضمان حرية الفرد وأساس مشروعية السلطة.",
+                                    "<strong>الفكرة في سطر:</strong> القانون هو السيد المطلق على الدولة والمواطن معاً."
+                                ]
+                            },
+                            {
+                                head: "ب. نطاق تطبيق المشروعية (من يخضع للقانون؟)",
+                                items: [
+                                    "<strong>1. السلطة التشريعية:</strong> تلتزم بأحكام الدستور والمبادئ العامة.",
+                                    "<strong>2. السلطة القضائية:</strong> تطبق أحكام القانون لحسم المنازعات.",
+                                    "<strong>3. السلطة التنفيذية (الإدارة):</strong> هي الأكثر مطالبة باحترام القانون لـ 3 أسباب: (أعمالها تصدر من أفراد فتدعو للتحيز والتعسف - تتولى تنفيذ إجراءات ماسة بالحريات - تملك سلطة تقديرية واسعة).",
+                                    "<strong>الفكرة في سطر:</strong> الإدارة تحتاج لرقابة أشد لأنها تحتك مباشرة بحرياتنا وتملك سلطة تقديرية."
+                                ]
+                            },
+                            {
+                                head: "ج. الخلاف الفقهي حول مدى خضوع الإدارة للمشروعية (3 آراء)",
+                                items: [
+                                    "<strong>الرأي الأول:</strong> يكفي ألا تأتي الإدارة بعمل 'مخالف' للقانون (قيد سلبي).",
+                                    "<strong>الرأي الثاني:</strong> يجب أن يستند كل تصرف للإدارة إلى أساس في القانون.",
+                                    "<strong>الرأي الثالث:</strong> يجب أن يكون عملها تطبيقاً حرفياً للقانون (وهذا يلغي سلطتها التقديرية).",
+                                    "<strong>الرأي الراجح:</strong> دمج الرأيين الأول والثاني (ألا تخالف القانون + أن تبني عملها على قاعدة قانونية)."
+                                ]
+                            },
+                            {
+                                head: "د. مصادر المشروعية المكتوبة (هرم القوانين)",
+                                items: [
+                                    "<strong>1. المواثيق وإعلانات الحقوق ومقدمات الدساتير:</strong> مثل ميثاق العمل الوطني 1962. الرأي الراجح في فرنسا يُفرّق بين المبادئ الفلسفية (غير ملزمة) والمبادئ القابلة للتطبيق (لها قيمة الدستور).",
+                                    "<strong>2. التشريعات الدستورية (الدستور):</strong> أعلى قمة القواعد القانونية. مخالفة السلطة التنفيذية له تسمى عيب عدم الدستورية.",
+                                    "<strong>3. التشريعات العادية (قوانين البرلمان):</strong> المرتبة الثانية بعد الدستور. مقيدة بـ: عدم التدخل بمسائل معينة (تسليم اللاجئين)، مسائل مشروطة (نزع الملكية)، مسائل واجبة التنظيم (حق الدفاع)، واستهداف المصلحة العامة.",
+                                    "<strong>4. المعاهدات الدولية:</strong> تأخذ نفس قوة التشريع العادي بعد الموافقة. قاعدة التعارض: المعاهدة اللاحقة تلغي القانون السابق والعكس صحيح.",
+                                    "<strong>5. الرقابة على دستورية القوانين:</strong> لا يجوز رفع دعوى أصلية مباشرة من الأفراد لطلب فحص دستورية القوانين في مصر.",
+                                    "<strong>6. التشريعات الفرعية (اللوائح):</strong> قرارات إدارية تتضمن قواعد عامة مجردة. عمل إداري بالمعيار الشكلي وعمل تشريعي بالمعيار الموضوعي.",
+                                    "<strong>أنواع اللوائح الـ 6:</strong> (تنفيذية - مستقلة - ضبط إداري [حماية أمن وصحة وسكينة] - تنظيمية [إنشاء المرافق] - تفويضية [خلا دستور 2014 منها] - لوائح الضرورة [قرارات بقوة القانون يصدرها رئيس الجمهورية بغياب البرلمان])."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        subTitle: "ثانياً: الشرح المبسط (للفهم والربط الذهني)",
+                        text: "<strong>ليه الإدارة بالذات بنراقبها بشدة؟</strong> تخيل إنك بتتعامل مع موظف حكومي في إيده ينزع ملكية أرضك أو يرفض يديك ترخيص بناء، الإدارة إيدها طايلة وعندها 'سلطة تقديرية'، عشان كده الفقه قال لازم الإدارة متمشيش خطوة إلا بسند قانوني وممنوع تخالفه.<br><strong>فرق مهم (القانون vs اللائحة):</strong> القانون بيعمله البرلمان وهو أعلى مرتبة. اللائحة بتعملها السلطة التنفيذية زي قرار وزير التموين بتنظيم المخابز. الخلاصة: اللائحة شكلها إداري وموضوعها تشريعي."
+                    },
+                    {
+                        subTitle: "ثالثاً ورابعاً: مفاتيح الحفظ والشفرات السحرية",
+                        codes: [
+                            "<strong>شفرة حفظ أنواع اللوائح:</strong> (ت - م - ض - ت - ت - ض) -> [تنفيذية، مستقلة، ضبط إداري، تنظيمية، تفويضية، ضرورة]",
+                            "<strong>شفرة أهداف الضبط الإداري:</strong> (أمن - صحة - سكينة) -> عشان نعيش في (أمن) و (صحة) بـ (سكينة)."
+                        ],
+                        killerPoints: "نقطة قاتلة: دستور 2014 ألغى اللوائح التفويضية، ولا يوجد دعوى أصلية مباشرة للأفراد أمام المحكمة الدستورية العليا في مصر."
+                    }
+                ]
+            },
+            {
+                part: 2,
+                title: "الجزء الثاني: المصادر غير المكتوبة للمشروعية وتدرج القوانين",
+                sections: [
+                    {
+                        subTitle: "أولاً: الصياغة الأكاديمية للحفظ والمراجعة السريعة",
+                        content: [
+                            {
+                                head: "أ. العرف الإداري (المصدر غير المكتوب الأول)",
+                                items: [
+                                    "<strong>التعريف:</strong> ما درجت واعتادت الجهة الإدارية على اتباعه فيصبح ملزماً لها.",
+                                    "<strong>الفرق عن التسامح الإداري:</strong> التسامح لا يولد التزاماً قانونياً ويمكن للإدارة التراجع عنه، أما العرف فهو ملزم.",
+                                    "<strong>أركان العرف الإداري:</strong><br>1. ركن مادي (الاعتياد): تكرار السلوك بصفة مستمرة بشروطه الأربعة: (القدم، الغالبية، الثبات، المشروعية).<br>2. ركن معنوي (الشعور بالإلزام): اعتقاد الإدارة والأفراد بوجوب احترام هذا السلوك كقانون.",
+                                    "<strong>أنواع العرف من حيث الوظيفة:</strong> عرف مفسر (يوضح نص غامض)، عرف مكمل (يسد فراغ)، عرف معدل.",
+                                    "<strong>القوة الإلزامية:</strong> الرأي الراجح أنه مصدر رسمي مستقل للقانون."
+                                ]
+                            },
+                            {
+                                head: "ب. المبادئ العامة للقانون (المصدر غير المكتوب الثاني)",
+                                items: [
+                                    "<strong>التعريف:</strong> قواعد غير مكتوبة يستنبطها القضاء ويقررها في أحكامه.",
+                                    "<strong>مصدرها ودور القاضي:</strong> تستنبط من ضمير الجماعة وقواعد العدالة. دور القاضي كاشف ومقرر للمبدأ وليس منشئاً أو مبتكراً له.",
+                                    "<strong>أمثلة في مصر:</strong> المساواة أمام القانون، حرية التجارة، عدم رجعية القرارات، كفالة حق التقاضي.",
+                                    "<strong>المرتبة في التدرج (الرأي الراجح الثالث):</strong> يُفرّق بين المبادئ حسب مصدرها؛ ما يُستمد من الدستور يأخذ قوة الدستور وما يُستمد من القوانين العادية يأخذ مرتبة أقل."
+                                ]
+                            },
+                            {
+                                head: "ج. تدرج القواعد القانونية (ترتيب الأولويات)",
+                                items: [
+                                    "<strong>1. التدرج الشكلي:</strong> اختلاف قوة القاعدة باختلاف السلطة التي أصدرتها (دستور > قانون > لائحة).",
+                                    "<strong>2. التدرج الإجرائي:</strong> تختلف القوة باختلاف صعوبة وتطويل إجراءات إصدار القاعدة.",
+                                    "<strong>3. التدرج الموضوعي:</strong> تختلف القوة باختلاف أهمية موضوع النص القانوني.",
+                                    "<strong>4. التدرج الاستثنائي:</strong> منح عمل قوة غير عادية مثل إعطاء اللائحة قوة القانون في الظروف الاستثنائية."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        subTitle: "ثانياً: مفاتيح الحفظ والشفرات السحرية",
+                        codes: [
+                            "<strong>شفرة شروط الركن المادي للعرف:</strong> (ق - غ - ث - م) -> [قدم، غالبية، ثبات، مشروعية] -> 'قوة غالبة تثبت المشروعية'.",
+                            "<strong>ربط ذهني للتدرج:</strong> (سلطة مختلفة) = تدرج شكلي | (صعوبة الإجراءات) = إجرائي | (أهمية النص) = موضوعي | (تدخل بشرط استثنائي) = استثنائي."
+                        ],
+                        killerPoints: "دور القاضي في المبادئ العامة للقانون 'كاشف' وليس 'منشئاً' (تأتي دائماً في امتحان صح وخطأ!)."
+                    }
+                ]
+            },
+            {
+                part: 3,
+                title: "الجزء الثالث: موازنات واستثناءات مبدأ المشروعية",
+                sections: [
+                    {
+                        subTitle: "أولاً: الصياغة الأكاديمية للحفظ والمراجعة السريعة",
+                        content: [
+                            {
+                                head: "أ. نظرية أعمال السيادة (الاستثناء الأول)",
+                                items: [
+                                    "<strong>التعريف:</strong> طائفة من أعمال السلطة التنفيذية تخرج عن اختصاص المحاكم تماماً فلا تخضع لرقابة القضاء (لا إلغاء ولا تعويض).",
+                                    "<strong>معايير التحديد:</strong> 1. معيار الباعث السياسي. 2. معيار طبيعة العمل (حكومي أم إداري). 3. معيار القائمة (الراجح): حصرها في أعمال العلاقات بالبرلمان، التمثيل الدبلوماسي، أعمال الحرب، وأمن الدولة.",
+                                    "<strong>موقف الفقه الحديث:</strong> يعتبرها استثناءً بغيضاً على المشروعية ويطالب بتضييق نطاق تطبيقها لأقصى حد."
+                                ]
+                            },
+                            {
+                                head: "ب. نظرية الظروف الاستثنائية (الاستثناء الثاني)",
+                                items: [
+                                    "<strong>التعريف:</strong> إجراءات تكون غير مشروعة بالأوقات العادية، لكنها تصبح مشروعة بالظروف الاستثنائية لحماية الدولة.",
+                                    "<strong>الأساس الإسلامي:</strong> عرفها الفقه الإسلامي بمبدأ (العزائم والرخص).",
+                                    "<strong>شروط قيامها للحفظ نصاً (و - خ - ع):</strong> 1. قيام حالة واقعية غير مألوفة (حرب، كوارث). 2. تعريض المصالح العامة للخطر. 3. عجز الإدارة بوسائلها العادية عن مواجهة الظرف.",
+                                    "<strong>النتائج المترتبة عليها:</strong> إصدار قرارات ناقصة الأركان، الاعتداد بتصرفات (الموظف الفعلي)، وتعطيل تنفيذ القوانين مؤقتاً."
+                                ]
+                            },
+                            {
+                                head: "ج. السلطة التقديرية للإدارة (الاستثناء الثالث)",
+                                items: [
+                                    "<strong>عناصر القرار الإداري الـ 5 ومدى التقدير فيها:</strong>",
+                                    "1. الاختصاص: (مُقيد 100%)",
+                                    "2. الشكل: (مُقيد إذا حدده القانون)",
+                                    "3. الغاية: (مُقيد دائماً بالمصلحة العامة)",
+                                    "4. السبب: (مُقيد بأسباب صحيحة واقعاً وقانوناً)",
+                                    "5. المحل (الأثر القانوني): (تقديري هنا تتركز حرية الإدارة بالتدخل أو عدمه وتحديد الوقت والمضمون)."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        subTitle: "ثانياً: مفاتيح الحفظ والشفرات السحرية",
+                        codes: [
+                            "<strong>شفرة شروط الظروف الاستثنائية:</strong> (و - خ - ع) -> [واقعة غير مألوفة، خطر يهدد، عجز الإدارة].",
+                            "<strong>شفرة أركان القرار الإداري:</strong> كل الأركان مقيدة بحكم القانون ما عدا ركن واحد فقط هو (المحل) الذي تظهر فيه السلطة التقديرية."
+                        ],
+                        killerPoints: "الموظف الفعلي لا يعد تصرفه مشروعاً إلا في ظل الظروف الاستثنائية لضمان سير المرافق العامة."
+                    }
+                ]
+            },
+            {
+                part: 4,
+                title: "الجزء الرابع: الرقابة على أعمال الإدارة ونظم القضاء",
+                sections: [
+                    {
+                        subTitle: "أولاً: الصياغة الأكاديمية للحفظ والمراجعة السريعة",
+                        content: [
+                            {
+                                head: "أ. أنواع الرقابة على الإدارة",
+                                items: [
+                                    "<strong>1. الرقابة السياسية (البرلمانية):</strong> وسائلها: أسئلة، استجوابات، سحب ثقة. عيوبها: تتأثر بالأهواء الحزبية وتبحث في 'الملاءمة السياسية' وليس المشروعية القانونية.",
+                                    "<strong>2. الرقابة الإدارية:</strong> صورها: تلقائية أو بناء على تظلم. عيوبها: الإدارة فيها هي 'الخصم والحكم' فتفتقد للحياد الكامل.",
+                                    "<strong>3. الرقابة القضائية:</strong> ليست تلقائية بل برفع دعوى. مميزاتها: أفضل وأقوى الرقابات لحياد واستقلال القاضي ودقة أحكامه."
+                                ]
+                            },
+                            {
+                                head: "ب. نظم القضاء في العالم (صور الرقابة القضائية)",
+                                items: [
+                                    "<strong>1. نظام القضاء الموحد (إنجلترا):</strong> جهة قضائية واحدة تفصل بمنازعات الأفراد والإدارة بالقانون العادي. مصادر القانون لديهم مرتبة كالتالي: (1. القضاء - 2. التشريع - 3. العرف). عيوبه: يرهب الموظف ولا يراعي مصلحة المرفق العام.",
+                                    "<strong>2. نظام القضاء المزدوج (فرنسا ومصر):</strong> وجود جهتين (قضاء عادي وقضاء إداري متخصص - مجلس الدولة). يطبق قواعد القانون العام التي توازن بين السلطة وحقوق الأفراد."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        subTitle: "ثانياً: الشفرات وتريكات الامتحان",
+                        codes: [
+                            "<strong>ترتيب مصادر القانون في إنجلترا:</strong> (قضاء -> تشريع -> عرف) - تذكر القضاء أولاً عكس مصر!",
+                            "<strong>ربط الرقابة بالعيوب:</strong> سياسية = حزبية | إدارية = الخصم هو الحكم | قضائية = الضمانة الأقوى."
+                        ],
+                        killerPoints: "الرقابة البرلمانية لا تبحث في المشروعية بقدر ما تبحث في 'الملاءمة السياسية'."
+                    }
+                ]
+            },
+            {
+                part: 5,
+                title: "الجزء الخامس: تنظيم مجلس الدولة المصري واختصاصاته",
+                sections: [
+                    {
+                        subTitle: "أولاً: أقسام مجلس الدولة المصري واختصاصاتها",
+                        content: [
+                            {
+                                head: "أ. الأقسام الاستشارية (الرأي والتشريع والجمعية العمومية)",
+                                items: [
+                                    "<strong>1. قسم الرأي (الفتوى):</strong> فحص التظلمات، والعقود الإدارية التي تزيد قيمتها عن (خمسة آلاف جنيه).",
+                                    "<strong>2. قسم التشريع:</strong> مراجعة وصياغة مشروعات القوانين واللوائح.<br><span class='text-rose-400 font-bold'>القاعدة الأخطر:</span> إغفال عرض القوانين عليه لا يبطلها، بينما إغفال عرض اللوائح (القرارات التنظيمية) عليه يترتب عليه البطلان الجوهري!",
+                                    "<strong>3. الجمعية العمومية لقسمي الفتوى والتشريع:</strong> تفصل في الخلافات والمنازعات بين الوزارات والهيئات الحكومية، وقراراتها فيها (ملزمة) ذات صفة قضائية."
+                                ]
+                            },
+                            {
+                                head: "ب. القسم القضائي (سلم المحاكم الإدارية)",
+                                items: [
+                                    "<strong>1. المحكمة الإدارية العليا (قمة الهرم):</strong> يرأسها رئيس مجلس الدولة وتتكون من 11 دائرة متخصصة. ملحق بها (دائرة توحيد المبادئ) و (دائرة فحص الطعون).",
+                                    "<strong>2. محكمة القضاء الإداري (صاحبة الولاية العامة):</strong> يرأسها نائب رئيس مجلس الدولة، تختص بنظر إلغاء القرارات النهائية، الضرائب، الجنسية، والانتخابات.",
+                                    "<strong>3. المحاكم الإدارية:</strong> قضايا الموظفين الصغيرين (ترقيات، معاشات، علاوات).",
+                                    "<strong>4. المحاكم التأديبية:</strong> للمخالفات المالية والإدارية. لا تُقام دعوى تأديبية على من انتهت خدمته إلا إذا بدأ التحقيق قبل الخروج أو كانت مخالفة مالية ضيعت حقاً للدولة.",
+                                    "<strong>5. هيئة مفوضي الدولة:</strong> الأمينة على الدعوى، دورها تحضير وتهيئة الدعوى للمرافعة وتقديم تقرير بالرأي القانوني (غير ملزم للقاضي)."
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        subTitle: "ثانياً: الشفرات والأرقام الهامة للحفظ",
+                        codes: [
+                            "<strong>شفرة اختصاصات القضاء الإداري مادة (10):</strong> اجمعها بكلمة (مـ عـ جـ نـ ة) -> [م: محليات وانتخابات، ع: عاملون، ج: جنسية، ن: نهائية القرارات، ة: ضريبة ورسوم].",
+                            "<strong>الأرقام الهامة:</strong> 5000 جنيه (نصاب العقود بالفتوى) | 11 دائرة (بالإدارية العليا)."
+                        ],
+                        killerPoints: "البطلان يقع فقط عند عدم عرض اللوائح والقرارات التنظيمية على قسم التشريع، ولا يقع عند عدم عرض مشروعات القوانين."
+                    }
+                ]
+            },
+            {
+                part: 6,
+                title: "الجزء السادس: تنازع الاختصاص وقضاء التعويض (الأعمال التشريعية والقضائية)",
+                sections: [
+                    {
+                        subTitle: "أولاً: الصياغة الأكاديمية للحفظ والمراجعة السريعة",
+                        content: [
+                            {
+                                head: "أ. صور تنازع الاختصاص بين القضاء العادي والإداري",
+                                items: [
+                                    "<strong>1. التنازع الإيجابي:</strong> تمسك كلتا الجهتين باختصاصهما بنظر النزاع.",
+                                    "<strong>2. التنازع السلبي:</strong> تخلي كلتا الجهتين عن نظر النزاع لعدم الاختصاص.",
+                                    "<strong>3. تعارض الأحكام:</strong> صدور حكمين نهائيين متناقضين يستحيل تنفيذهما معاً."
+                                ]
+                            },
+                            {
+                                head: "ب. قضاء التعويض عن أعمال السلطة التشريعية والقضائية",
+                                items: [
+                                    "<strong>مسئولية الدولة عن الأعمال التشريعية:</strong> الأصل هو عدم المسئولية والتعويض لقرينة 'افتراض الصحة' والسيادة، ولكن الفقه الحديث يتجه لحماية الأفراد.",
+                                    "<strong>مسئولية الدولة عن الأعمال القضائية:</strong> الأصل عدم تعويض الأحكام لحجية الأمر المقضي فيه. <span class='text-emerald-400 font-bold'>استثناء دستور 2014:</span> أقر لأول مرة بالتعويض المادي عن حالات الحبس الاحتياطي الخاطئ وتنفيذ العقوبة الظالمة!"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        subTitle: "ثانياً: مفاتيح الامتحانات والربط الذهني",
+                        codes: [
+                            "<strong>ربط الحبس الاحتياطي بالتعويض:</strong> في دستور 2014 الحبس الاحتياطي الظالم يوجب التعويض المادي."
+                        ],
+                        killerPoints: "تنازع الاختصاص ينشأ فقط في الدول ذات القضاء المزدوج (مثل مصر وفرنسا) ولا يوجد في إنجلترا."
+                    }
+                ]
+            }
+        ];
+
+        // Comprehensive Exam Question Bank (Essay + MCQs/True/False)
+        const examQuestionsData = [
+            // Essay Questions
+            {
+                id: "e1",
+                type: "essay",
+                part: 1,
+                question: "اذكر مبررات إلزام السلطة التنفيذية (الإدارة) بشدة باحترام مبدأ المشروعية؟",
+                modelAnswer: "<strong>الإجابة النموذجية:</strong><br>تلتزم السلطة التنفيذية بشدة باحترام مبدأ المشروعية لثلاثة أسباب رئيسية:<br>1. أن أعمالها تصدر من أفراد (موظفين) فتكون عرضة للتحيز والأهواء الشخصية والتعسف.<br>2. أنها تتولى تنفيذ الإجراءات والقرارات الماسة مباشرة بحقوق وحريات الأفراد.<br>3. أنها تملك سلطة تقديرية واسعة تحتاج لرقابة صارمة لحماية الأفراد من الشطط."
+            },
+            {
+                id: "e2",
+                type: "essay",
+                part: 1,
+                question: "تحدث عن اللوائح كأحد مصادر المشروعية، مبيناً تعريفها وتكييفها القانوني وأنواعها الستة؟",
+                modelAnswer: "<strong>الإجابة النموذجية:</strong><br>• <strong>التعريف:</strong> قرارات إدارية تتضمن قواعد عامة مجردة تصدرها السلطة التنفيذية.<br>• <strong>التكييف:</strong> عمل إداري بالمعيار الشكلي (لصدورها من الوزير/الإدارة)، وعمل تشريعي بالمعيار الموضوعي.<br>• <strong>أنواعها الـ 6:</strong><br>1. لوائح تنفيذية (لتنفيذ القانون).<br>2. لوائح مستقلة (تنظم موضوعات لم ينظمها قانون).<br>3. لوائح الضبط الإداري (حماية الأمن والصحة والسكينة العامة).<br>4. لوائح تنظيمية (لإنشاء وإدارة المرافق العامة).<br>5. لوائح تفويضية (أُلغيت في دستور 2014).<br>6. لوائح الضرورة (قرارات بقوة القانون لرئيس الجمهورية عند غياب البرلمان)."
+            },
+            {
+                id: "e3",
+                type: "essay",
+                part: 2,
+                question: "العرف الإداري مصدر غير مكتوب للمشروعية، وضح أركانه مبيناً شروط الركن المادي؟",
+                modelAnswer: "<strong>الإجابة النموذجية:</strong><br>يتكون العرف الإداري من ركنين:<br>1. <strong>الركن المادي (الاعتياد):</strong> وهو تكرار السلوك بصفة مستمرة، ويشترط فيه 4 شروط (ق-غ-ث-م): القدم، الغالبية، الثبات، والمشروعية (ألا يخالف نصاً مكتوباً).<br>2. <strong>الركن المعنوي (الشعور بالإلزام):</strong> اعتقاد الإدارة والأفراد بوجوب اتباع هذا السلوك كقاعدة قانونية ملزمة."
+            },
+            {
+                id: "e4",
+                type: "essay",
+                part: 3,
+                question: "من موازنات المشروعية أعمال السيادة، تكلم عن تعريفها، معايير تحديدها، وموقف الفقه الحديث منها؟",
+                modelAnswer: "<strong>الإجابة النموذجية:</strong><br>• <strong>التعريف:</strong> طائفة من أعمال السلطة التنفيذية تخرج عن اختصاص المحاكم ولا تخضع لرقابة القضاء نهائياً.<br>• <strong>المعايير:</strong> معيار الباعث السياسي، معيار طبيعة العمل، ومعيار القائمة (الراجح) كأعمال العلاقات بالبرلمان والتمثيل الدبلوماسي أمن الدولة.<br>• <strong>موقف الفقه الحديث:</strong> يعتبرها 'استثناءً بغيضاً' على مبدأ المشروعية ويطالب بتضييق نطاقها لأقصى حد."
+            },
+            {
+                id: "e5",
+                type: "essay",
+                part: 5,
+                question: "بين اختصاصات هيئة مفوضي الدولة موضحاً دورها الجوهري في المنازعة الإدارية؟",
+                modelAnswer: "<strong>الإجابة النموذجية:</strong><br>هيئة مفوضي الدولة هي 'الأمينة على المنازعات'، وتتلخص اختصاصاتها في:<br>1. تحضير الدعوى وتهيئتها للمرافعة.<br>2. الاتصال بالجهات الحكومية للحصول على المستندات والبيانات.<br>3. إيداع تقرير مسبب بالرأي القانوني بالنزاع.<br>4. عرض التسوية الودية على أطراف النزاع.<br>5. الفصل في طلبات الإعفاء من الرسوم القضائية والطعن أمام الإدارية العليا."
+            },
+
+            // Objective Questions (MCQs & True/False)
+            {
+                id: "m1",
+                type: "mcq",
+                part: 1,
+                question: "[صح أم خطأ]: تعتبر اللائحة عملاً إدارياً بالمعيار الموضوعي، وتشريعياً بالمعيار الشكلي.",
+                options: ["صح", "خطأ"],
+                correct: 1,
+                explanation: "خطأ: العكس هو الصحيح؛ اللائحة عمل إداري بالمعيار الشكلي (لصدورها من سلطة إدارية) وعمل تشريعي بالمعيار الموضوعي (لعموميتها وتجريدها)."
+            },
+            {
+                id: "m2",
+                type: "mcq",
+                part: 1,
+                question: "اللوائح التي تصدر لحماية الأمن العام والصحة العامة والسكينة هي لوائح:",
+                options: ["تنفيذية", "ضبط إداري", "تنظيمية", "ضرورة"],
+                correct: 1,
+                explanation: "لوائح الضبط الإداري هي المخصصة لحماية عناصر النظام العام الثلاثة (الأمن، الصحة، السكينة)."
+            },
+            {
+                id: "m3",
+                type: "mcq",
+                part: 2,
+                question: "[صح أم خطأ]: دور القاضي بالنسبة للمبادئ العامة للقانون هو دور منشئ ومبتكر لهذه المبادئ.",
+                options: ["صح", "خطأ"],
+                correct: 1,
+                explanation: "خطأ: دور القاضي بالنسبة للمبادئ العامة هو دور 'كاشف ومقرر' وليس منشئاً أو مبتكراً."
+            },
+            {
+                id: "m4",
+                type: "mcq",
+                part: 3,
+                question: "تتركز السلطة التقديرية للإدارة في ركن واحد من أركان القرار الإداري الخمسة وهو ركن:",
+                options: ["الاختصاص", "الغاية", "السبب", "المحل"],
+                correct: 3,
+                explanation: "صح: تتركز السلطة التقديرية في ركن 'المحل' (مضمون القرار ووقت اتخاذه)، أما بقية الأركان فمقيدة بحكم القانون."
+            },
+            {
+                id: "m5",
+                type: "mcq",
+                part: 4,
+                question: "في نظام القضاء الموحد (إنجلترا)، يأتي المدرس الأول لمصادر القاعدة القانونية هو:",
+                options: ["التشريع", "القضاء", "العرف", "اللوائح"],
+                correct: 1,
+                explanation: "في إنجلترا يأتي (1. القضاء) في المرتبة الأولى، ثم التشريع، ثم العرف."
+            },
+            {
+                id: "m6",
+                type: "mcq",
+                part: 5,
+                question: "[صح أم خطأ]: يترتب البطلان على إغفال عرض مشروعات القوانين على قسم التشريع بمجلس الدولة.",
+                options: ["صح", "خطأ"],
+                correct: 1,
+                explanation: "خطأ: الإغفال يبطل اللوائح والقرارات التنظيمية فقط، أما مشروعات القوانين فلا يترتب على عدم عرضها البطلان."
+            },
+            {
+                id: "m7",
+                type: "mcq",
+                part: 5,
+                question: "العقود الإدارية التي يجب عرضها على إدارات الفتوى بمجلس الدولة هي التي تزيد قيمتها عن:",
+                options: ["ألف جنيه", "خمسة آلاف جنيه", "عشرة آلاف جنيه", "خمسون ألف جنيه"],
+                correct: 1,
+                explanation: "يشترط القانون عرض العقود الإدارية التي تتجاوز قيمتها (5000 جنيه) على قسم الفتوى."
+            },
+            {
+                id: "m8",
+                type: "mcq",
+                part: 6,
+                question: "[صح أم خطأ]: أقر دستور 2014 حق الأفراد في التعويض المادي عن حالات الحبس الاحتياطي الخاطئ.",
+                options: ["صح", "خطأ"],
+                correct: 0,
+                explanation: "صح: أنصف دستور 2014 المتضررين وأقر لأول مرة التزام الدولة بتعويض من تم حبسه احتياطياً بظلم."
+            }
+        ];
+
+        let userPoints = 0;
+        let currentTab = 'textbook';
+        let currentExamFilter = 'all';
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let quizQuestionsPool = [];
+
+        // Ranks array
+        const ranks = [
+            { min: 0, title: "محامي تحت التمرين", icon: "fa-graduation-cap" },
+            { min: 30, title: "محامي إبتدائي ومحليات", icon: "fa-briefcase" },
+            { min: 70, title: "محامي استئناف عالي", icon: "fa-scale-unbalanced" },
+            { min: 120, title: "مستشار بمجلس الدولة", icon: "fa-scale-balanced" },
+            { min: 200, title: "رئيس المحكمة الإدارية العليا", icon: "fa-crown" }
+        ];
+
+        // On Page Load
+        window.onload = function () {
+            renderTextbookContent('all');
+            renderExamBankContent();
+            updateRankUI();
+        };
+
+        // Tab Switching
+        function switchTab(tabName) {
+            currentTab = tabName;
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'text-white', 'shadow-md');
+                btn.classList.add('text-slate-300', 'hover:bg-slate-800');
+            });
+            
+            const activeNav = document.getElementById('tab-' + tabName);
+            if (activeNav) {
+                activeNav.classList.add('bg-amber-600', 'text-white', 'shadow-md');
+                activeNav.classList.remove('text-slate-300', 'hover:bg-slate-800');
+            }
+
+            document.getElementById('sec-textbook').classList.add('hidden');
+            document.getElementById('sec-exambank').classList.add('hidden');
+            document.getElementById('sec-quiz').classList.add('hidden');
+            document.getElementById('sec-search').classList.add('hidden');
+
+            document.getElementById('sec-' + tabName).classList.remove('hidden');
+        }
+
+        function renderTextbookContent(partFilter) {
+            const container = document.getElementById('textbook-content');
+            container.innerHTML = '';
+
+            pdfData.forEach(p => {
+                if (partFilter !== 'all' && p.part !== partFilter) return;
+
+                const card = document.createElement('div');
+                card.className = "wood-card rounded-2xl p-6 space-y-6 transition hover:border-amber-500/40";
+                
+                let html = `
+                    <div class="flex items-center justify-between border-b border-amber-600/30 pb-4">
+                        <h3 class="text-xl sm:text-2xl font-bold font-amiri text-amber-300 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-amber-600/20 text-amber-400 border border-amber-500/40 flex items-center justify-center text-sm font-sans">${p.part}</span>
+                            ${p.title}
+                        </h3>
+                    </div>
+                `;
+
+                p.sections.forEach(sec => {
+                    html += `<div class="space-y-4 pt-2">`;
+                    html += `<h4 class="text-lg font-bold text-amber-400 font-amiri border-r-4 border-amber-500 pr-3">${sec.subTitle}</h4>`;
+
+                    if (sec.content) {
+                        sec.content.forEach(c => {
+                            html += `
+                                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-2">
+                                    <h5 class="font-bold text-slate-200 text-base">${c.head}</h5>
+                                    <ul class="space-y-1.5 text-sm text-slate-300 list-disc list-inside leading-relaxed">
+                                        ${c.items.map(item => `<li>${item}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            `;
+                        });
+                    }
+
+                    if (sec.text) {
+                        html += `<div class="parchment-box p-4 rounded-xl text-slate-900 text-sm leading-relaxed">${sec.text}</div>`;
+                    }
+
+                    if (sec.codes) {
+                        html += `<div class="bg-amber-950/40 p-4 rounded-xl border border-amber-600/40 space-y-2">`;
+                        html += `<div class="text-xs font-bold text-amber-400 flex items-center gap-2"><i class="fa-solid fa-key"></i> شفرات تثبيت الذاكرة وسرعة الحفظ:</div>`;
+                        sec.codes.forEach(code => {
+                            html += `<div class="text-sm text-amber-100">${code}</div>`;
+                        });
+                        if (sec.killerPoints) {
+                            html += `<div class="mt-2 text-xs font-bold text-rose-300 bg-rose-950/60 p-2 rounded border border-rose-800"><i class="fa-solid fa-skull"></i> نقطة قاتلة بالامتحان: ${sec.killerPoints}</div>`;
+                        }
+                        html += `</div>`;
+                    }
+
+                    html += `</div>`;
+                });
+
+                card.innerHTML = html;
+                container.appendChild(card);
+            });
+        }
+
+        function filterPart(partNum) {
+            document.querySelectorAll('.part-btn').forEach(b => {
+                b.classList.remove('bg-amber-600', 'text-white');
+                b.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            event.target.classList.add('bg-amber-600', 'text-white');
+            event.target.classList.remove('bg-slate-800', 'text-slate-300');
+            renderTextbookContent(partNum);
+        }
+
+        function renderExamBankContent() {
+            const container = document.getElementById('exambank-container');
+            container.innerHTML = '';
+
+            let count = 0;
+            examQuestionsData.forEach((q, idx) => {
+                if (currentExamFilter !== 'all' && q.type !== currentExamFilter) return;
+                count++;
+
+                const card = document.createElement('div');
+                card.className = "wood-card rounded-xl p-5 space-y-3 border border-slate-800";
+
+                if (q.type === 'essay') {
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2.5 py-0.5 rounded bg-amber-900/50 text-amber-300 border border-amber-700/50 font-semibold">سؤال مقالي متوقع - الجزء ${q.part}</span>
+                            <span class="text-xs text-slate-500">امتحاناتابقة</span>
+                        </div>
+                        <h4 class="text-lg font-bold font-amiri text-slate-100"><i class="fa-solid fa-pen-nib text-amber-500 ml-2"></i> ${q.question}</h4>
+                        <div class="pt-2">
+                            <button onclick="toggleAnswer('ans-${q.id}')" class="text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-amber-400 font-bold transition flex items-center gap-2">
+                                <i class="fa-solid fa-eye"></i> إظهار الإجابة النموذجية
+                            </button>
+                            <div id="ans-${q.id}" class="hidden parchment-box p-4 rounded-xl mt-3 text-slate-900 text-sm leading-relaxed">
+                                ${q.modelAnswer}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs px-2.5 py-0.5 rounded bg-emerald-900/50 text-emerald-300 border border-emerald-700/50 font-semibold">سؤال موضوعي - الجزء ${q.part}</span>
+                            <span class="text-xs text-slate-500">اختيار من متعدد / صح وخطأ</span>
+                        </div>
+                        <h4 class="text-lg font-bold font-amiri text-slate-100"><i class="fa-solid fa-circle-question text-emerald-400 ml-2"></i> ${q.question}</h4>
+                        <div class="parchment-box p-3 rounded-xl text-slate-900 text-sm font-semibold">
+                            الإجابة الصحيحة والتعليل: <span class="text-emerald-800">${q.explanation}</span>
+                        </div>
+                    `;
+                }
+
+                container.appendChild(card);
+            });
+
+            document.getElementById('exam-count-badge').innerText = count;
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        function filterExamType(type) {
+            currentExamFilter = type;
+            document.querySelectorAll('.eb-btn').forEach(b => {
+                b.classList.remove('bg-amber-600', 'text-white');
+                b.classList.add('bg-slate-800', 'text-slate-300');
+            });
+            document.getElementById('eb-' + type).classList.add('bg-amber-600', 'text-white');
+            renderExamBankContent();
+        }
+
+        function startQuiz() {
+            // Pick objective questions
+            quizQuestionsPool = examQuestionsData.filter(q => q.type === 'mcq');
+            currentQuizIndex = 0;
+            quizScore = 0;
+
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+            document.getElementById('quiz-box').classList.remove('hidden');
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const q = quizQuestionsPool[currentQuizIndex];
+            document.getElementById('quiz-step').innerText = currentQuizIndex + 1;
+            document.getElementById('quiz-score').innerText = quizScore;
+            document.getElementById('quiz-category').innerText = "الجزء " + q.part + " - أسئلة الامتحانات";
+            document.getElementById('quiz-question').innerText = q.question;
+
+            const optsBox = document.getElementById('quiz-options');
+            optsBox.innerHTML = '';
+
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-right p-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 font-bold text-sm transition flex items-center justify-between";
+                btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle text-slate-500"></i>`;
+                btn.onclick = () => selectOption(i);
+                optsBox.appendChild(btn);
+            });
+
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-btn').classList.add('hidden');
+        }
+
+        function selectOption(index) {
+            const q = quizQuestionsPool[currentQuizIndex];
+            const isCorrect = (index === q.correct);
+
+            // Disable all option buttons
+            const buttons = document.querySelectorAll('#quiz-options button');
+            buttons.forEach(b => b.disabled = true);
+
+            const feedback = document.getElementById('quiz-feedback');
+            const fTitle = document.getElementById('feedback-title');
+            const fText = document.getElementById('feedback-text');
+
+            if (isCorrect) {
+                quizScore += 10;
+                addPoints(10);
+                showToast("إجابة صائبة! +10 نقاط هيبة قضائية", "success");
+                fTitle.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i> حكم سديد وإجابة أصلية!`;
+                fText.innerText = q.explanation;
+                buttons[index].classList.add('border-emerald-500', 'bg-emerald-950/50');
+            } else {
+                addPoints(-2);
+                showToast("إجابة خاطئة! -2 نقاط", "error");
+                fTitle.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 text-xl"></i> خطأ في استنباط القاعدة القانونية!`;
+                fText.innerText = q.explanation;
+                buttons[index].classList.add('border-rose-500', 'bg-rose-950/50');
+                buttons[q.correct].classList.add('border-emerald-500', 'bg-emerald-950/30');
+            }
+
+            feedback.classList.remove('hidden');
+            document.getElementById('quiz-score').innerText = quizScore;
+            document.getElementById('next-btn').classList.remove('hidden');
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < quizQuestionsPool.length) {
+                showQuestion();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-box').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('final-points').innerText = quizScore;
+
+            let msg = "";
+            if (quizScore >= 60) {
+                msg = "ممتاز جداً! أنت تمتلك استيعاباً كاملاً لمادة القضاء الإداري والدستوري وجاهز للامتحان بنسبة 100%.";
+            } else if (quizScore >= 30) {
+                msg = "أداء جيد، ولكن يُنصح بمراجعة قسم شفرات الحفظ والنقاط القاتلة لإتقان أركان القرار واللوائح.";
+            } else {
+                msg = "تحتاج لإعادة قراءة الموسوعة وتبسيط المفاهيم لتثبيت المعلومة.";
+            }
+            document.getElementById('result-message').innerText = msg;
+        }
+
+        function addPoints(pts) {
+            userPoints = Math.max(0, userPoints + pts);
+            document.getElementById('user-points').innerText = userPoints;
+            updateRankUI();
+        }
+
+        function updateRankUI() {
+            let currentRank = ranks[0];
+            for (let r of ranks) {
+                if (userPoints >= r.min) {
+                    currentRank = r;
+                }
+            }
+            document.getElementById('user-rank').innerText = currentRank.title;
+            document.getElementById('rank-icon').className = "fa-solid " + currentRank.icon;
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value.trim().toLowerCase();
+            const container = document.getElementById('search-results');
+            
+            if (!query) {
+                container.innerHTML = '<div class="text-center text-slate-400 py-8">أدخل كلمة البحث أعلاه لاستخراج النصوص والقواعد فوراً.</div>';
+                return;
+            }
+
+            let results = [];
+
+            // Search in PDF Data
+            pdfData.forEach(p => {
+                p.sections.forEach(s => {
+                    if (s.content) {
+                        s.content.forEach(c => {
+                            if (c.head.toLowerCase().includes(query) || c.items.some(i => i.toLowerCase().includes(query))) {
+                                results.push({ title: p.title + " - " + c.head, text: c.items.join(" ") });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Search in Exam Questions
+            examQuestionsData.forEach(q => {
+                if (q.question.toLowerCase().includes(query) || (q.explanation && q.explanation.toLowerCase().includes(query))) {
+                    results.push({ title: "سؤال امتحان (الجزء " + q.part + ")", text: q.question + " | " + (q.modelAnswer || q.explanation) });
+                }
+            });
+
+            if (results.length === 0) {
+                container.innerHTML = '<div class="text-center text-rose-400 py-8">لم يتم العثور على نتائج تطابق كلمة البحث.</div>';
+                return;
+            }
+
+            container.innerHTML = results.map(r => `
+                <div class="wood-card p-4 rounded-xl space-y-2 border border-slate-800">
+                    <div class="text-amber-400 font-bold text-sm font-amiri">${r.title}</div>
+                    <div class="text-slate-300 text-xs leading-relaxed">${r.text}</div>
+                </div>
+            `).join('');
+        }
+
+        function showToast(msg, type) {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toast-icon');
+            const text = document.getElementById('toast-text');
+
+            text.innerText = msg;
+            if (type === 'error') {
+                icon.className = "fa-solid fa-circle-xmark text-rose-400 text-xl";
+            } else {
+                icon.className = "fa-solid fa-circle-check text-emerald-400 text-xl";
+            }
+
+            toast.classList.remove('opacity-0', 'translate-y-20');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-20');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
