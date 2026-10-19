@@ -1,0 +1,487 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><title>فقه المعاملات المعاصرة — الموضوع الأول والثاني</title>
+<style>
+:root{
+  --bg1:#eef6f4;--bg2:#f7f5eb;--bg3:#e4f0ec;
+  --g:rgba(255,255,255,.72);--gb:rgba(255,255,255,.92);
+  --solid:#ffffff;--solid2:#f3f8f6;--solid-b:#cfe0da;
+  --t:#162420;--s:#526660;--a:#1b7a68;--a-lt:rgba(27,122,104,.13);
+  --ok:#28a865;--no:#e04f44;--amb:#d98a16;
+  --g1:#b8dcd3;--g2:#8ec7b9;--g3:#64b09e;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){
+  --bg1:#0c1917;--bg2:#12211d;--bg3:#0e1f1c;
+  --g:rgba(22,42,38,.74);--gb:rgba(255,255,255,.14);
+  --solid:#162925;--solid2:#11211e;--solid-b:#284a42;
+  --t:#eef5f3;--s:#9eb8b0;--a:#4cd4b8;--a-lt:rgba(76,212,184,.15);
+  --g1:#163830;--g2:#1d4a40;--g3:#255c50
+}}
+:root[data-theme=dark]{
+  --bg1:#0c1917;--bg2:#12211d;--bg3:#0e1f1c;
+  --g:rgba(22,42,38,.74);--gb:rgba(255,255,255,.14);
+  --solid:#162925;--solid2:#11211e;--solid-b:#284a42;
+  --t:#eef5f3;--s:#9eb8b0;--a:#4cd4b8;--a-lt:rgba(76,212,184,.15);
+  --g1:#163830;--g2:#1d4a40;--g3:#255c50
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Arabic",Tahoma,sans-serif;color:var(--t);background:var(--bg1);padding:10px 13px 138px;line-height:1.82;overflow-x:hidden}
+
+/* خلفية هادئة جداً ومخصصة للهواتف بدون أي تقطيع */
+#bg-calm{position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 88% 10%,var(--bg2),transparent 55%),radial-gradient(circle at 12% 50%,var(--bg3),transparent 60%),radial-gradient(circle at 80% 92%,var(--g1),transparent 58%),var(--bg1);transform:translateZ(0)}
+
+header{position:sticky;top:8px;z-index:8;display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-radius:24px;background:var(--g);border:1px solid var(--gb);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);margin-bottom:14px;box-shadow:0 4px 20px rgba(15,55,45,.08),inset 0 1px 0 var(--gb);transform:translateZ(0)}
+header h1{font-size:15.5px;margin:0;font-weight:800;letter-spacing:-.2px}
+.h-act{display:flex;align-items:center;gap:6px}
+header span{font-size:11.8px;font-weight:800;color:var(--a);background:var(--gb);padding:3px 11px;border-radius:99px}
+.ul-btn{font-size:11px;padding:4px 10px;border-radius:99px;background:var(--a-lt);color:var(--a);border:1px solid rgba(27,122,104,.3);font-weight:700;cursor:pointer}
+
+h2{font-size:14.2px;color:var(--a);margin:20px 2px 9px;padding:7px 13px;background:var(--g);border-right:3.5px solid var(--a);border-radius:14px;font-weight:800;box-shadow:0 2px 10px rgba(15,55,45,.04)}
+h3{font-size:14px;margin:0 0 11px;color:var(--a);font-weight:800}
+
+.c{background:var(--g);border:1px solid var(--gb);border-radius:22px;padding:14px 15px;margin:0 0 10px;backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:0 4px 18px rgba(15,55,45,.06),inset 0 1px 0 var(--gb);transform:translateZ(0)}
+summary{font-weight:700;font-size:14.3px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px;line-height:1.6}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"‹";color:var(--a);transition:transform .3s ease;transform:rotate(-90deg);font-size:18px;font-weight:800;flex:none}
+details[open] summary:after{transform:rotate(90deg)}
+details p{margin:10px 0 0;font-size:13.6px;color:var(--s);border-top:1px solid var(--gb);padding-top:9px;line-height:1.85}
+details p b{color:var(--t)}
+
+.pane{display:none}.pane.on{display:block;animation:fadeIn .35s cubic-bezier(.22,1,.36,1)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}}
+
+button,details.c{position:relative;overflow:hidden;transition:transform .45s cubic-bezier(.22,1.6,.36,1),background .2s;touch-action:manipulation}
+button:active,details.c:active{transform:scale(.96);transition:transform .08s ease-out}
+button::after,details.c::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,255,255,.45),transparent 60%);opacity:0;transition:opacity .5s}
+button:active::after,details.c:active::after{opacity:1;transition:opacity .06s}
+button{font:inherit;color:var(--t);background:var(--g);border:1px solid var(--gb);border-radius:15px;padding:10px 12px;cursor:pointer;font-weight:600;box-shadow:inset 0 1px 0 var(--gb)}
+
+.r{display:flex;gap:8px;align-items:center}.r button{flex:1}
+.o{display:block;width:100%;text-align:right;margin-top:8px;font-size:13.4px;line-height:1.55}
+.pr{background:var(--a);color:#fff;border:0;font-weight:700}
+.ok{background:var(--ok)!important;color:#fff!important;border-color:var(--ok)!important}
+.no{background:var(--no)!important;color:#fff!important;border-color:var(--no)!important}
+.n{font-size:12.6px;color:var(--s);margin-top:8px;display:block;line-height:1.65}
+
+.sc-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.sc{display:inline-block;padding:4px 14px;border-radius:99px;background:var(--g);border:1px solid var(--gb);font-size:12.8px;font-weight:700;margin-bottom:10px;box-shadow:inset 0 1px 0 var(--gb)}
+
+.m{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mi{font-size:12.3px;padding:9px 7px;text-align:center;line-height:1.45;width:100%;margin-bottom:7px;min-height:52px;display:flex;align-items:center;justify-content:center}
+.sel{outline:2px solid var(--a);background:var(--a-lt)}
+.d{background:var(--ok);color:#fff;pointer-events:none}
+.x{background:var(--no);color:#fff;animation:shake .35s}
+@keyframes shake{25%{translate:5px}75%{translate:-5px}}
+
+.ring{width:146px;height:146px;display:block;margin:4px auto 6px}
+.bar{height:8px;border-radius:8px;background:var(--gb);overflow:hidden}.bar i{display:block;height:100%;width:0;border-radius:8px;background:var(--a);transition:width .8s cubic-bezier(.22,1,.36,1)}
+
+nav{position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;padding:7px 4px 5px;border-radius:28px;background:var(--g);border:1px solid var(--gb);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);box-shadow:0 8px 28px rgba(12,48,40,.18),inset 0 1px 0 var(--gb);z-index:9;transform:translateZ(0)}
+nav button{flex:1;background:none;border:0;border-radius:16px;font-size:11px;font-weight:700;color:var(--s);padding:2px 0;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:none}
+.ic{width:38px;height:28px;border-radius:14px;display:grid;place-items:center;transition:width .45s cubic-bezier(.2,1.8,.35,1),background .25s;position:relative}.ic svg{width:21px;height:21px}
+nav .on{color:var(--a)}nav .on .ic{width:60px;background:var(--a-lt)}
+.q{flex:1}
+.ck{width:22px;height:22px;flex:none;stroke:var(--ok)}.ck .b{stroke:var(--gb)}
+.ck .c1{stroke-dasharray:63;stroke-dashoffset:63;transform-box:fill-box;transform-origin:center;rotate:-90deg;transition:stroke-dashoffset .6s ease}
+.ck path{stroke-dasharray:20;stroke-dashoffset:20;transition:stroke-dashoffset .4s .35s ease-out}
+.seen .ck .c1,.seen .ck path{stroke-dashoffset:0}details.seen{border-color:rgba(40,168,101,.55)}
+.lb{position:absolute;width:12px;height:12px;right:-2px;bottom:-2px;display:none;background:var(--bg1);border-radius:50%;padding:1px}
+nav .lk{opacity:.48}nav .lk .lb{display:block}
+
+/* بطاقات السحب لصح وخطأ — معتمة 100% (بدون أي شفافية) وسلسة للهاتف */
+.swipe-wrap{max-width:450px;margin:0 auto;position:relative;padding:2px 0 14px}
+.swipe-hints{display:flex;justify-content:space-between;padding:0 8px 8px;font-size:12px;font-weight:700;color:var(--s)}
+.sh-r{color:var(--ok)}.sh-l{color:var(--no)}
+.deck-stage{position:relative;height:275px;perspective:1000px;margin-bottom:12px;user-select:none;-webkit-user-select:none}
+.tcard{position:absolute;inset:0;background:var(--solid);border:2px solid var(--solid-b);border-radius:26px;padding:20px 18px;box-shadow:0 10px 28px rgba(12,45,38,.14);display:flex;flex-direction:column;justify-content:space-between;touch-action:pan-y;cursor:grab;transform-origin:50% 90%;will-change:transform,opacity;transition:transform .88s cubic-bezier(.16,1,.3,1),opacity .88s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+.tcard.bg1{background:var(--solid2);transform:scale(.94) translateY(12px);opacity:1;pointer-events:none;z-index:1}
+.tcard.bg2{background:var(--solid2);transform:scale(.88) translateY(24px);opacity:1;pointer-events:none;z-index:0}
+.tcard.top{z-index:3}
+.tcard .qnum{font-size:11.5px;font-weight:800;color:var(--a);background:var(--a-lt);padding:4px 12px;border-radius:99px;align-self:flex-start}
+.tcard .qtxt{font-size:15.8px;font-weight:800;line-height:1.72;text-align:center;margin:auto 0;color:var(--t)}
+.tcard .qfoot{font-size:11px;color:var(--s);text-align:center}
+.stamp{position:absolute;top:20px;padding:5px 15px;border-radius:12px;font-size:17px;font-weight:900;opacity:0;pointer-events:none;transition:opacity .2s,transform .3s;z-index:5}
+.stamp.st-ok{right:18px;color:#fff;background:var(--ok);transform:rotate(10deg) scale(.85)}
+.stamp.st-no{left:18px;color:#fff;background:var(--no);transform:rotate(-10deg) scale(.85)}
+.fb-box{min-height:70px;border-radius:20px;padding:11px 15px;margin-bottom:12px;background:var(--solid);border:1.5px solid var(--solid-b);box-shadow:0 4px 14px rgba(12,45,38,.06);display:flex;flex-direction:column;justify-content:center}
+.fb-box.ok-fb{border-right:5px solid var(--ok)}
+.fb-box.no-fb{border-right:5px solid var(--no)}
+.swipe-btns{display:flex;gap:10px}.sw-btn{flex:1;padding:12px;border-radius:18px;font-size:14.5px;font-weight:800}
+.sw-btn.b-ok{background:var(--ok);color:#fff;border:0}
+.sw-btn.b-no{background:var(--no);color:#fff;border:0}
+
+#cat{position:fixed;left:12px;bottom:calc(72px + env(safe-area-inset-bottom,0px));z-index:7;pointer-events:none;display:flex;align-items:flex-end;gap:2px}
+.cat{width:54px;height:60px;overflow:visible;filter:drop-shadow(0 3px 5px rgba(30,60,55,.18));transform-origin:50% 100%;animation:brt 3.4s ease-in-out infinite;pointer-events:auto;touch-action:none;cursor:pointer;user-select:none;-webkit-user-select:none;rotate:var(--tl,0deg);transition:rotate .35s,scale .5s}
+@keyframes brt{50%{transform:scale(1.02,.98)}}
+.cat g{transition:opacity .25s}.eh,.mh,.ms,.br,.bl,.mp{opacity:0}
+.happy .eo,.happy .mo{opacity:0}.happy .eh,.happy .mh,.happy .bl,.sad .ms,.sad .br{opacity:1}.sad .mo{opacity:0}.sad .pp{transform:translateY(2px)}
+.eo,.ea,.tl,.ch,.bk{transform-box:fill-box}.eo{transform-origin:center;animation:bk 4.5s infinite}@keyframes bk{0%,92%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.tl{transform-origin:0 100%;animation:tw 2.6s ease-in-out infinite}@keyframes tw{50%{transform:rotate(13deg)}}
+#cat.hop .cat{animation:hop .85s}@keyframes hop{30%{transform:translateY(-12px) scale(.95,1.08)}55%{transform:translateY(0) scale(1.1,.89)}}
+#cat.dr .cat{animation:dr .95s}@keyframes dr{20%{transform:rotate(-6deg)}40%{transform:rotate(5deg)}60%{transform:rotate(-3deg)}}
+#say{background:var(--solid);border:1.5px solid var(--solid-b);padding:6px 12px;border-radius:16px 16px 16px 4px;font-size:12px;font-weight:700;max-width:190px;margin-bottom:28px;opacity:0;scale:.5;transform-origin:0 100%;transition:opacity .2s,scale .4s cubic-bezier(.2,2,.35,1);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+#say.on{opacity:1;scale:1}
+#cat.pet .cat{scale:.93 .88;animation:purr .14s linear infinite}@keyframes purr{50%{transform:translateX(.7px)}}
+.pet .eo,.pet .mo,.pet .mh,.pet .ms,.pet .br{opacity:0}.pet .eh,.pet .mp,.pet .bl{opacity:1}
+.ht{position:absolute;pointer-events:none;color:#ff6b8a;font-size:15px;animation:fl 1.1s ease-out forwards}@keyframes fl{from{opacity:1;transform:translateY(0) scale(.6)}to{opacity:0;transform:translateY(-48px) scale(1.2) rotate(12deg)}}
+#gr{position:fixed;left:0;right:0;bottom:0;width:100%;height:84px;z-index:-1;pointer-events:none}
+#gr path{animation:sw 7.5s ease-in-out infinite}.g1{fill:var(--g1)}.g2{fill:var(--g2)}.g3{fill:var(--g3)}@keyframes sw{0%,100%{transform:rotate(-1.8deg)}50%{transform:rotate(2.2deg)}}
+.hd{margin:8px 0;padding:8px 11px;border-right:3px solid var(--a);background:var(--a-lt);border-radius:12px;color:var(--t);font-size:13.2px;line-height:1.85}.hd small{display:block;color:var(--a);font-size:11.3px;font-weight:700;margin-top:2px}
+</style></head><body>
+<div id="bg-calm"></div>
+<header>
+  <h1 id="ht">فقه المعاملات — الباب ١ و ٢</h1>
+  <div class="h-act"><button class="ul-btn" id="openAllBtn">فتح الكل 🔓</button><span id="hp">0 / 0</span></div>
+</header>
+<div class="pane on" id="p0"></div>
+<div class="pane" id="p1">
+  <div class="sc-bar"><div class="sc" id="s1" style="margin:0"></div><button class="ul-btn" id="toggleTfMode">عرض القائمة 📋</button></div>
+  <div id="b1-swipe" class="swipe-wrap"></div>
+  <div id="b1-list" style="display:none"></div>
+</div>
+<div class="pane" id="p2"><div class="sc" id="s2"></div><div id="b2"></div></div>
+<div class="pane" id="p3"><div class="sc" id="s3"></div><div id="b3"></div></div>
+<div class="pane" id="p4"><div id="r"></div></div>
+<div id="cat"><div id="say"></div><svg class="cat" viewBox="0 0 100 112">
+<defs><radialGradient id="fur" cx=".5" cy=".3" r=".85"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#f4f6fb"/><stop offset="1" stop-color="#dde3f0"/></radialGradient><linearGradient id="gd" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe9a0"/><stop offset="1" stop-color="#d9a62e"/></linearGradient></defs>
+<ellipse cx="50" cy="107" rx="30" ry="4.5" fill="#000" opacity=".12"/>
+<g class="tl"><path d="M72 99q26 2 22-26q-2-8-9-6" fill="none" stroke="#d3dae9" stroke-width="12" stroke-linecap="round"/><path d="M72 99q26 2 22-26q-2-8-9-6" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/></g>
+<g stroke="#d3dae9" stroke-width="1.5" fill="url(#fur)"><path d="M25 102q-5-36 25-38q30 2 25 38q-25 8-50 0z"/><ellipse cx="30" cy="96" rx="11" ry="9"/><ellipse cx="70" cy="96" rx="11" ry="9"/></g>
+<ellipse cx="50" cy="86" rx="13" ry="15" fill="#fff"/>
+<g stroke="#d3dae9" stroke-width="1.4" fill="#fff"><ellipse cx="42" cy="101" rx="7.5" ry="8"/><ellipse cx="58" cy="101" rx="7.5" ry="8"/></g>
+<path d="M42 99v5M58 99v5" stroke="#e5b7c3" stroke-width="1.3" stroke-linecap="round"/>
+<g class="ea l"><path d="M21 40L23 9L45 26z" fill="url(#fur)" stroke="#d3dae9" stroke-width="1.5" stroke-linejoin="round"/><path d="M28 33L28 17L38 25z" fill="#ffc9d6"/></g>
+<g class="ea r"><path d="M79 40L77 9L55 26z" fill="url(#fur)" stroke="#d3dae9" stroke-width="1.5" stroke-linejoin="round"/><path d="M72 33L72 17L62 25z" fill="#ffc9d6"/></g>
+<g stroke="#d3dae9" stroke-width="1.4" fill="url(#fur)"><ellipse class="ch" cx="21" cy="55" rx="6" ry="5.5"/><ellipse class="ch" cx="79" cy="55" rx="6" ry="5.5"/></g>
+<ellipse cx="50" cy="47" rx="31" ry="26" fill="url(#fur)" stroke="#d3dae9" stroke-width="1.5"/>
+<path d="M34 68q16 11 32 0" fill="none" stroke="url(#gd)" stroke-width="5" stroke-linecap="round"/>
+<circle cx="50" cy="76" r="4.6" fill="url(#gd)" stroke="#b8861d" stroke-width=".8"/><circle cx="50" cy="76" r="2" fill="#1b7a68"/><circle cx="49.2" cy="75.2" r=".7" fill="#fff"/>
+<g class="bl"><ellipse class="bk" cx="29" cy="57" rx="5.5" ry="3.3" fill="#ffb3c4" opacity=".75"/><ellipse class="bk" cx="71" cy="57" rx="5.5" ry="3.3" fill="#ffb3c4" opacity=".75"/></g>
+<g class="eo"><ellipse class="pp" cx="38" cy="48" rx="5.6" ry="6.6" fill="#252a47"/><ellipse class="pp" cx="62" cy="48" rx="5.6" ry="6.6" fill="#252a47"/><circle cx="36.3" cy="45.5" r="2.1" fill="#fff"/><circle cx="60.3" cy="45.5" r="2.1" fill="#fff"/><circle cx="40" cy="51.5" r="1" fill="#fff"/><circle cx="64" cy="51.5" r="1" fill="#fff"/></g>
+<g class="eh" fill="none" stroke="#252a47" stroke-width="3" stroke-linecap="round"><path d="M32 50q6-9 12 0"/><path d="M56 50q6-9 12 0"/></g>
+<g class="br" stroke="#9aa0b5" stroke-width="2.6" stroke-linecap="round"><path d="M31 38L44 42"/><path d="M69 38L56 42"/></g>
+<path d="M47.5 55h5l-2.5 3.2z" fill="#ff9fb5" stroke="#ff9fb5" stroke-width="1.2" stroke-linejoin="round"/>
+<g class="mo" fill="none" stroke="#8a6a73" stroke-width="1.6" stroke-linecap="round"><path d="M50 58v2"/><path d="M50 60q-3 3.5-6 1"/><path d="M50 60q3 3.5 6 1"/></g>
+<g class="mh"><path d="M44.5 59q5.5 10 11 0z" fill="#c2455e" stroke="#8a2f45" stroke-width="1.2" stroke-linejoin="round"/><path d="M47.5 63.5q2.5-2.5 5 0q-2.5 2.3-5 0z" fill="#ff9fb5"/></g>
+<g class="ms" fill="none" stroke="#8a6a73" stroke-width="1.8" stroke-linecap="round"><path d="M50 58v1.5"/><path d="M44.5 64q5.5-5 11 0"/></g>
+<g class="mp" fill="none" stroke="#8a6a73" stroke-width="1.8" stroke-linecap="round"><path d="M50 58v1.5"/><path d="M43.5 60q3.2 4.5 6.5 0q3.3 4.5 6.5 0"/></g>
+<path d="M13 52l14 2M13 58l14-2M87 52L73 54M87 58L73 56" stroke="#b9c0d0" stroke-width="1.1" stroke-linecap="round"/>
+</svg></div>
+<nav id="nav"></nav>
+<script>
+const $=s=>document.querySelector(s),sh=a=>[...a].sort(()=>Math.random()-.5);
+const SUM=[
+"الموضوع الأول: البطاقات الائتمانية — الوحدة الأولى: ماهية البطاقات الائتمانية ومنافعها وآثارها (ص ٦ - ١٧)",
+["س١: عرّف «بطاقة الائتمان» باعتبار مفرداتها لغةً واصطلاحاً، وباعتبارها مركباً إضافياً في الاصطلاح الفقهي والاقتصادي، مبيناً التعريف المختار وسببه. (ص ٩-١٠)","<b>أ- باعتبار مفرداتها:</b><br>• <b>البطاقة في اللغة:</b> الوَرَقة، وهي رُقعة صغيرة يُثبَت فيها مِقدار ما تجعل فيه؛ إن كان عيناً فوزنُه أو عدده، وإن كان متاعاً فقيمته.<br>• <b>الائتمان في اللغة:</b> مأخوذ من الأمان وهو ضد الخوف.<br>• <b>الائتمان في الاصطلاح الاقتصادي:</b> منح دائن لمدين مهلة من الوقت، يلتزم المدين بانتهائها دفع قيمة الدين.<br><b>ب- باعتبارها مركباً إضافياً:</b><br>• <b>في الاصطلاح الفقهي (تعريف علماء مجمع الفقه الإسلامي الدولي):</b> مستند يعطيه مُصدره لشخص طبيعي أو اعتباري، بناءً على عقد بينهما، يمكّنه من شراء السلع أو الخدمات ممن يعتمد المستند دون دفع الثمن حالاً، لتضمنه التزام المصدِر بالدفع، ومن أنواع هذا المستند ما يمكّن من سحب نقود من المصارف على حساب المصدر.<br>• <b>في الاصطلاح الاقتصادي:</b> بطاقة خاصة يصدرها المصرف لعميله، تمكنه من الحصول على السلع والخدمات من محلات وأماكن معينة عند تقديمه لهذه البطاقة، ويقوم بائع السلع أو الخدمات بتقديم الفاتورة الموقعة من العميل إلى المصرف مصدر الائتمان فيسدد قيمتها له، ويقدم المصرف للعميل كشفاً شهرياً بإجمالي القيمة لتسديدها أو لخصمها من حسابه الجاري لطرفه.<br><b>• التعريف المختار وسببه:</b> تعريف البطاقة في <b>الاصطلاح الفقهي</b>؛ لأن هذا التعريف يشمل جميع أنواع البطاقات المصرفية، ويظهر منه أن بطاقات الائتمان ليست نقوداً في حد ذاتها، بل هي وسيلة متطورة من وسائل الدفع المتعددة التي تقوم في مجملها عن النقود."],
+
+["س٢: تتنوع البطاقات المصرفية من حيث الرصيد الذي ترتبط به إلى نوعين، وضحهما مبيناً التقسيم المؤثر في الحكم الشرعي. (ص ١٢)","<b>• النوع الأول: البطاقات المرتبطة مباشرة بالسحب من الرصيد:</b> وتسمى <b>(بطاقات الحساب الجاري)</b>، وهي أداة دفع وسحب نقدي يصدرها بنك تجاري تمكّن حاملها من الحصول على النقد مع خصم المبلغ من حسابه فوراً، وحاملها لا يستفيد إلا من مبالغه المودعة في البنك، <b>ولا تعد هذه البطاقة بطاقة ائتمان</b>، وليست المقصودة عند الحديث عن بطاقات الائتمان.<br><b>• النوع الثاني: بطاقات الائتمان:</b> وتنقسم بحسب مزاياها، أو مادة تصنيعها، أو الجهة المصدرة لها، أو وجود الغطاء لها من عدمه، أو بحسب نوع العلاقة بين أطرافها. <b>والتقسيم المؤثر في تصوير المسألة وتكييفها وحكمها الشرعي</b> هو التقسيم بحسب <b>نوع العلاقة بين أطرافها</b>، وبحسب <b>وجود الغطاء وعدمه</b>، وبقية التقسيمات لا يتعلق بها حكم."],
+
+["س٣: اذكر المنافع التي تقدمها بطاقة الائتمان لكل طرف من أطرافها (حامل البطاقة، والتاجر، والبنك المصدر). (سؤال كتاب ص ٨١ - الإجابة ص ١٤-١٥)","<b>أولاً: منافعها لحامل البطاقة:</b><br>١- تزويد حامل البطاقة بتسهيلات نقدية له عند طلبه ذلك من أي عضو في المنظمة في أي دولة.<br>٢- استخدام أجهزة الصرف الآلي التابعة لأعضاء المنظمة محلياً أو خارجياً للحصول على مبالغ نقدية ضمن حدود تسهيلاته.<br>٣- تقديم تسهيلات في إجراءات حجز الفنادق وتأجير السيارات والشراء البريدي بضمان البنك المصدر.<br>٤- إمكانية استخدامها محلياً ودولياً دون الحاجة إلى حمل النقد أو تحويل العملات.<br><b>ثانياً: منافعها للتاجر:</b><br>١- جذب عملاء جدد.<br>٢- توفير ميزة تنافسية للتاجر.<br>٣- تخفيف مخاطر الاحتفاظ بمبالغ نقدية كبيرة في متجره وتقليل أثر مخاطر السرقة أو السطو المسلح.<br>٤- الاستفادة من الحملات الدعائية التي ينظمها مُصدِرو البطاقة بإدراج اسمه في الدليل الذي يوزعه المُصدِر على حاملي البطاقة.<br><b>ثالثاً: منافعها للبنك المصدر للبطاقة:</b><br>١- توظيف المصرف أمواله.<br>٢- ضم عدد كبير من الأفراد المستفيدين من البطاقة كعملاء رئيسيين للمصرف.<br>٣- اضطرار حامليها والتجار لفتح حساب لدى المصرف، وبالتالي الاستفادة من خدمات المصرف الأخرى.<br>٤- الانتشار العالمي وسمعة البنك في الخارج."],
+
+["س٤: بيّن أثر التعامل ببطاقات الائتمان على اقتصاد الفرد والمجتمع (الإيجابيات والسلبيات). (ص ١٥-١٧)","<b>أولاً: الإيجابيات:</b><br>١- يؤدي التعامل بالبطاقة إلى توسع السوق وزيادة حجم الطلب على السلع والخدمات.<br>٢- توفير قدر أكبر من الأمان للأفراد لعدم تعرضهم للسرقة وضياع أموالهم.<br>٣- زيادة حجم السيولة في الاقتصاد؛ لأنه يزيد من قدرة المؤسسات المالية والبنوك على خلق الائتمان، إضافة للمنافع السابقة لأطرافها.<br><b>ثانياً: السلبيات:</b><br>١- الوقوع في مشاكل اقتصادية كبيرة نتيجة منح الائتمان لأشخاص غير مؤهلين ائتمانياً؛ مما يوقع المصارف في <b>الديون المعدومة</b>، ويؤدي لتراكم الديون المالية وغرامات التأخير على الأفراد.<br>٢- زيادة نسبة الفوائد المترتبة على القروض الخاصة بالبطاقة.<br>٣- إمكانية تزوير البطاقة واستخدامها استخداماً غير قانوني يوقع المصارف في تكاليف باهظة.<br>٤- توجيه الديون إلى الحاجات الاستهلاكية غير الإنتاجية والتوسع فيها بدلاً من صرفها على المجالات الاستثمارية المفيدة للاقتصاد والمجتمع."],
+
+"الوحدة الثانية: أقسام بطاقات الائتمان وحكمها الشرعي وأثر الشروط الباطلة (ص ١٨ - ٣٠)",
+["س٥: وضح الفرق بين بطاقة الائتمان المغطاة وغير المغطاة، مع ذكر خصائص البطاقة المغطاة وحكمها الشرعي وقرار مجمع الفقه الإسلامي فيها. (سؤال كتاب ص ٨١ - الإجابة ص ١٨-٢١)","<b>• الفرق بينهما:</b> البطاقة المغطاة يشترط مُصدِرها على حاملها أن يودع لديه مبلغاً من النقود في حساب مصرفي ولا يستخدمها في مشتريات تزيد عن قيمة المبلغ المودع (فلا تمثل أي مديونية وتدخل في البطاقات الائتمانية من باب التغليب)، أما البطاقة غير المغطاة فلا يوجد رصيد يقابل استخدامها وتقوم على الائتمان الممنوح للعميل.<br><b>• خصائص بطاقة الائتمان المغطاة:</b><br>أ- تصدر من المؤسسة لمن له رصيد في حسابه.<br>ب- توفر لحاملها السحب النقدي أو تسديد أثمان السلع والخدمات بقدر رصيده المتاح ويتم الخصم منه فوراً.<br>ج- لا يتحمل العميل رسوماً مالية مقابل استخدامها إلا في حال سحب العميل نقداً أو شرائه عملة أخرى.<br>د- تصدر برسم مالي أو بدونه.<br><b>• حكمها الشرعي وقرار مجمع الفقه الإسلامي الدولي:</b><br>١- أجاز العلماء المعاصرون ومجمع الفقه الإسلامي إصدار بطاقات الائتمان المغطاة والتعامل بها، <b>إذا لم تتضمن شروطها دفع الفائدة عند التأخر في السداد</b>؛ لأن الأصل في المعاملات الإباحة ما لم يحصل شرط يترتب عليه فائدة ربوية.<br>٢- ينطبق عليها ضوابط الرسوم والخصم على التجار والسحب النقدي.<br>٣- <b>يجوز شراء الذهب أو الفضة أو العملات بالبطاقة المغطاة</b>."],
+
+["س٦: اذكر خلاف الفقهاء في قاعدة: «الأصل في المعاملات الإباحة أم الحظر» مع ذكر الأدلة والراجح. (حاشية ص ٢٠)","للعلماء فيها قولان:<br><b>• القول الأول:</b> الأصل في المعاملات <b>الإباحة</b>، وهو قول <b>جمهور الفقهاء من الحنفية والمالكية والشافعية والحنابلة</b>.<br>— <b>أدلتهم:</b> من الكتاب قوله تعالى: ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا أَوْفُوا بِالْعُقُودِ﴾ وقوله: ﴿وَأَوْفُوا بِالْعَهْدِ إِنَّ الْعَهْدَ كَانَ مَسْئُولًا﴾. ومن السنة حديث أبي ثعلبة الخشني: «إن الله فرض فرائض فلا تضيعوها، ونهى عن أشياء فلا تنتهكوها، وحدّ حدوداً فلا تعتدوها، وسكت عن أشياء من غير نسيان فلا تبحثوا عنها». ومن المعقول أن العقود مما اعتاده الناس ويحتاجون إليه فالأصل فيها العفو وعدم الحظر.<br><b>• القول الثاني:</b> الأصل في المعاملات <b>الحظر</b>، وذهب لذلك <b>الظاهرية</b>.<br>— <b>أدلتهم:</b> قوله تعالى: ﴿وَمَن يَتَعَدَّ حُدُودَ اللَّهِ فَأُولَٰئِكَ هُمُ الظَّالِمُونَ﴾، وحديث عائشة رضي الله عنها: «ما بال أناس يشترطون شروطاً ليست في كتاب الله، ما كان من شرط ليس في كتاب الله فهو باطل وإن كان مائة شرط».<br><b>• الراجح:</b> القول الأول (الإباحة) لقوة أدلتهم، ولأن الشريعة قائمة على رفع المشقة والحرج عن الأمة."],
+
+["س٧: تتنوع بطاقات الائتمان (غير المغطاة) تبعاً للأسلوب الذي يتم به تسديد دينها إلى نوعين، اذكرهما مبيناً مفهوم وخصائص وحكم كل نوع، وما قرره مجمع الفقه الإسلامي وهيئة المحاسبة فيهما. (ص ٢١-٢٦)","<b>• النوع الأول: بطاقة الائتمان المحدد (بطاقة الدفع الشهري):</b><br>— <b>مفهومها:</b> بطاقات يطالب حاملها بتسديد المبالغ المستحقة عليه دفعة واحدة بدون زيادة، بعد مضي فترة سماح متفق عليها تتراوح عادة ما بين (ثلاثين إلى ستين يوماً).<br>— <b>خصائصها:</b> (١- أداة ائتمان في حدود مبلغ معين، ٢- يلزم حاملها بالتسديد خلال مدة السماح، ٣- يلزم حاملها بمدفوعات أربعة: رسم الاشتراك، ورسم التجديد، وفوائد الإقراض، والتأخر، ٤- في حال عدم السداد يطالب قضائياً وتلغى عضويته وتسحب منه البطاقة).<br>— <b>حكمها:</b> يحرم التعامل بها لأنها تتضمن شرط زيادة ربوية على أصل الدين، <b>ولكن يجوز قبولها وإصدارها إذا لم يشترط على حاملها فائدة ربوية إذا تأخر عن سداد المبلغ المستحق عليه، وبشرط ألا يتعامل بها فيما حرمته الشريعة</b>.<br><b>• النوع الثاني: بطاقات الائتمان المتجدد:</b><br>— <b>مفهومها:</b> الدين الناشئ عن الائتمان بها قابل للتجديد؛ فعند السحب النقدي تجري على حاملها الفوائد الربوية بمجرد السحب إلى وقت السداد، وعند الشراء بها يُخيّر العميل بين سداد الدين كاملاً في فترة السماح المجاني دون فوائد، أو دفع جزء من المستحقات وتأجيل الباقي على أقساط في مواعيد دورية بفائدة مركبة عالية.<br>— <b>خصائصها:</b> (١- تتقاضى البنوك رسوماً على الإصدار والتجديد، ٢- يقدم للعملاء قرض بنكي ولحاملها حق الاختيار في طريقة الدفع، ٣- لا يوجد حد أعلى للمديونية ويسمح بتأجيل السداد مع ترتيب فوائد عليه).<br>— <b>حكمها:</b> <b>لا خلاف بين العلماء المعاصرين على تحريم التعامل بهذه البطاقة</b>؛ لأنها تشتمل على عقد إقراض ربوي يتضمن زيادة الدين بزيادة الأجل، فالعلاقة بين مصدرها وحاملها علاقة بين مقرض ومقترض.<br><b>• معيار هيئة المحاسبة والمراجعة وقرار مجمع الفقه الإسلامي:</b><br>— رأت الهيئة أنه لا يجوز للمؤسسات الإسلامية إصدار بطاقة الائتمان المتجدد إلا بشرطين: (أ- ألا يشترط على حاملها فوائد ربوية في حال تأخره، ب- أن تشترط المؤسسة عليه عدم التعامل بها في محرم ويحق للمؤسسة سحب البطاقة في تلك الحالة).<br>— <b>وقرر مجمع الفقه الإسلامي:</b> (أولاً: لا يجوز إصدار البطاقة غير المغطاة ولا التعامل بها إذا كانت مشروطة بزيادة فائدة ربوية حتى ولو كان طالب البطاقة عازماً على السداد ضمن فترة السماح المجاني، ثانياً: يجوز إصدارها إذا لم تتضمن شرط زيادة ربوية على أصل الدين)."],
+
+["س٨: ما أثر الشروط الباطلة (شرط غرامة التأخير الربوية) على صحة عقد بطاقة الائتمان غير المغطاة لمن يغلب على ظنه القدرة على الوفاء في مدة السماح؟ اذكر أقوال العلماء وسبب الخلاف والأدلة والمناقشة والراجح. (ص ٢٦-٣٠)","<b>• تحرير المسألة:</b> إذا تضمن عقد البطاقة غير المغطاة شرط فائدة ربوية عند التأخر، ولكن يغلب على ظن الفرد قدرته على الوفاء في مدة السماح بحيث لا يزيد عليه الأجل ولا الدين، فاختلف المعاصرون في حكم إجراء هذا العقد على قولين:<br><b>• القول الأول:</b> يجوز إجراء هذا العقد، وذهب لذلك د. عبد الستار أبو غدة، د. عبد الوهاب أبو سليمان، الشيخ محمد تقي العثماني، والشيخ حسن الجواهري.<br><b>• القول الثاني:</b> لا يجوز إجراء هذا العقد، وذهب لذلك د. محمد علي القري، د. عبد الرحمن عقيل، د. الصديق الضرير، ود. علي السالوس.<br><b>• سبب الخلاف:</b> يرجع إلى خلاف الفقهاء السابقين في اعتبار عقد القرض المشروط بزيادة ربوية: هل هو <b>عقد باطل</b> لا يمكن تصحيحه (وهو مذهب <b>المالكية والشافعية</b>)، أم <b>عقد فاسد</b> يصح العقد فيه ويبطل الشرط الفاسد وحده (وهو مذهب <b>الحنفية والحنابلة</b> في القرض، كما في الدر المختار ومنتهى الإرادات: «ولا يفسد القرض بفساد الشروط»)؟<br><b>• أدلة القول الأول (المجيزين) ومناقشتها:</b><br>١- <b>من السنة:</b><blockquote class='hd'>حديث عائشة رضي الله عنها في قصة عتق <b>بريرة</b>: «خُذِيهَا فَأَعْتِقِيهَا وَاشْتَرِطِي لَهُمُ الْوَلَاءَ، فَإِنَّمَا الْوَلَاءُ لِمَنْ أَعْتَقَ... مَا بَالُ رِجَالٍ مِنْكُمْ يَشْتَرِطُونَ شُرُوطًا لَيْسَتْ فِي كِتَابِ اللهِ، فَأَيُّمَا شَرْطٍ لَيْسَ فِي كِتَابِ اللهِ فَهُوَ بَاطِلٌ وَإِنْ كَانَ مِائَةَ شَرْطٍ»<small>رواه البخاري — دل على جواز الدخول في عقد شرطه فاسد لإمكانية إبطاله بدفع الدين في تاريخه بدون تأجيل</small></blockquote><b>ونوقش من وجهين:</b> (الأول: أن إسقاط الشرط يكون من المشترط لا من المشروط عليه، والثاني: أن الشرط في البطاقة ملزم قضاءً. <b>وأجيب:</b> بأن المتعامل يمكنه إسقاطه عملياً إذا وثق من السداد في فترة السماح).<br>٢- <b>من القياس:</b> قياسها على ما عمت به البلوى من عقود الكهرباء والهاتف المشتملة على غرامات تأخير ولم يقل أحد بحرمة الاشتراك فيها إذا عزم المشترك على السداد في الموعد. <b>ونوقش:</b> بأنه قياس مع الفارق لشدة الحاجة إلى الكهرباء والهاتف.<br>٣- <b>من المعقول:</b> أن عقد البطاقة غير المغطاة من العقود الفاسدة لا الباطلة، فيسقط الربا بالسداد في الموعد ويصح العقد؛ لأن الحكم يدور مع علته وجوداً وعدماً.<br><b>• دليل القول الثاني (المانعين):</b> من المعقول أن عقود البطاقات غير المغطاة تؤول إلى المعاوضة الربوية؛ لأن القرض وإن كان تبرعاً في الابتداء إلا أنه معاوضة في الانتهاء.<br><b>• الراجح (ص ٣٠):</b> رجح الكتاب <b>القول الأول</b> القائل بجواز العقد لانتفاء الحرج عمن غلب على ظنه قدرته على الوفاء في مدة السماح وأبطل الشرط الفاسد، <b>بشرط اتخاذ الاحتياطات اللازمة حتى لا يطبق عليه هذا الشرط</b>. هذا من حيث المستخدم، <b>أما من جهة المشترط فإن اشتراطه فوائد التأخير حرام باتفاق</b> وهو من ربا الجاهلية (زدني أنظرك)."],
+
+"الوحدة الثالثة: أطراف بطاقات الائتمان والتكييف الفقهي لأطراف التعاقد (ص ٣١ - ٥٠)",
+["س٩: اذكر أطراف عقد بطاقات الائتمان، مع بيان معنى التكييف الفقهي، وأقسام العقود من حيث التسمية. (سؤال كتاب ص ٨١ - الإجابة ص ٣٢-٣٣)","<b>• أطراف بطاقات الائتمان:</b><br>١- <b>الطرف الأول (البنك أو المؤسسة المصدرة):</b> التي تصدر البطاقة بناءً على ترخيص معتمد من المنظمة العالمية، ويقوم بالسداد وكالةً عن حامل البطاقة للتاجر.<br>٢- <b>الطرف الثاني (حامل البطاقة):</b> عميل البنك الذي صدرت البطاقة باسمه ويلتزم لمصدرها بالوفاء بكل ما ينشأ عن استعماله لها.<br>٣- <b>الطرف الثالث (التاجر):</b> مصطلح يطلق على كل المؤسسات والشركات والمصارف التي يتم تطبيق اتفاق معهم لتقديم الخدمات وقبول عمليات البيع بموجب البطاقة.<br>٤- <b>الطرف الرابع (المنظمة العالمية / راعي البطاقة):</b> وهي التي تملك العلامة التجارية للبطاقة وتشرف على إصدارها وفق اتفاقيات خاصة مع البنوك المصدرة.<br><b>• معنى التكييف الفقهي:</b> تحديد حقيقة الواقعة المستجدة لإلحاقها بأصل فقهي خصه الفقه الإسلامي بأوصاف فقهية عند التحقق من المشابهة بينهما.<br><b>• أقسام العقود من حيث التسمية:</b> (١- <b>عقود مسماة:</b> نص الشارع على تسميتها وأحكامها كالبيع والإجارة والرهن، ٢- <b>عقود غير مسماة:</b> لم ينص الشارع على تسميتها واستحدثت تبعاً لحاجة الناس كعقود التأمين والإجارة المنتهية بالتمليك)."],
+
+["س١٠: اختلف العلماء المعاصرون في التكييف الفقهي للعلاقة بين (مُصدِر البطاقة وحاملها) على سبعة أقوال، اذكرها مع بيان أسباب الخلاف، وأدلة ومناقشة كل قول، والقول الراجح. (ص ٣٣-٤٤)","<b>• أسباب الخلاف:</b> (١- عدم وقوف بعض العلماء على حقيقة نظام البطاقات، ٢- أن العلاقة بين الأطراف الثلاثة علاقة معقدة، ٣- منهم من لا يخرج المعاملة على عقد مسمى ويكتفي بأن الأصل في المعاملات الحل، ومنهم من يخرجها على عقد من العقود المسماة).<br><b>• الأقوال السبعة ومناقشتها:</b><br><b>١- القول الأول: علاقة ضمان (كفالة):</b> (د. نزيه حماد، د. محمد القري، الشيخ علي عندليب، والتسخيري). <b>وجهه:</b> أن المصدر ضمن حامل البطاقة في سداد ما عليه للتاجر، وهذا من قبيل <b>ضمان الحق قبل وجوبه</b> وهو جائز عند جمهور الفقهاء (الحنفية والمالكية والحنابلة) لأن الضمان تبرع يصح مع الجهالة (وخالف الشافعي في الجديد والثوري والليث فمنعوا الكفالة بالدين المجهول للغرر).<br>— <b>ونوقش من وجهين:</b> (الأول: أن الضمان عقد تبرع محض ومصدر البطاقة يهدف للربح، والثاني: أن الضمان ضم ذمة إلى ذمة في المطالبة، والتاجر هنا لا يستطيع مطالبة المضمون عنه أي حامل البطاقة بل يطالب الضامن فقط).<br>— <b>وأجيب:</b> (أ- بأن الحنفية والمالكية أجازوا اشتراط براءة ذمة المضمون عنه خلافاً للشافعية والحنابلة، ب- أن الدين ينتقل إلى ذمة الضامن لحديث أبي أمامة «الزعيم غارم» وحديث أبي سعيد الخدري في ضمان عليّ رضي الله عنه ديناري الميت وقوله ﷺ «فك الله رهانك كما فككت رهان أخيك»).<br><b>٢- القول الثاني: علاقة حوالة:</b> (د. الصديق الضرير، د. وهبة الزحيلي، د. رفيق المصري، الشيخ عبد الله بن منيع). <b>وجهه:</b> أن حامل البطاقة هو المحيل، والتاجر هو المحال، ومصدر البطاقة هو المحال عليه، وتعد من قبيل الحوالة بأجر.<br>— <b>ونوقش من ثلاثة أوجه:</b> (الأول: أن اتفاقيات البطاقة تعقد بشكل منفصل لا يشير للحوالة، الثاني: أنه لا دين للمحيل على المحال عليه، ومن شروط الحوالة عند الجمهور ثبوت دين للمحيل في ذمة المحال عليه وإلا كانت ضماناً وحمالة. <b>وأجيب:</b> بأن الحنفية ومن وافقهم لا يشترطون كون المحال عليه مديناً للمحيل استدلالاً بعموم حديث «مطل الغني ظلم وإذا أتبع أحدكم على مليء فليتبع»، الثالث: أن أخذ المصدر رسوماً وأجراً من الحامل يخل بشروط الحوالة).<br><b>٣- القول الثالث: كفالة قبل استخدامها، وتنقلب إلى حوالة بعد استخدامها:</b> (د. عبد الستار أبو غدة). <b>ونوقش:</b> بأن الكفالة لا تكون إلا بدين ثابت، وبعد الاستخدام لا يطالب التاجر حاملها.<br><b>٤- القول الرابع: علاقة وكالة مطلقة:</b> (الشيخ علي عندليب والتسخيري). <b>وجهه:</b> أن الحامل وكّل المصدر أن يسدد عنه ثم يقضيه. <b>ونوقش:</b> بأن الوكالة بين طرفين والبطاقة بين ثلاثة أطراف، وفي البطاقة لا تجوز مطالبة الموكل بل الوكيل فقط.<br><b>٥- القول الخامس: علاقة مركبة من وكالة، وحوالة، وكفالة، وقرض حسن:</b> (قول بعض المعاصرين). <b>ونوقش:</b> بأن شروط الحوالة غير موجودة في البطاقة.<br><b>٦- القول السادس: علاقة إقراض (قرض ربوي بفوائد معجلة ومؤجلة):</b> (د. بكر أبو زيد). <b>ونوقش:</b> بأن عقد الائتمان قد يوجد ولا يوجد القرض، وبأن القرض من عقود الإرفاق والبنوك تهدف للربح.<br><b>٧- القول السابع (وهو القول الراجح): معاملة مستجدة تندرج تحت مسمى (العقود غير المسماة):</b> (الشيخ دبيان الدبيان، عبد الرحمن الحجي، د. عمر سليمان الأشقر). <b>وجهه وسبب ترجيحه:</b> أن عقد البطاقة عقد جديد لا يندرج في صورته الكلية تحت عقد واحد من العقود المسماة؛ لأنه إذا اندرج تحت عقد من جانب تخلف من جانب آخر، والعقود الجديدة تكون مشروعة ما لم تعترها مخالفات شرعية."],
+
+["س١١: اذكر الأقوال الستة للعلماء المعاصرين في التكييف الفقهي للعلاقة بين (مُصدِر البطاقة والتاجر) مع بيان الراجح، وتوضيح مسألة «ضع وتعجل» وحكمها. (ص ٤٤-٤٧)","<b>• الأقوال الستة في العلاقة بين المصدر والتاجر:</b><br><b>١- القول الأول: علاقة كفالة مقترنة بالحوالة:</b> (د. عبد الستار أبو غدة)؛ ليستمر التزام المصدر بالأداء للتاجر دون الرجوع على المحيل (حامل البطاقة) في حالة الإفلاس.<br><b>٢- القول الثاني: علاقة وكالة بأجر:</b> (د. وهبة الزحيلي)؛ لأن البنك المصدر وكيل للتاجر في قبض استحقاقات قيمة المبيعات، والوكالة بأجر جائزة. (وأجيب عن اعتراض كونها من قبيل «ضع وتعجل» بأن تسديد البنك للتاجر فوري عند تسليم سندات البيع).<br>— <b>حاشية مسألة (ضع وتعجل) ص ٤٥-٤٦:</b> هي أن يصالح الدائن عن الدين المؤجل ببعضه حالاً، وفيها قولان للفقهاء: <b>القول الأول:</b> التحريم (الحنفية والمالكية والشافعية والحنابلة في رواية) لحديث المقداد «أكلت رباً يا مقداد وأطعمته» وأثر ابن عمر، ولأن الحطيطة في الدين المؤجل عوض عن التأجيل كالربا. <b>والقول الثاني:</b> الجواز (رواية عن أحمد واختاره ابن تيمية وابن القيم والشوكاني، <b>وأخذ به مجمع الفقه الإسلامي بجدة</b>) بشرط ألا تكون بناءً على اتفاق مسبق، وما دامت العلاقة بين الدائن والمدين ثنائية، فإذا دخل بينهما طرف ثالث لم تجز لأنها تأخذ حكم حسم الأوراق التجارية، واستدلوا بحديث ابن عباس في بني النضير: «ضعوا وتعجلوا».<br><b>٣- القول الثالث: علاقة حوالة:</b> فالبنك محال عليه، والتاجر محال، وحامل البطاقة محيل (الشيخ محمد الباشا). <b>ونوقش:</b> بأن أخذ العوض على الحوالة لا يجوز مطلقاً.<br><b>٤- القول الرابع: علاقة سمسرة:</b> (د. رفيق المصري، د. وهبة الزحيلي، د. محمد تقي العثماني، د. عبد الستار أبو غدة، <b>وبه أخذت هيئة المحاسبة والمراجعة للمؤسسات المالية الإسلامية</b>). <b>وجهه:</b> أن المصدر يرسل حاملي البطاقات إلى التاجر على أن يتقاضى منه أجراً عن مشترياتهم ويوفر له خدمات تحصيل الفواتير والإيداع المباشر. (والسمسار: هو المتوسط بين البائع والمشتري بأجر من غير أن يستأجر).<br><b>٥- القول الخامس: علاقة الكفالة والوكالة معاً:</b> لأن المصدر ضامن للتاجر ووكيل عنه في التحصيل.<br><b>٦- القول السادس (وهو القول الراجح): علاقة مستجدة الأصل فيها الإباحة:</b> وهو قول د. أسامة الأشقر."],
+
+["س١٢: بيّن التكييف الفقهي للعلاقة بين (حامل البطاقة والتاجر)، والتكييف الفقهي للعلاقة بين (المنظمة الراعية وأطراف البطاقة). (سؤال كتاب ص ٨٢ - الإجابة ص ٤٨-٥٠)","<b>أولاً: التكييف الفقهي للعلاقة بين حامل البطاقة والتاجر (قولان):</b><br><b>• القول الأول (وهو القول الراجح):</b> لا تخرج عن عقدين؛ فإما أن تكون <b>علاقة بيع</b> (إن كان العقد عقد تمليك للسلع)، أو <b>علاقة إجارة</b> (إن كان من قبيل تقديم خدمات معلومة)، ويشترط لصحة البيع والإجارة اكتمال شروطهما وانتفاء موانعهما (د. وهبة الزحيلي، د. نزيه حماد).<br><b>• القول الثاني:</b> علاقة شبيهة <b>بخصم الأوراق التجارية</b>؛ باعتبار الفاتورة التي وقع عليها حامل البطاقة بمثابة كمبيالة مستحقة الدفع يقوم التاجر بخصمها لدى البنك مقابل نسبة معلومة (الشيخ محمد الباشا).<br><b>ثانياً: العلاقة بين المنظمة الراعية وأطراف البطاقة:</b><br>• تغطي المنظمة العالمية مصاريفها من خلال: (إيرادات الاشتراك/العضوية للأعضاء، الإيرادات ربع السنوية، ثمن بعض البرامج، والرسوم على بعض الخدمات).<br>• <b>تخريج العلاقة:</b> علاقة <b>(سمسرة)</b>؛ لأن المنظمة هي صاحبة الحق المعنوي في البطاقة (الترخيص أو الامتياز) وتزود البنوك بالخبرة الفنية والإدارية، وبه قال د. عبد الستار أبو غدة، ود. وهبة الزحيلي، والشيخ دبيان الدبيان."],,
+"الوحدة الرابعة: الأحكام الفقهية المتعلقة ببطاقات الائتمان (ص ٥١ - ٨٣)",
+["س١٣: اذكر الشروط الصحيحة، والشروط الباطلة، والشروط المختلف فيها التي يشترطها مصدر البطاقة، مبيناً أنواع الرسوم التي يتم تحصيلها من حامل البطاقة. (ص ٥٢-٥٣)","<b>• أولاً: الشروط الصحيحة:</b> كاشتراط فتح حساب بالبنك المصدر للبطاقة.<br><b>• ثانياً: الشروط الباطلة:</b><br>١- فرض نسبة معينة عقوبة على تأخير السداد.<br>٢- دفع نسبة معينة على الشراء بالبطاقة بأكثر من المبلغ المسموح به قرضاً حسب الاتفاقية.<br>٣- فرض نسبة معينة على تحويلات العملات الأجنبية.<br>٤- فرض نسبة معينة على تسديد الدفع للعمليات النقدية تحسب من يوم الشراء.<br><b>• ثالثاً: الشروط المختلف فيها:</b> (١- حصول مصدر البطاقة من حاملها على رسوم الإصدار والتجديد والاستبدال، ٢- المدفوعات التي يأخذها المصدر من التاجر).<br><b>• أنواع العمولات (الرسوم المالية) المحصلة من حامل البطاقة:</b><br>١- <b>رسوم العضوية:</b> يحصل مرة واحدة عند الموافقة على طلب العميل للحصول على البطاقة أول مرة.<br>٢- <b>رسوم التجديد:</b> يحصل عند تجديد صلاحية البطاقة وإصدار أخرى بدلاً عنها بعد انتهاء مدتها المقررة.<br>٣- <b>رسوم الاستبدال:</b> يحصل عند ضياع البطاقة أو تلفها أو سرقتها وإصدار البنك بدلاً عنها.<br>٤- <b>رسوم السحب النقدي</b>."],
+
+["س١٤: اختلف الفقهاء المعاصرون في حكم أخذ مصدر البطاقة رسوم الإصدار أو التجديد من حامل البطاقة على ثلاثة أقوال، اذكرها مع الأدلة والمناقشة والراجح وشروطه، ومبيناً حكم عمولة المنظمة الراعية. (ص ٥٣-٥٨)","<b>• القول الأول (التحريم):</b> يحرم أخذ رسوم إصدار أو تجديد على بطاقة الائتمان (د. محمد القري، د. عبد الله بن بيه، د. علي السالوس).<br>— <b>دليلهم:</b> أن الضمان الذي يقدمه المصدر شبيه بالقرض، فما يأخذه من رسوم فيه شبهة الربا باعتباره منفعة مشروطة في القرض فيحرم سداً للذريعة، ولأن تكلفة الرسوم لا تتناسب مع تكلفة إصدار البطاقة.<br>— <b>ونوقش:</b> بأنه لا علاقة بين القرض وهذه الرسوم لأنها تفرض عند الإصدار ولو لم تستخدم البطاقة، والغرر اليسير في تقدير قيمة الخدمات المصرفية معفو عنه بالإجماع.<br><b>• القول الثاني (الجواز - وهو القول الراجح):</b> يجوز أخذ رسوم إصدار أو تجديد على بطاقة الائتمان (أكثر الباحثين: د. رفيق المصري، د. نزيه حماد، د. أبو سليمان، د. أبو غدة، الشيخ تقي العثماني، د. ابن منيع، د. بكر أبو زيد، د. السلامي، وبه صدر <b>قرار مجمع الفقه الدولي، وهيئة المحاسبة والمراجعة، وهيئة الراجحي، وبيت التمويل الكويتي، وندوة البركة</b>).<br>— <b>دليلهم:</b> القياس على الرسوم المتعارف عليها في المرافق لتغطية النفقات الإدارية والمكتبية، والمعقول أنها بمثابة أجر مقطوع لأصل الخدمة المصرفية (وكالة بأجر على عمل).<br><b>• القول الثالث (التفصيل):</b> التفصيل بين رسوم محرمة كرسوم الضمان (لأن الفقهاء اتفقوا على تحريم أخذ الأجر على الضمان)، ورسوم غير محرمة كالتكاليف والنفقات الفعلية (د. محمد صالح الفوزان).<br><b>• الراجح وشروطه (ص ٥٧):</b> رجح الكتاب <b>القول الثاني (الجواز)</b> لرفع الحرج ولضمان استمرارية هذه الخدمات، <b>وهذا الجواز مقيد بشرطين:</b><br>١- <b>الشرط الأول:</b> أن يكون المبلغ <b>ثابتاً (مقطوعاً)</b>؛ أما جعله بنسبة مئوية تتزايد بزيادة المبلغ ففيه شبهة الربا.<br>٢- <b>الشرط الثاني:</b> أن يكون المبلغ <b>مقابل خدمة فعلية حقيقية</b> وفي حدود النفقات الفعلية؛ فكل زيادة على الخدمات الفعلية محرمة لأنها من الربا المحرم شرعاً (وفق قرار المجمع).<br><b>• حكم العمولة التي تحصلها المنظمة الراعية للبطاقة (ص ٥٨):</b> فيها قولان: (الأول: مشروعيتها لأنها في حدود الخدمة المقدمة ولأنها بمثابة نادٍ أو هيئة مالية، والثاني: فيه تفصيل؛ فإن كانت البطاقات ربوية تعتمد الفائدة مقابل تقسيط الدين فعملها محرم لإعانتها على الربا، أما إذا لم يترتب على وساطتها فوائد ربوية محرمة فأجرتها صحيحة ولا حرج في دفع الرسوم)."],
+
+["س١٥: بيّن حكم العمولات (الرسوم) التي يقتطعها مصدر البطاقة من التاجر مع ذكر الأقوال والأدلة والمناقشة والراجح والقرارات الصادرة فيها. (ص ٥٩-٦٤)","<b>• أقسام الرسوم المحصلة من التاجر:</b><br>١- <b>القسم الأول:</b> رسوم مقطوعة يأخذها البنك مقابل خدمات معلومة مباحة، وهذه <b>لا خلاف في أخذها</b>.<br>٢- <b>القسم الثاني:</b> رسوم متعلقة بعملية البيع والشراء بخصم نسبة معينة من قسائم البيع لصالح مصدر البطاقة.<br><b>• خلاف المعاصرين في هذه العمولة النسبية (قولان):</b><br><b>١- القول الأول (الجواز - وهو الراجح):</b> العمولة التي يحصلها البنك من التاجر جائزة (د. عبد الستار أبو غدة، د. الصديق الضرير، د. علي القري، د. نزيه حماد، د. علي داغي، د. حسن الجواهري).<br>— <b>أدلتهم:</b> (١- أنها أجرة السمسرة التي يقوم بها البنك للتجار ومقابل الأجهزة والنشرات، ٢- من باب المصالحة على الدين بناءً على قول الحنفية بجواز رجوع الضامن على المكفول بما ضمن لا بما أدى، ٣- أنها أجر على وكالة ووساطة بين التاجر وحامل البطاقة من ترويج ودعاية وتحصيل لقيمة بضائعه).<br><b>٢- القول الثاني (التحريم):</b> العمولة غير جائزة (الشيخ علي عندليب، التسخيري، الشيخ إبراهيم الدبو، د. بكر أبو زيد).<br>— <b>أدلتهم:</b> (١- أن البنك إذا سدد للتاجر حالاً مع خصم العمولة ثم حصل المبلغ كاملاً من حامل البطاقة صارت قرضاً جر نفعاً، ٢- أنها تشبه خصم الأوراق التجارية المحرم). <b>ونوقش:</b> بأنه لا توجد عملية إقراض للتاجر، بل هي أجر على الوكالة في تحصيل الدين وتوصيله.<br><b>• الراجح والقرارات الشرعية (ص ٦٣-٦٤):</b> رجح الكتاب <b>القول الأول (الجواز)</b> دفعاً للحرج ولأنها أجرة على الوكالة في تحصيل الدين والدعاية والترويج، وبهذا القول صدر قرار: (١- <b>الهيئة الشرعية لشركة الراجحي</b>، ٢- <b>الهيئة الشرعية لبيت التمويل الكويتي والبنك الإسلامي الأردني</b>، ٣- <b>المجمع الفقهي الإسلامي</b> الذي نص على جواز أخذ البنك المصدر من التاجر عمولة على مشتريات العميل منه <b>بشرط أن يكون بيع التاجر بالبطاقة بمثل السعر الذي يبيع به بالنقد</b>)."],
+
+["س١٦: بيّن حكم العمولة التي يأخذها مصدر البطاقة من حاملها مقابل السحب النقدي، مع بيان أنواعه، والأدلة، والراجح. (سؤال كتاب ص ٨١ - الإجابة ص ٦٤-٦٩)","<b>• تعريف السحب النقدي بالبطاقة:</b> سحب حامل البطاقة نقوداً من البنك المصدر عن طريق مكائن السحب الآلي مقابل عمولة.<br><b>• أنواع السحب النقدي وحكمها:</b><br>١- <b>السحب اليدوي:</b> يحصل بإبراز البطاقة لموظف البنك والحصول على النقود مناولةً، وفي هذه الحالة <b>لا يجوز أخذ أي رسوم في مقابل السحب</b>؛ لأن ذلك يكون ربا إذ لا يقابلها تكاليف فعلية، وأكدت فتاوى الهيئات الشرعية حرمة استخدام البطاقة في السحب اليدوي من البنوك الربوية لأنها تحتسب فائدة ربوية مئوية.<br>٢- <b>السحب الآلي:</b> عن طريق أجهزة الصراف الآلي، وعادة ما يكون له تكاليف من أجهزة وصيانة واستئجار مواقع.<br><b>• حكم العمولة على السحب النقدي الآلي (قولان للمعاصرين):</b><br><b>١- القول الأول (عدم الجواز):</b> عدم جواز تحصيل البنك عمولة على السحب النقدي (د. محمد القري، د. عبد الستار أبو غدة، د. عبد الوهاب أبو سليمان). <b>دليلهم:</b> أن عملية السحب قرض، والزيادة على القرض ربا. (ونوقش بأن الزيادة مقابل تكلفة الأجهزة والاتصالات الفعلية لا تعد من الربا).<br><b>٢- القول الثاني (الجواز):</b> جواز السحب النقدي لقاء عمولة، وللقائلين به <b>ثلاثة اتجاهات</b>:<br>— <b>الاتجاه الأول:</b> جواز أخذ الرسوم سواء كانت نسبة مئوية من المبلغ المسحوب أم مبلغاً مقطوعاً؛ باعتبارها أجراً على الخدمة (فتوى ندوة البركة). (ونوقش بأن تغير الرسم بتغير المبلغ يدل على ارتباطه بالقرض وفيه شبهة الربا).<br>— <b>الاتجاه الثاني:</b> يجوز أخذ الرسوم <b>بشرط أن تكون مبلغاً مقطوعاً لا نسبة مئوية، ويكون في مقابل النفقات الفعلية لعملية الإقراض ولا يجوز الزيادة على التكلفة الفعلية</b> (قول كثير من المعاصرين: د. نزيه حماد، د. علي السالوس، د. أحمد سير المباركي، د. خالد المشيقح، وفتوى بيت التمويل الكويتي).<br>— <b>الاتجاه الثالث:</b> يجوز أخذ الرسوم <b>بشرط أن تكون هناك تغطية في حساب حامل البطاقة</b> لوقوع المقاصة بين الدينين فوراً وتكون أجرة على توصيل النقود (د. نزيه حماد).<br><b>• الرأي الراجح (ص ٦٨):</b> رجح الكتاب الاحتياط والحذر من أكل الربا (الاتجاه الثالث والثاني)، وأكده نص <b>قرار مجمع الفقه الإسلامي</b>: (أولاً: يجوز أخذ أجور عن خدمات القروض على أن يكون ذلك في حدود النفقات الفعلية، ثانياً: كل زيادة على النفقات الفعلية محرمة لأنها من الربا المحرم شرعاً). وأشار الشيخ مصطفى الزرقا إلى أن الفوائد التي تحتسب رغماً عن البنك الإسلامي يوضع لها صندوق خاص يصرف في وجوه الخير."],
+
+["س١٧: بيّن حكم شراء الذهب والفضة ببطاقة الائتمان، مع ذكر شروط صحة بيع النقد بمثله، وسبب الخلاف، والأدلة، والقول المختار. (سؤال كتاب ص ٨١ - الإجابة ص ٦٩-٧٦)","<b>أولاً: شروط صحة بيع النقد بمثله (الصرف) عند جمهور الفقهاء (شرطان):</b><br>١- <b>التماثل إذا اتحد الجنس</b> (ذهباً بذهب)، فإذا اختلف الجنس (كبيع الذهب بالفضة) صح بالتفاضل بشرط التقابض؛ لحديث عبادة بن الصامت رضي الله عنه: «الذهب بالذهب، والفضة بالفضة... مثلاً بمثل، سواء بسواء، يداً بيد، فإذا اختلفت هذه الأصناف فبيعوا كيف شئتم إذا كان يداً بيد» (مسلم).<br>٢- <b>التقابض في مجلس العقد</b> وعدم تأجيل أحد البدلين؛ لحديث البراء بن عازب «ما كان يداً بيد فلا بأس به وما كان نسيئة فهو ربا» (مسلم)، وحديث أبي سعيد الخدري «ولا تبيعوا منها غائباً بناجز» (مسلم)، وإجماع ابن المنذر. (والقبض اصطلاحاً: حيازة الشيء والتمكن منه باليد أو بالتخلية وهو القبض الحكمي).<br><b>ثانياً: حكم شراء الذهب والفضة ببطاقة الائتمان (ثلاثة أقوال للمعاصرين):</b><br><b>• القول الأول:</b> يصح استخدام بطاقة الائتمان لشراء النقدين لا فرق بين كون البطاقة مغطاة أو ليست مغطاة (د. عبد الستار أبو غدة، د. نزيه حماد، د. يوسف الشبيلي، وفتوى هيئة الرقابة ببيت التمويل الكويتي).<br><b>• القول الثاني:</b> لا يصح استخدام بطاقة الائتمان لشراء النقدين لا فرق بين كونها مغطاة أو غير مغطاة (الشيخ عبد الرحمن بن عقيل، الشيخ المختار السلامي، الشيخ عبد الرحمن السحيم، الشيخ الصديق الضرير).<br><b>• القول الثالث:</b> يصح استخدام بطاقة الائتمان لشراء النقدين <b>إذا كانت البطاقة مغطاة، ولا يجوز بغير المغطاة</b> (د. محمد عثمان شبير، د. وهبة الزحيلي، د. أبو غدة، <b>وهو ما قرره مجلس مجمع الفقه الإسلامي</b>).<br><b>• سبب الخلاف:</b> يرجع إلى أمرين: (الأول: اختلافهم في ماهية القبض هل مجرد قبول الجهاز للبطاقة وتوقيع العميل يعد قبضاً حقيقياً/حكمياً أم لا؟ والثاني: هل الشراء بالبطاقة يعد من قبيل الصرف أم لا؟).<br><b>• الأدلة والمناقشة:</b><br>— <b>أدلة القول الأول:</b> أن تسلم البائع قسيمة الدفع الموقعة أو تمرير البطاقة على الجهاز الآلي يقيد المبلغ على حساب العميل ويحوله لحساب التاجر فيعد <b>قبضاً حكمياً</b> كقبض الشيك المصدق. (ونوقش بأن التاجر لا يدخل المبلغ في حسابه فعلياً إلا بعد فترة).<br>— <b>أدلة القول الثاني:</b> حديث عبادة بن الصامت «يداً بيد» دل على اشتراط التقابض الفوري في النقدين، وتسديده بالبطاقة لا يتم في الحال بل بعد فترة.<br>— <b>أدلة القول الثالث:</b> أن الشراء بالبطاقة المغطاة فيه تقابض حكمي معتبر شرعاً لأن البنك وكيل يدفع من رصيد المشتري بلا أجل، أما غير المغطاة فلا يتحقق فيها القبض في المجلس بل هو ضمان للحق فقط.<br><b>• القول المختار (الراجح في الكتاب ص ٧٦):</b> رجح المؤلف <b>القول الأول</b> القائل بجواز شراء الذهب ببطاقة الائتمان مطلقاً مغطاة أم لا؛ لأمرين: (أولاً: أن القبض ببطاقة الائتمان قبض حكمي صحيح يستند إلى العرف، وثانياً: أن البطاقة الائتمانية أصبح لها من القبول عند الناس ما يفوق الأوراق النقدية والتجارية)."],
+
+["س١٨: ما الغرض من إيجاد البدائل الشرعية لبطاقة الائتمان غير المغطاة؟ وما هي هذه البدائل الأربعة وتقييمها؟ وما الأنموذجان المطبقان في البنوك الإسلامية؟ (ص ٧٦-٧٩)","<b>• الغرض من إيجاد البدائل:</b> (١- اجتناب المحظور وتنقية المعاملة من المحاذير الشرعية، ٢- الدعوة إلى إيجاد حل بعيداً عن التبعية الأجنبية، ٣- تحويل المعاملة من القرض بفائدة إلى معاملة معاصرة مباحة).<br><b>• البدائل الشرعية الأربعة:</b><br>١- <b>بطاقة البيع بالتقسيط:</b> بأن ينشئ البنك الإسلامي متاجر للبيع بالتقسيط ويستفيد من فارق السعر بين الحال والمقسط. (وهذا البديل لا يصلح في الحصول على النقود / السحب الآلي).<br>٢- <b>بطاقة المرابحة للآمر بالشراء:</b> بأن يوكل البنك العميل بأن يشتري ويقبض عنه ويسدد البنك ثم يبيع على العميل بزيادة. (وهذا البديل لا يسهم في توفير خدمات المطاعم والفنادق حيث ينتفع العميل بالخدمة قبل السداد).<br>٣- <b>بطاقة (الخصم) الشهري:</b> تصدرها المصارف الإسلامية بتحديد قيمة المسحوبات بمقدار الراتب الشهري بلا فائدة؛ فتقوم على <b>الوكالة</b> إن كان حساب العميل يفي بالمبلغ، وعلى <b>القرض الحسن</b> بضمان الراتب الشهري إن كان الحساب لا يفي.<br>٤- <b>تجديد الدين عن طريق التورق المصرفي:</b> عند تأخر العميل يبيع البنك له سلعة بثمن أكبر من المديونية ثم يبيعها عنه لطرف آخر ويسدد القرض الأول ويجدول الدين الثاني. (وهذه البدائل لم تسلم من الخلل من الجهة الشرعية، ومن عدم القدرة على تلبية احتياجات أطراف البطاقة في الواقع العملي).<br><b>• الأنموذجان المطبقان في البنوك الإسلامية:</b> (١- <b>فيزا التمويل</b> التي أصدرها بيت التمويل الكويتي، ٢- <b>فيزا الراجحي</b> التي أصدرتها شركة الراجحي المصرفية)."],
+
+"الموضوع الثاني: الشرط الجزائي (غرامات التأخير) — الوحدة الأولى: تعريفه وصوره وعوامله وشروطه (ص ٨٤ - ٩٢)",
+["س١٩: عرّف «الشرط» لغةً وفي اصطلاح الأصوليين، واذكر أقسام الشروط من حيث الحكم الشرعي. (ص ٨٦-٨٨)","<b>• الشرط لغة:</b> إلزام الشيء والتزامه، والجمع شروط، والشَّرَط بالتحريك: العلامة، وجمع الشريطة: الشرائط.<br><b>• الشرط في اصطلاح الأصوليين:</b> ما يلزم من عدمه العدم، ولا يلزم من وجوده وجود ولا عدم، لذاته.<br><b>• تقسيم الشروط من حيث الحكم (قسمان):</b><br><b>الأول: الشرط الصحيح (وينقسم إلى ثلاثة أقسام):</b><br>١- <b>شرط يقتضيه العقد:</b> كاشتراط تسليم المعقود عليه، أو رده بالعيب، وهو صحيح يجب الوفاء به بلا خلاف.<br>٢- <b>شرط من مصلحة العقد:</b> كاشتراط صفة مباحة في المعقود عليه، وهو صحيح باتفاق الفقهاء.<br>٣- <b>شرط فيه منفعة معلومة وليس من مقتضى العقد ولا من مصلحته ولا منافياً له:</b> اختلف فيه الفقهاء؛ فذهب جمهور الفقهاء إلى عدم صحة العقد والشرط لأنه مفسد للعقد، وذهب آخرون إلى صحة العقد مع الشرط.<br><b>الثاني: الشرط الباطل:</b> وهو الشرط الذي لا يقتضيه العقد، بل هو أمر زائد عليه، ولا يلائمه، ولا ورد به نص، ولا جرى به عرف، ولا منفعة فيه لأحد."],
+
+["س٢٠: عرّف «الجزاء» لغةً، وعرّف «الشرط الجزائي» باعتباره مركباً إضافياً، واذكر صوره والعوامل التي أدت إلى العمل به. (سؤال كتاب ص ١٢٧ - الإجابة ص ٨٨-٩٠)","<b>• الجزاء لغة:</b> المكافأة على الشيء، ويكون ثواباً ويكون عقاباً، ويستعمل في الخير والشر.<br><b>• تعريف الشرط الجزائي باعتباره مركباً إضافياً:</b><br>— <b>يعرف بأنه:</b> اتفاق سابق على تقدير التعويض الذي يستحقه الدائن في حالة عدم التنفيذ، أو التأخير فيه.<br>— <b>وعرفه علماء المجمع الفقهي:</b> بأنه اتفاق بين المتعاقدين على تقدير التعويض الذي يستحقه من شُرِط له عن الضرر الذي يلحقه إذا لم ينفذ الطرف الآخر ما التزم به، أو تأخر في تنفيذه.<br><b>• صور الشرط الجزائي:</b><br>١- <b>في المقاولة:</b> إلزام المقاول بدفع مبلغ معين عن كل يوم أو أسبوع يتأخر فيه عن تسليم العمل.<br>٢- <b>في لائحة المصانع:</b> خصم مبالغ معينة من أجرة العامل جزاءً له على الإخلال بالتزاماته المختلفة.<br>٣- <b>اشتراط حلول جميع أقساط الدين</b> إذا تأخر المدين في دفع قسط منها.<br><b>• العوامل التي ساعدت وأدت إلى العمل بالشرط الجزائي:</b><br>١- تطور أساليب التجارة الداخلية والصنائع.<br>٢- أصبحت القيمة المالية للمشاريع كبيرة جداً مما يضاعف الخسائر الفادحة عند التأخر أو الإخلال بالعقد.<br>٣- اتساع دائرة التجارة بين الأفراد والدول حيث أصبحت العقود تتم بين أناس بعيدين لا يعرفون بعضهم مما يزيد الحاجة لشروط جزائية تعطي المشترط طمأنينة.<br>٤- ظهور عدد كبير من العقود والحقوق الجديدة كعقود الامتياز، والاستصناع الحديثة، والنقل الجوي والبحري، والتوريد، والمقاولات.<br>٥- أن المماطلة أصبحت سمة كثير من الناس بحيث لم يعد المتعاقدان يطمئنان إلى بعضهما البعض."],
+
+["س٢١: ما شروط تطبيق الشرط الجزائي؟ وما الأحوال التي لا ينفذ فيها الشرط الجزائي؟ (ص ٩٠-٩٢)","<b>أولاً: شروط تطبيق الشرط الجزائي (٤ شروط):</b><br>١- <b>ثبوت الضرر:</b> فالتعويض لا يستحق إذا أثبت المدين أن الدائن لم يلحقه أي ضرر. (وجاء في قرار مجمع الفقه الإسلامي أن الضرر الذي يجوز التعويض عنه يشمل <b>الضرر المالي الفعلي، وما لحق المضرور من خسارة حقيقية، وما فاته من كسب مؤكد، ولا يشمل الضرر الأدبي أو المعنوي</b>).<br>٢- <b>ألا يكون في الشرط الجزائي مبالغة:</b> فلا يجوز للدائن أن يطالب بأكثر من قيمة الالتزام الأصلي.<br>٣- <b>ارتكاب المدين خطأ أو غشاً جسيماً</b> تسبب في ضرر (في عدم التنفيذ أو التأخير أو التنفيذ معيباً).<br>٤- <b>إعذار المدين:</b> أي التنبيه عليه بالتنفيذ (دعوة يوجهها الدائن للمدين تتضمن مطالبته بتنفيذ التزامه فوراً بحيث يعد متأخراً بعد هذه الدعوى).<br><b>ثانياً: الأحوال التي لا ينفذ فيها الشرط الجزائي (أو يُعدّل):</b><br>١- <b>إذا كان الشرط الجزائي كثيراً عرفاً يراد به التهديد المالي وبعيداً عن مقتضى القواعد الشرعية:</b> فلا يعمل به على إطلاقه، ويجب الرجوع في ذلك إلى العدل والإنصاف على حسب ما فات من منفعة أو لحق من ضرر، ويرجع تقدير ذلك عند الاختلاف إلى الحاكم الشرعي عن طريق أهل الخبرة؛ لقوله تعالى ﴿وَإِذَا حَكَمْتُم بَيْنَ النَّاسِ أَن تَحْكُمُوا بِالْعَدْلِ﴾ وحديث عبادة بن الصامت «قضى أن لا ضرر ولا ضرار».<br>٢- <b>إذا كان هنالك عذر شرعي في الإخلال بالالتزام (بسبب خارج عن إرادة المدين) أو أثبت أن من شُرط له لم يلحقه أي ضرر:</b> فيكون العذر الشرعي مسقطاً لوجوبه حتى يزول العذر (كما قرره مجلس هيئة كبار العلماء والمجمع الفقهي)."],
+
+"الوحدة الثانية: التكييف الفقهي للشرط الجزائي وأنواعه وحكمه في الأعمال والديون (ص ٩٣ - ١٢٩)",
+["س٢٢: اختلف الفقهاء المعاصرون في التكييف الفقهي للشرط الجزائي، وضح ذلك مع ذكر الأدلة والمناقشة وبيان الرأي الراجح. (سؤال كتاب ص ١٢٧ - الإجابة ص ٩٤-٩٩)","<b>• الاتجاه الأول: أن الشرط الجزائي من العقود المسماة له ما يشبهه في الفقه فيخرج عليه (ولهم تخريجان):</b><br><b>١- التخريج الأول: أن الشرط الجزائي شبيه بالعربون</b> (السنهوري، اللجنة الدائمة، د. الزرقا).<br>— <b>وجه الشبه:</b> أن كلاً منهما تقدير للتعويض، وكلاهما يوجب على من أخل بالشرط عقوبة مالية.<br>— <b>ونوقش بأنه قياس مع الفارق لثلاثة فروق بين الشرط الجزائي وبيع العربون:</b><br>أ- العربون هو المقابل لحق عدول المشتري عن العقد، أما الشرط الجزائي فهو تعويض عن ضرر وقع فعلاً.<br>ب- العربون يدفع عند عدول المشتري ولو لم يترتب على العدول ضرر، أما الشرط الجزائي فلا يستحق إلا إذا وقع ضرر على الدائن.<br>ج- العربون لا يجوز تعديله من القاضي، والشرط الجزائي يجوز تخفيضه وزيادته حتى يكون متناسباً مع الضرر، وليس عقوبة وإنما هو تقدير للتعويض.<br><b>٢- التخريج الثاني: أن الشرط الجزائي شبيه بالرهن</b> (قرار مجلس هيئة كبار العلماء).<br>— <b>وجه الشبه:</b> أن الرهن والشرط الجزائي يؤكدان موجب العقد ولا يستقلان عنه لأنهما تابعان، وهو حافز لإكمال العقد في وقته.<br>— <b>ونوقش بأنه قياس مع الفارق لثلاثة أوجه:</b><br>أ- الشرط الجزائي تعويض عن الضرر فهو مرتبط بوقوع الضرر، خلافاً للرهن الذي لا علاقة له بالتعويض بالضرر.<br>ب- الرهن عين يستوفى منها الدين أو من ثمنها، بينما الشرط الجزائي مبلغ مقدر مسبقاً.<br>ج- الرهن عين معلومة مقبوضة قبل المماطلة في السداد، والشرط الجزائي ليس متقدماً بل ظهوره يكون عند الإخلال بالعقد.<br><b>• الاتجاه الثاني: أن الشرط الجزائي معاملة مستجدة ليس من العقود المسماة</b> (د. محمد الأمين الضرير، د. محمد اليمني).<br>— <b>دليله:</b> أن الأصل في العقود والشروط الجواز والصحة ولا يحرم منها إلا ما دل الشرع على تحريمه (كما قرره ابن القيم في إعلام الموقعين).<br><b>• الراجح في تخريج الشرط الجزائي:</b> أنه <b>معاملة مستحدثة (من العقود المستجدة)</b>؛ لأن أوجه الشبه بينه وبين العقود القديمة ظاهرية لا يمكن تكييفه عليها، ولأنه من المعاملات التي الأصل فيها الإباحة، وفي تصحيحه سد لأبواب الفوضى والتلاعب بحقوق العباد وحث على الوفاء بالعقود تحقيقاً لقوله تعالى ﴿أَوْفُوا بِالْعُقُودِ﴾."],
+
+["س٢٣: ما أنواع الشرط الجزائي؟ وما صور الشرط الجزائي على التأخير في تنفيذ الأعمال؟ وما حكمه وأدلة القائلين بالجواز والمنع مع المناقشة والترجيح؟ (سؤال كتاب ص ١٢٧ - الإجابة ص ٩٩-١٠٦)","<b>• أنواع الشرط الجزائي نوعان:</b> (الأول: نوع على التأخير في العمل والتنفيذ، والثاني: نوع على التأخير في سداد الديون).<br><b>• صور الشرط الجزائي على تأخير الأعمال (٧ صور):</b> (١- عقد الاستصناع بالنسبة للصانع، ٢- عقد البيع إذا اشترط المشتري على البائع تسليم العين كالعقارات والآلات في وقت محدد، ٣- الاعتماد المستندي إذا ألغى العميل الاستيراد يتحمل تكاليف فتح الاعتماد، ٤- عقد الشركة والإجارة، ٥- عقود التوريد، ٦- عقود النقل وعقود العمل، ٧- عقد المقاولة).<br><b>• حكم الشرط الجزائي على التأخير في تنفيذ الأعمال (قولان للمعاصرين):</b><br><b>١- القول الأول (الجواز - وهو القول الراجح):</b> ذهب إليه أكثر المعاصرين، وبه صدر <b>قرار هيئة كبار العلماء، وقرار دار الإفتاء المصرية، وفتوى بيت التمويل الكويتي، وقرار مجمع الفقه الإسلامي</b>.<br>— <b>أدلتهم:</b><br>أ- <b>الكتاب:</b> قوله تعالى ﴿يَا أَيُّهَا الَّذِينَ آمَنُوا أَوْفُوا بِالْعُقُودِ﴾ [المائدة: ١].<br>ب- <b>السنة:</b> حديث عمرو بن عوف المزني أن رسول الله ﷺ قال: «الْمُسْلِمُونَ عَلَى شُرُوطِهِمْ، إِلَّا شَرْطًا حَرَّمَ حَلَالًا أَوْ أَحَلَّ حَرَامًا» (الترمذي).<br>ج- <b>الآثار:</b> قضاء عمر بن الخطاب رضي الله عنه بلزوم الشرط وقوله «المسلمون عند شروطهم عند مقاطع حقوقهم»، وقضاء <b>شريح</b> على من قال لكريه: أرحل معك يوم كذا وإلا فلك مائة درهم فلم يخرج، فقال شريح: «من شرط على نفسه طائعاً غير مكره فهو عليه» (البخاري معلقاً)، وقضاؤه على المشتري الذي أخلف موعد الأربعاء.<br>د- <b>المعقول:</b> أن الأصل في الشروط الصحة، وأنه من مصلحة العقد وحافز لإكماله في وقته وسد لأبواب الفوضى، وعملاً بقوله ﷺ «لا ضرر ولا ضرار» وجريان العرف.<br><b>٢- القول الثاني (عدم الجواز):</b> ذهب إليه بعض المعاصرين (د. السالوس، د. التسخيري، الشيخ علي الخفيف، د. الدريني).<br>— <b>أدلتهم ومناقشتها:</b><br>أ- حديث أبي هريرة «نهى رسول الله ﷺ عن بيعتين في بيعة»، وحديث عمرو بن شعيب «نهى عن بيع وشرط». <b>ونوقش:</b> بأن الشرط الجزائي ليس عقداً مستقلاً عن العقد الأصلي كـ (بعتك على أن تقرضني أو تؤجرني)، بل هو تابع يؤكد العقد الأصلي ولا يفضي لربا أو غرر.<br>ب- حديث «إلا شرطاً أحل حراماً» والمعقول أنه زيادة منفعة بلا عوض فيكون ربا. <b>ونوقش:</b> بأنه ليس ربا في دين بل تعويض عن ضرر فعلي ناتج عن الإخلال بعمل ملتزم به.<br><b>• الراجح:</b> <b>القول الأول</b> القائل بجواز الشرط الجزائي على التأخير في تنفيذ الأعمال؛ لقوة أدلتهم، ولأنه يحقق ضماناً لعاقدي العقود ويسد أبواب الفوضى والتلاعب بحقوق العباد، وبه صدر قرار مجمع الفقه الإسلامي وقرار هيئة كبار العلماء."],
+
+["س٢٤: ما العقود التي يكون الالتزام فيها ديناً؟ وما حقيقة الدين والمدين؟ وما حكم الشرط الجزائي في الديون في مسألتيه (الأولى: إذا كان مستحقاً بمجرد التأخر، والثانية: إذا كان تعويضاً عن الضرر الواقع فعلاً من المدين الموسر المماطل) مع ذكر الأدلة والمناقشة والراجح والقرارات المجمعية؟ (سؤال كتاب ص ١٢٧ - الإجابة ص ١١٠-١٢٥)","<b>• العقود التي يكون الالتزام فيها ديناً ثلاثة:</b> (١- عقد القرض، ٢- عقد البيع بالتقسيط، ٣- عقد السلم).<br><b>• حقيقة الدين والمدين:</b><br>— <b>الدين اصطلاحاً:</b> لزوم حق في الذمة.<br>— <b>المدين إما معسر وإما موسر:</b> <b>فالمعسر</b> هو الذي لا يجد ما يقضي به دينه (لا يملك مالاً فائضاً عن حوائجه الأصلية)، <b>واتفق الفقهاء على وجوب إنظاره</b> لقوله تعالى ﴿وَإِن كَانَ ذُو عُسْرَةٍ فَنَظِرَةٌ إِلَىٰ مَيْسَرَةٍ﴾ وحديث «من أنظر معسراً فله بكل يوم مثليه صدقة». <b>والموسر</b> هو القادر على الوفاء ولكنه يماطل فهو ظالم لحديث «مطل الغني ظلم».<br><b>• حكم الشرط الجزائي في الديون (مسألتان):</b><br><b>١- المسألة الأولى: أن يكون مبلغ الشرط مستحقاً عند عدم الوفاء بالدين أو التأخر فيه دون توقف على شريطة أخرى:</b><br>— <b>حكمها:</b> <b>لا خلاف بين الفقهاء المتقدمين والعلماء المعاصرين على تحريم هذا الشرط وأنه باطل</b>؛ لأن ذلك <b>ربا صريح (ربا النسيئة / ربا الجاهلية)</b> المحرم بالكتاب ﴿لَا تَأْكُلُوا الرِّبَا أَضْعَافًا مُّضَاعَفَةً﴾ و﴿وَإِن تُبْتُمْ فَلَكُمْ رُءُوسُ أَمْوَالِكُمْ﴾، والسنة في خطبة الوداع «وربا الجاهلية موضوع»، وإجماع ابن عبد البر والنووي، وبه صدر <b>قرار المجمع الفقهي لرابطة العالم الإسلامي بمكة بالتحريم بالإجماع</b>.<br><b>٢- المسألة الثانية: أن يتضمن العقد شرطاً يلزم المدين الموسر المماطل بالتعويض عن الضرر الواقع فعلاً من التأخير في سداد الديون:</b> اختلف فيها المعاصرون على قولين:<br>— <b>القول الأول (الجواز):</b> جواز اشتراط الشرط الجزائي عن الضرر الواقع فعلاً وإلزام المدين المماطل به (أو صرفه في وجوه الخير التزاماً بالتبرع عند المالكية)، وذهب لذلك د. مصطفى الزرقا، د. الصديق الضرير، الشيخ عبد الله بن منيع، ولجنة الفتوى بمجموعة دلة البركة، وهيئة المحاسبة والمراجعة.<br>  <b>أدلتهم ومناقشتها:</b> (١- حديث «مطل الغني ظلم» فهو كالغاصب فيضمن. <b>ونوقش:</b> بأن أصل التعويض في الشريعة مقابلة المال بالمال، ولا يقاس النقود على منافع الأعيان المغصوبة لأن النقود لا تتعين ولا تؤجر. ٢- حديث عمرو بن الشريد «لَيُّ الْوَاجِدِ يُحِلُّ عِرْضَهُ وَعُقُوبَتَهُ» فيقاس على العقوبة الغرامة المالية. <b>ونوقش:</b> بما قاله النووي والعلماء: يحل عرضه بأن يقول ظلمني ومطلني، وعقوبته الحبس والتعزير لا التغريم بالمال لأن التغريم من ربا النسيئة المحرم. ٣- حديث «لا ضرر ولا ضرار» وأثر شريح. <b>ونوقش:</b> بأن قواعد إزالة الضرر لا تتعارض مع أساس الشريعة القائم على منع الربا وإن تضرر الدائن).<br>— <b>القول الثاني (التحريم - وهو القول الراجح):</b> تحريم الشرط الجزائي عن الضرر الواقع فعلاً في الديون (الشيخ علي الخفيف، د. زكي الدين شعبان، د. نزيه حماد، د. محمد عثمان شبير، د. وهبة الزحيلي، د. رفيق المصري، د. عبد الناصر العطار).<br>  <b>أدلتهم:</b> أحاديث النهي عن بيعتين في بيعة وبيع وشرط، والمعقول أن الشرط الجزائي في الديون نوع من ربا النسيئة المحرم لأن كل زيادة مشروطة في الدين لتأخر الأجل هي ربا صريح لا يقابلها عوض، والفروق المذكورة بين الفائدة والغرامة غير مؤثرة في الحكم الشرعي.<br><b>• الراجح والقرارات المجمعية (ص ١٢٤-١٢٥):</b> رجح الكتاب <b>القول الثاني (تحريم الشرط الجزائي في الديون مطلقاً)</b>؛ لأن مشكلة تأخر الديون كانت موجودة قديماً ولم ينقل عن أحد إجازة اشتراط الزيادة على الديون، والبدائل الشرعية كثيرة (كأخذ الرهن والكفالة، والقائمة السوداء، وحلول الأقساط). وبه صدر:<br>١- <b>قرار مجمع الفقه الإسلامي في البيع بالتقسيط:</b> لا يجوز إلزام المشتري المتأخر بأي زيادة على الدين بشرط سابق أو بدون شرط لأن ذلك ربا محرم، ولا يجوز اشتراط التعويض في حالة التأخير، <b>ويجوز شرعاً أن يشترط البائع بالأجل حلول الأقساط قبل مواعيدها عند تأخير المدين عن أداء بعضها</b> ما دام المدين قد رضي بهذا الشرط عند التعاقد.<br>٢- <b>قرار مجمع الفقه الإسلامي بشأن السلم:</b> لا يجوز الشرط الجزائي عن التأخير في تسليم المسلم فيه؛ لأنه عبارة عن دين، ولا يجوز اشتراط الزيادة في الديون عن التأخير."]
+];
+
+const TF=[
+["البطاقة في اللغة هي الورقة والرقعة الصغيرة يثبت فيها مقدار ما تجعل فيه من عين أو متاع.",1,""],
+["الائتمان في الاصطلاح الاقتصادي هو منح دائن لمدين مهلة من الوقت يلتزم المدين بانتهائها بدفع قيمة الدين.",1,""],
+["اختار الكتاب تعريف بطاقة الائتمان في الاصطلاح الفقهي (تعريف مجمع الفقه الإسلامي) لأنه يشمل جميع أنواع البطاقات المصرفية.",1,""],
+["تعتبر بطاقات الائتمان نقوداً في حد ذاتها وليست مجرد وسيلة من وسائل الدفع.",0,"ليست نقوداً في حد ذاتها، بل هي وسيلة متطورة من وسائل الدفع تقوم في مجملها عن النقود."],
+["تعد بطاقات الحساب الجاري (المرتبطة بالسحب الفوري من الرصيد المودع) بطاقة ائتمان.",0,"لا تعد بطاقة الحساب الجاري بطاقة ائتمان؛ لأن حاملها لا يستفيد إلا من مبالغه المودعة في البنك."],
+["من أطراف بطاقة الائتمان الحساب الجاري في البنك. (سؤال كتاب)",0,"أطراف بطاقة الائتمان هم: البنك المصدر، وحامل البطاقة، والتاجر، والمنظمة الراعية."],
+["التقسيم المؤثر في الحكم الشرعي وتكييف بطاقات الائتمان هو تقسيمها بحسب نوع العلاقة بين أطرافها ووجود الغطاء وعدمه.",1,"أما بقية التقسيمات فلا يتعلق بها حكم."],
+["من سلبيات بطاقات الائتمان إيقاع المصارف في الديون المعدومة وتوجيه الديون إلى الحاجات الاستهلاكية غير الإنتاجية.",1,""],
+["بطاقات الائتمان المغطاة يشترط مصدرها على حاملها أن يودع لديه مبلغاً من النقود ولا يستخدمها فيما يزيد عن المبلغ المودع.",1,""],
+["أجاز العلماء المعاصرون ومجمع الفقه الإسلامي التعامل ببطاقات الائتمان المغطاة إذا لم يتضمن العقد شروط دفع فائدة عند التأخر.",1,"كما أجاز القرار شراء الذهب والفضة والعملات بالبطاقة المغطاة."],
+["ذهب جمهور الفقهاء من الأئمة الأربعة إلى أن الأصل في المعاملات والعقود الحظر، وذهب الظاهرية إلى أن الأصل الإباحة.",0,"العكس؛ الجمهور على أن الأصل في المعاملات الإباحة، والظاهرية على أن الأصل الحظر."],
+["بطاقة الائتمان المحدد (بطاقة الدفع الشهري) يطالب حاملها بتسديد المبالغ المستحقة دفعة واحدة بدون زيادة خلال فترة السماح.",1,""],
+["لا خلاف بين العلماء المعاصرين على تحريم التعامل ببطاقة الائتمان المتجدد الربوية؛ لأنها تشتمل على عقد إقراض ربوي.",1,""],
+["قرر مجمع الفقه الإسلامي جواز إصدار البطاقة غير المغطاة المشروطة بفائدة ربوية إذا كان طالبها عازماً على السداد في فترة السماح.",0,"قرر المجمع أنه لا يجوز إصدارها ولا التعامل بها إذا كانت مشروطة بفائدة ربوية حتى لو كان طالبها عازماً على السداد ضمن فترة السماح."],
+["ذهب المالكية والشافعية إلى بطلان القرض المقترن بشرط فاسد، بينما ذهب الحنفية والحنابلة إلى صحة عقد القرض وبطلان الشرط الفاسد وحده.",1,""],
+["استدل المجيزون للدخول في عقد البطاقة غير المغطاة مع العزم على السداد في فترة السماح بحديث عائشة في قصة بريرة وبالقياس على عقود المرافق.",1,"وهو ما رجحه المؤلف للمستخدم بشرط التحرز، مع الاتفاق على حرمة اشتراط الفائدة من جهة البنك المشترط."],
+["القول الراجح في التكييف الفقهي للعلاقة بين مصدر البطاقة وحاملها أنها معاملة مستجدة تندرج تحت العقود غير المسماة.",1,"لأنها إذا اندرجت تحت عقد قديم من جانب تخلفت من جانب آخر."],
+["ذهب جمهور الفقهاء (الحنفية والمالكية والحنابلة) إلى جواز ضمان الحق قبل وجوبه لأن الضمان تبرع يصح مع الجهالة.",1,"وخالف الشافعي في الجديد والثوري والليث فمنعوا الكفالة بالدين المجهول."],
+["أجاز الحنفية والمالكية اشتراط براءة ذمة المضمون عنه في الضمان وانتقال الدين إلى ذمة الضامن، وخالفهم الشافعية والحنابلة.",1,"واستدل المجيزون بحديث «الزعيم غارم» وحديث ضمان عليّ رضي الله عنه لدين الميت."],
+["أخذت هيئة المحاسبة والمراجعة للمؤسسات المالية الإسلامية بتكييف العلاقة بين مصدر البطاقة والتاجر على أنها علاقة (سمسرة).",1,"ورجح الكتاب القول السادس وهو أنها علاقة مستجدة الأصل فيها الإباحة."],
+["مسألة (ضع وتعجل) أجازها ابن تيمية وابن القيم ومجمع الفقه الإسلامي إذا لم تكن باتفاق مسبق وكانت العلاقة ثنائية بين الدائن والمدين فقط.",1,"فإن دخل بينهما طرف ثالث لم تجز لأنها تأخذ حكم حسم الأوراق التجارية المحرم."],
+["الراجح في التكييف الفقهي للعلاقة بين حامل البطاقة والتاجر أنها عقد بيع (في تملك السلع) أو عقد إجارة (في تقديم الخدمات).",1,"وتكييف العلاقة بين المنظمة الراعية وأطراف البطاقة أنها علاقة سمسرة."],
+["يصح أن يشترط مصدر البطاقة على العميل فتح حساب بالبنك المصدر للبطاقة، ويعد هذا من الشروط الصحيحة. (سؤال كتاب)",1,""],
+["دفع نسبة معينة على تسديد الدفع للعمليات النقدية تحسب من يوم الشراء يعد من الشروط الصحيحة الجائزة. (سؤال كتاب)",0,"بل هو من الشروط الباطلة الربوية المحرمة."],
+["اتفق الفقهاء على جواز أخذ رسوم تجديد من حامل البطاقة. (سؤال كتاب)",0,"اختلفوا على ثلاثة أقوال، والراجح الجواز بشرطين: أن تكون مبلغاً ثابتاً مقطوعاً ومقابل خدمات فعلية."],
+["أجاز مجمع الفقه الإسلامي وهيئة الراجحي وبيت التمويل الكويتي أخذ البنك المصدر عمولة من التاجر بشرط أن يبيع التاجر بالبطاقة بمثل سعر النقد.",1,"لأنها أجرة وكالة وسمسرة وتحصيل للديون."],
+["في السحب النقدي يتحمل العميل رسوماً مالية عند استخدام البطاقة. (سؤال كتاب)",1,"في السحب الآلي بمبلغ مقطوع بقدر التكلفة الفعلية، وفي البطاقة المغطاة عند السحب النقدي."],
+["في السحب النقدي اليدوي (من موظف البنك مناولةً) بالبطاقة من البنوك الربوية يجوز أخذ عمولة نسبية مئوية.",0,"يحرم باتفاق الهيئات الشرعية؛ لأنه قرض بفائدة ربوية ولا تقابله تكاليف فعلية."],
+["الراجح في عمولة السحب النقدي الآلي جواز أخذ الرسوم بشرط أن تكون في حدود النفقات الفعلية فقط، وكل زيادة عليها فهي ربا محرم.",1,"وفق قرار مجمع الفقه الإسلامي."],
+["من شروط صحة بيع النقد بمثله (الصرف) عند جمهور الفقهاء: التماثل عند اتحاد الجنس، والتقابض في مجلس العقد.",1,""],
+["نص قرار مجمع الفقه الإسلامي على أنه لا يجوز شراء الذهب والفضة والعملات النقدية بالبطاقة غير المغطاة، ويجوز بالمغطاة.",1,"بينما رجح المؤلف في الكتاب ص ٧٦ جواز شراء الذهب بالبطاقة مطلقاً مغطاة أم لا لوجود القبض الحكمي."],
+["من البدائل الشرعية لبطاقة الائتمان غير المغطاة بطاقة البيع بالتقسيط. (سؤال كتاب)",1,"وكذلك بطاقة المرابحة للآمر بالشراء، وبطاقة الخصم الشهري."],
+["الشرط في اصطلاح الأصوليين هو ما يلزم من عدمه العدم، ولا يلزم من وجوده وجود ولا عدم لذاته. (سؤال كتاب)",1,""],
+["الشرط الجزائي هو اتفاق بين المتعاقدين على تقدير التعويض الذي يستحقه من شُرط له عن الضرر الذي يلحقه إذا لم ينفذ الطرف الآخر ما التزم به أو تأخر.",1,""],
+["الشرط الجزائي لا يطبق إذا كان مبالغاً فيه. (سؤال كتاب)",0,"بل يُعدّل من قِبل القاضي (المحكمة) ليرد إلى العدل والإنصاف بقدر الضرر الفعلي (قرار المجمع والهيئة)."],
+["للقاضي سلطة في تعديل الشرط الجزائي. (سؤال كتاب)",1,"إذا وجد مبرراً لذلك أو كان مبالغاً فيه، بخلاف العربون فلا سلطة للقاضي في تعديله."],
+["التعويض المستحق بسبب الشرط الجزائي لا يكون إلا إذا ثبت الضرر. (سؤال كتاب)",1,"ويشمل الضرر المالي الفعلي والكسب المؤكد ولا يشمل الضرر الأدبي أو المعنوي."],
+["إذا كان هناك عذر شرعي أو سبب خارج عن إرادة المدين في الإخلال بالالتزام، يسقط وجوب الشرط الجزائي حتى يزول العذر.",1,""],
+["الراجح في التكييف الفقهي للشرط الجزائي أنه معاملة مستحدثة (من العقود المستجدة) الأصل فيها الإباحة.",1,"لأن أوجه الشبه بينه وبين العربون والرهن ظاهرية فقط."],
+["من صور الشرط الجزائي على تأخير الأعمال عقد الرهن. (سؤال كتاب)",0,"من صوره على تأخير الأعمال: الاستصناع، والمقاولة، والتوريد، والإجارة، والنقل (وليس الرهن)."],
+["عقد الاستصناع مما انفرد الحنفية بالقول به وتسميته، وميزوه عن السلم في كون الشيء مصنوعاً من آدمي كالأواني والأحذية.",1,""],
+["الراجح وقرار مجمع الفقه وهيئة كبار العلماء جواز الشرط الجزائي على التأخير في تنفيذ الأعمال (كالمقاولات والتوريد والاستصناع بالنسبة للصانع).",1,"استدلالاً بآية العقود وحديث «المسلمون على شروطهم» وقضاء شريح."],
+["يجوز اشتراط الشرط الجزائي في عقد الاستصناع بالنسبة للمستصنع إذا تأخر في أداء الثمن.",0,"لا يجوز بالنسبة للمستصنع لأن التزامه دين (ثمن)، وإنما يجوز بالنسبة للصانع لأن التزامه عمل."],
+["العقود التي يكون الالتزام الأصلي فيها ديناً هي: عقد القرض، وعقد البيع بالتقسيط، وعقد السلم.",1,""],
+["اتفق الفقهاء على وجوب إنظار المدين المعسر، وعلى أن مطل المدين الغني الموسر ظلم يحل عرضه وعقوبته.",1,"ومعنى يحل عرضه: شكايته، وعقوبته: حبسه وتعزيره لا تغريمه بالمال."],
+["الراجح في الشرط الجزائي في الديون التحريم. (سؤال كتاب)",1,"سواء كان مستحقاً بمجرد التأخر أو تعويضاً عن الضرر؛ لأن كل زيادة مشروطة في الدين لتأخر الأجل هي ربا الجاهلية الصريح."],
+["قرر مجمع الفقه الإسلامي أنه يجوز للبائع بالأجل أن يشترط حلول الأقساط قبل مواعيدها عند تأخر المدين عن أداء بعضها ما دام رضي بذلك عند التعاقد.",1,""],
+["يجوز اشتراط الشرط الجزائي عن التأخير في تسليم (المسلم فيه) في عقد السلم.",0,"لا يجوز؛ لأن المسلم فيه عبارة عن دين، ولا يجوز اشتراط الزيادة في الديون عن التأخير (قرار المجمع)."],
+["الفرق بين العربون والشرط الجزائي أن العربون مقابل حق العدول ويدفع ولو لم يقع ضرر، أما الشرط الجزائي فتعويض لا يستحق إلا بوقوع ضرر.",1,""],
+["الفرق بين الرهن والشرط الجزائي أن الرهن عين معلومة مقبوضة قبل المماطلة كوثيقة بدين، أما الشرط الجزائي فمبلغ مقدر لتعويض الضرر عند الإخلال.",1,""]
+];
+
+const MC=[
+["التعريف المختار لبطاقات الائتمان في الكتاب لشموله جميع أنواع البطاقات المصرفية هو تعريف:",["مجمع الفقه الإسلامي الدولي (الاصطلاح الفقهي)","الاصطلاح الاقتصادي","المعجم الوسيط","القانون التجاري"],0],
+["يطلق البنكيون على الجهتين العالميتين المصدرتين للبطاقات اسم:",["كفيل التاجر","راعي البطاقة","السمسار المحلي","المقترض"],1],
+["البطاقات التي يستعملها الموظفون وأصحاب المعاشات في قبض الراتب الشهري ولا تعد بطاقة ائتمان هي:",["بطاقة الائتمان المتجدد","بطاقة الحساب الجاري (السحب المباشر من الرصيد)","البطاقة غير المغطاة","بطاقة الإقراض"],1],
+["التقسيم المؤثر في تصوير مسألة بطاقات الائتمان وتكييفها وحكمها الشرعي هو تقسيمها بحسب:",["مادة تصنيعها ولونها","نوع العلاقة بين أطرافها ووجود الغطاء وعدمه","طول البطاقة وعرضها","اسم حامل البطاقة"],1],
+["من المنافع التي تقدمها بطاقة الائتمان للتاجر:",["جذب عملاء جدد وتقليل مخاطر السرقة","إلغاء جميع التزاماته","منحه قروضاً بدون سداد","عدم الحاجة لفتح حساب"],0],
+["تصدر بطاقة الائتمان المغطاة: (سؤال كتاب)",["لمن له رصيد","لمن ليس له رصيد","أ و ب معاً","لا شيء مما سبق"],0],
+["الخلاف الفقهي في قاعدة «الأصل في المعاملات الإباحة أم الحظر» ذهب فيه الجمهور إلى الإباحة، وذهب إلى الحظر:",["الحنفية","المالكية","الظاهرية","الحنابلة"],2],
+["البطاقة التي يطالب حاملها بتسديد المبالغ المستحقة عليه دفعة واحدة بدون زيادة خلال فترة سماح محددة هي:",["بطاقة الائتمان المتجدد","بطاقة الائتمان المحدد (بطاقة الدفع الشهري)","بطاقة الحساب الجاري","بطاقة المرابحة"],1],
+["العلاقة بين مصدر البطاقة وحاملها في (بطاقة الائتمان المتجدد الربوية) هي علاقة:",["واهب وموهوب له","مقرض ومقترض بعقد إقراض ربوي محرم باتفاق","شريك ومضارب","مؤجر ومستأجر"],1],
+["من القائلين بجواز إبرام عقد البطاقة غير المغطاة لمن يغلب على ظنه القدرة على السداد في فترة السماح قياساً على عقود الكهرباء:",["الشيخ محمد تقي العثماني ود. أبو غدة ود. أبو سليمان","د. علي السالوس ود. الصديق الضرير","الإمام الشافعي","ابن حزم"],0],
+["سبب خلاف المعاصرين في أثر الشرط الربوي في البطاقة لمن يعزم على السداد في فترة السماح يرجع لخلاف المتقدمين في:",["هل القرض المقترن بشرط فاسد يبطل العقد (المالكية والشافعية) أم يبطل الشرط ويصح العقد (الحنفية والحنابلة)","مقدار زكاة التجارة","شروط الحوالة","تعريف الغرر"],0],
+["مصطلح (مُصدِر البطاقة) يطلق على: (سؤال كتاب)",["البنك","العميل","التاجر","لا شيء مما سبق"],0],
+["يمكن أن تُكيّف العلاقة بين مصدر البطاقة وحاملها عند العلماء المعاصرين عقد: (سؤال كتاب)",["حوالة","ضمان","وكالة","جميع ما سبق"],3],
+["القول الراجح في التكييف الفقهي للعلاقة بين مصدر البطاقة وحاملها أنها:",["عقد كفالة محضة","معاملة مستجدة تندرج تحت العقود غير المسماة","عقد جعالة","عقد رهن"],1],
+["في حديث أبي أمامة أن النبي ﷺ قال: «الزعيم غارم»، المراد بـ (الزعيم):",["القاضي","الكفيل (الضامن)","المقترض","البائع"],1],
+["المذهب الذي أجاز اشتراط براءة ذمة المضمون عنه في الضمان وانتقال الدين إلى ذمة الضامن هو:",["الحنفية والمالكية","الشافعية والحنابلة","الظاهرية فقط","لا أحد من الفقهاء"],0],
+["المذهب الذي أجاز الحوالة على من لا دين عليه (الحوالة المطلقة) تمسكاً بعموم حديث «مطل الغني ظلم» هو:",["الحنفية (والقول الأول للشافعية وابن الماجشون)","الحنابلة","الظاهرية","الإباضية"],0],
+["التكييف الذي أخذت به هيئة المحاسبة والمراجعة للمؤسسات المالية الإسلامية للعلاقة بين مصدر البطاقة والتاجر هو:",["القرض","السمسرة","الهبة","الوديعة"],1],
+["الراجح في التكييف الفقهي للعلاقة بين حامل البطاقة والتاجر أنها لا تخرج عن عقدين هما:",["البيع أو الإجارة","الرهن أو الكفالة","الحوالة أو الجعالة","المضاربة أو المساقاة"],0],
+["تخريج العلاقة بين المنظمة العالمية الراعية وأطراف البطاقة عند د. أبو غدة ود. الزحيلي والشيخ الدبيان هو:",["علاقة سمسرة","علاقة قرض ربوي","علاقة هبة","علاقة وصية"],0],
+["دفع نسبة معينة على تسديد الدفع للعمليات النقدية: (سؤال كتاب)",["جائز","باطل","مكروه","لا شيء مما سبق"],1],
+["الرسوم التي يحصلها البنك عند ضياع البطاقة عن حاملها أو تلفها أو سرقتها وإصدار بدل عنها تسمى:",["رسوم العضوية","رسوم التجديد","رسوم الاستبدال","رسوم السحب"],2],
+["الراجح في حكم أخذ مصدر البطاقة رسوم الإصدار والتجديد من حامل البطاقة الجواز بشرطين هما:",["أن يكون المبلغ ثابتاً (مقطوعاً) ومقابل خدمة فعلية حقيقية","أن يكون بنسبة مئوية متزايدة","أن يأخذه دون تقديم أي خدمة","أن يكون ضعف التكلفة"],0],
+["الراجح وقرار مجمع الفقه في العمولة التي يأخذها البنك من التاجر على مشتريات العميل:",["محرمة مطلقاً","جائزة بشرط أن يكون بيع التاجر بالبطاقة بمثل السعر الذي يبيع به بالنقد","جائزة بشرط رفع السعر على العميل","مكروهة تحريماً"],1],
+["حكم أخذ رسوم في السحب النقدي اليدوي (الذي يحصل بإبراز البطاقة لموظف البنك وأخذ النقود مناولةً):",["لا يجوز أخذ أي رسوم لأنه لا يقابلها تكاليف فعلية فتكون ربا","جائز بنسبة مئوية","واجب شرعاً","مندوب"],0],
+["شراء الذهب والفضة والعملات ببطاقة الائتمان غير المغطاة في قرار مجمع الفقه الإسلامي:",["جائز مطلقاً","لا يجوز لعدم تحقق القبض الفوري في المجلس (ويجوز بالمغطاة)","واجب","مندوب"],1],
+["القول الذي رجحه المؤلف في الكتاب (ص ٧٦) في حكم شراء الذهب والفضة ببطاقة الائتمان هو:",["الجواز مطلقاً مغطاة أم لا؛ لتحقق القبض الحكمي المستند للعرف","المنع مطلقاً حتى في المغطاة","الجواز في الفضة دون الذهب","الكراهة التحريمية"],0],
+["من البدائل الشرعية لبطاقة الائتمان غير المغطاة: (سؤال كتاب)",["بطاقة البيع والشراء","بطاقة الاستثمار","بطاقة الخصم الشهري","لا شيء مما سبق"],2],
+["البطاقة التي تصدرها المصارف الإسلامية بتحديد المسحوبات بمقدار الراتب الشهري بلا فائدة وتقوم على الوكالة أو القرض الحسن هي:",["بطاقة الخصم الشهري","بطاقة الائتمان المتجدد الربوية","بطاقة التورق المنظم","بطاقة المرابحة"],0],
+["من أسماء الشرط الجزائي: (سؤال كتاب)",["التعويض الاتفاقي","البند الجزائي","جميع ما سبق","لا شيء مما سبق"],2],
+["ما يلزم من عدمه العدم ولا يلزم من وجوده وجود ولا عدم لذاته: (سؤال كتاب)",["الشرط","التوريد","المزايدة","السبب"],0],
+["الشرط الذي لا يقتضيه العقد بل هو أمر زائد عليه ولا يلائمه ولا ورد به نص ولا جرى به عرف ولا منفعة فيه لأحد هو:",["الشرط الصحيح","الشرط الباطل","شرط المصلحة","شرط الكمال"],1],
+["توجيه الدائن دعوة للمدين تتضمن مطالبته بتنفيذ التزامه فوراً بحيث يعد متأخراً بعد هذه الدعوى يسمى:",["الإعسار","إعذار المدين (التنبيه عليه بالتنفيذ)","المقاصة","الإقالة"],1],
+["الضرر الذي يجوز التعويض عنه في الشرط الجزائي وفق قرار مجمع الفقه الإسلامي:",["يشمل الضرر المالي الفعلي والخسارة الحقيقية والكسب المؤكد ولا يشمل الضرر الأدبي أو المعنوي","يشمل الضرر الأدبي والمعنوي فقط","يشمل التهديد المالي المضاعف","لا يشمل أي ضرر مالي"],0],
+["إذا كان الشرط الجزائي كثيراً عرفاً يراد به التهديد المالي وبعيداً عن القواعد الشرعية، فحكمه:",["يجب تنفيذه كاملاً بلا تعديل","يجب الرجوع فيه إلى العدل والإنصاف وتقدير الحاكم الشرعي عن طريق أهل الخبرة","يبطل أصل العقد","يضاعف على المدين"],1],
+["من التكييف الفقهي للشرط الجزائي: (سؤال كتاب)",["شبيه بعقد الاستصناع","شبيه بعقد الإجارة","شبيه بعقد الرهن","شبيه بعقد المساقاة"],2],
+["القول الراجح في تخريج وتكييف الشرط الجزائي أنه:",["عقد عربون محض","عقد رهن مقبوض","معاملة مستحدثة (من العقود المستجدة) الأصل فيها الإباحة","عقد قرض"],2],
+["من الفروق الجوهرية بين العربون والشرط الجزائي أن العربون:",["لا يجوز تعديله من القاضي ويدفع عند العدول ولو لم يقع ضرر","يجوز تعديله من القاضي ولا يدفع إلا بوقوع ضرر","عقوبة جنائية","لا يدفع فيه أي مال"],0],
+["طلب صنع الشيء وعمله في الذمة مما انفرد الحنفية بتسميته وميزوه عن السلم في كونه مصنوعاً من آدمي هو:",["عقد الإجارة","عقد الاستصناع","عقد الصرف","عقد الحوالة"],1],
+["القاضي التابعي الذي قضى على من شرط على نفسه لمكاريه مائة درهم إن لم يرحل معه وقال «من شرط على نفسه طائعاً غير مكره فهو عليه» هو:",["شريح القاضي","أبو يوسف","ابن قدامة","الشافعي"],0],
+["حكم الشرط الجزائي في عقد الاستصناع وفق قرار مجمع الفقه الإسلامي:",["يجوز بالنسبة للصانع إذا تأخر في العمل، ولا يجوز بالنسبة للمستصنع إذا تأخر في أداء الثمن","يجوز بالنسبة للمستصنع فقط","لا يجوز للصانع ولا للمستصنع","واجب على المستصنع"],0],
+["من العقود التي يكون الالتزام فيها بالشرط الجزائي ديناً: (سؤال كتاب)",["عقد القرض","عقد البيع بالتقسيط","عقد السلم","جميع ما سبق"],3],
+["ضابط الإعسار الذي يجب معه إنظار المدين شرعاً هو:",["ألا يكون له مال فائض عن حوائجه الأصلية يفي به دينه","أن يكون غنياً مماطلاً","أن يملك عقارات فائضة","أن يمتنع عن السداد بلا سبب"],0],
+["تفسير العلماء والنووي لقوله ﷺ «لَيُّ الْوَاجِدِ يُحِلُّ عِرْضَهُ وَعُقُوبَتَهُ» أن المراد بعقوبته:",["فرض غرامة مالية ربوية عليه","الحبس والتعزير (لا التغريم بالمال لأنه ربا النسيئة)","مصادرة جميع أملاكه للدائن","إسقاط دينه"],1],
+["حكم اشتراط البائع بالأجل حلول جميع الأقساط قبل مواعيدها عند تأخر المدين عن أداء بعضها وفق قرار المجمع:",["محرم شرعاً","جائز شرعاً ما دام المدين قد رضي بهذا الشرط عند التعاقد","مبطل لأصل البيع","ربا صريح"],1]
+];
+
+const MT=[
+["المصطلح في البطاقات ↔ تعريفه أو مدلوله الفقهي",[["البطاقة في اللغة","الورقة والرقعة الصغيرة يثبت فيها مقدار ما تجعل فيه"],["الائتمان في الاصطلاح الاقتصادي","منح دائن لمدين مهلة من الوقت يلتزم بانتهائها بدفع الدين"],["راعي البطاقة","المنظمة العالمية التي ترعى إصدار البطاقات"],["بطاقة الحساب الجاري","أداة دفع وسحب فوري من الرصيد المودع ولا تعد بطاقة ائتمان"],["التعريف المختار لبطاقة الائتمان","تعريف مجمع الفقه الإسلامي لشموله جميع أنواع البطاقات"]]],
+["نوع البطاقة المصرفية ↔ خصائصها وحكمها الشرعي",[["البطاقة المغطاة","يشترط إيداع رصيد يقابلها ويجوز التعامل بها وشراء الذهب بها"],["بطاقة الائتمان المحدد (الدفع الشهري)","يسدد حاملها المبلغ كاملاً بدون زيادة خلال فترة السماح"],["بطاقة الائتمان المتجدد الربوية","يقسط فيها الدين بفوائد ربوية مركبة وهي محرمة باتفاق المعاصرين"],["بطاقة الخصم الشهري (البديل الإسلامي)","تحدد المسحوبات بمقدار الراتب الشهري على أساس الوكالة أو القرض الحسن"]]],
+["أطراف البطاقة ↔ التكييف الفقهي لعلاقتهم",[["العلاقة بين المصدر وحامل البطاقة (الراجح)","معاملة مستجدة تندرج تحت العقود غير المسماة"],["العلاقة بين المصدر والتاجر (هيئة المحاسبة)","علاقة سمسرة"],["العلاقة بين حامل البطاقة والتاجر (الراجح)","علاقة بيع (في السلع) أو إجارة (في الخدمات)"],["العلاقة بين المنظمة الراعية وأطراف البطاقة","علاقة سمسرة وحق معنوي"]]],
+["نوع الرسوم في البطاقة ↔ تعريفها وحكمها الشرعي",[["رسوم العضوية","تحصل مرة واحدة عند الموافقة على طلب البطاقة أول مرة"],["رسوم الاستبدال","تحصل عند ضياع البطاقة أو تلفها أو سرقتها وإصدار بدل عنها"],["رسوم الإصدار والتجديد (الراجح)","تجوز بشرطين: أن تكون مبلغاً ثابتاً مقطوعاً ومقابل خدمة فعلية"],["العمولة المقتطعة من التاجر","جائزة بشرط أن يبيع التاجر بالبطاقة بمثل سعر البيع بالنقد"],["عمولة السحب النقدي اليدوي من بنك ربوي","محرمة لأنها قرض بفائدة ربوية ولا تقابلها تكاليف فعلية"]]],
+["الأحكام الفقهية في البطاقات ↔ القول أو القرار الفقهي فيها",[["شراء الذهب والفضة بالبطاقة غير المغطاة","ممنوع في قرار المجمع لعدم التقابض (وأجازه المؤلف بالقبض الحكمي)"],["شراء الذهب والفضة بالبطاقة المغطاة","جائز شرعاً لتحقق التقابض الحكمي بالخصم الفوري"],["مسألة (ضع وتعجل)","جائزة عند ابن تيمية ومجمع الفقه بلا اتفاق مسبق وبعلاقة ثنائية فقط"],["الاشتراط الفاسد في القرض عند الحنفية والحنابلة","يصح عقد القرض ويبطل الشرط الفاسد وحده"]]],
+["مصطلحات الشرط الجزائي ↔ تعريفها الفقهي والأصولي",[["الشرط عند الأصوليين","ما يلزم من عدمه العدم ولا يلزم من وجوده وجود ولا عدم لذاته"],["الشرط الجزائي","اتفاق بين المتعاقدين على تقدير التعويض عن الضرر عند عدم التنفيذ أو التأخير"],["إعذار المدين","دعوة يوجهها الدائن للمدين لمطالبته بالتنفيذ فوراً ليعد متأخراً بعدها"],["الدين في الاصطلاح الفقهي","لزوم حق في الذمة"],["المعسر الذي يجب إنظاره","من ليس له مال فائض عن حوائجه الأصلية يفي به دينه"]]],
+["مقارنة الشرط الجزائي بغيره ↔ الفروق الفقهية الدقيقة",[["العربون","مقابل حق العدول ويدفع ولو لم يقع ضرر ولا يجوز للقاضي تعديله"],["الرهن","عين معلومة مقبوضة كوثيقة بالدين ولا علاقة لها بالتعويض عن الضرر"],["الشرط الجزائي","مبلغ مقدر مسبقاً لتعويض الضرر الفعلي ويجوز للقاضي تعديله"],["الضرر المعوض عنه في قرار المجمع","الضرر المالي الفعلي والكسب المؤكد دون الضرر الأدبي أو المعنوي"]]],
+["نوع العقد في الشرط الجزائي ↔ حكم اشتراط الشرط الجزائي فيه",[["عقود المقاولات والتوريد (التزام بالعمل)","يجوز فيها الشرط الجزائي بالاتفاق وقرار المجمع وهيئة كبار العلماء"],["عقد الاستصناع","يجوز الشرط الجزائي على الصانع، ولا يجوز على المستصنع"],["القرض والبيع بالتقسيط (التزام بدين)","يحرم فيها الشرط الجزائي عن التأخير لأنه ربا النسيئة الصريح"],["عقد السلم (تأخير تسليم المسلم فيه)","لا يجوز فيه الشرط الجزائي لأن المسلم فيه دين"],["اشتراط حلول الأقساط عند التأخر في بعضها","جائز شرعاً إذا رضي به المدين عند التعاقد"]] ]
+];
+
+const TOT=SUM.filter(x=>typeof x!="string").length;let seen=0,freeMode=false,tfListMode=false,tfIdx=0;
+const CK='<svg class="ck" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle class="b" cx="12" cy="12" r="10"/><circle class="c1" cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg>';
+$("#p0").innerHTML='<div class="sc" id="s0"></div>'+SUM.map(x=>typeof x=="string"?`<h2>${x}</h2>`:`<details class="c"><summary>${CK}<span class="q">${x[0]}</span></summary><p>${x[1]}</p></details>`).join("");
+const N={tf:TF.length,mc:MC.length,mt:MT.reduce((s,m)=>s+m[1].length,0)},ALL=N.tf+N.mc+N.mt;
+const TABS=[["الملخص",'<path d="M4 4h6a3 3 0 013 3v13a2 2 0 00-2-2H4zM20 4h-6a3 3 0 00-3 3v13a2 2 0 012-2h7z"/>'],["صح وخطأ",'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>'],["اختر",'<circle cx="5" cy="7" r="1.6"/><circle cx="5" cy="17" r="1.6"/><path d="M10 7h10M10 17h10"/>'],["وصّل",'<path d="M9 15l6-6M8 8H7a4 4 0 000 8h1M16 8h1a4 4 0 010 8h-1"/>'],["النتيجة",'<path d="M5 20V11M12 20V4M19 20v-6"/>']];
+$("#nav").innerHTML=TABS.map((t,i)=>`<button data-p="${i}"${i?"":' class="on"'}><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${t[1]}</svg><svg class="lb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></span>${t[0]}</button>`).join("");
+
+let S,A,tfDone=[];
+const ul=i=>freeMode||i==0||(i==1?seen==TOT:i==2?A.tf==N.tf:i==3?A.mc==N.mc:A.mt==N.mt);
+function lockUI(){[...$("#nav").children].forEach((b,i)=>b.classList.toggle("lk",!ul(i)));$("#s0").textContent=`فتحت ${seen} / ${TOT} بطاقة فقهية`+(seen==TOT||freeMode?" ✓ جاهز للاختبارات":" — افتحها كلها أو اضغط «فتح الكل 🔓» بالأعلى")}
+function up(){lockUI();$("#s1").textContent=`النتيجة: ${S.tf} / ${N.tf} (حُلّ ${A.tf})`;$("#s2").textContent=`النتيجة: ${S.mc} / ${N.mc} (حُلّ ${A.mc})`;$("#s3").textContent=`النتيجة: ${S.mt} / ${N.mt} (حُلّ ${A.mt})`;$("#hp").textContent=`${A.tf+A.mc+A.mt} / ${ALL}`}
+
+function renderSwipeDeck(){
+  const wrap=$("#b1-swipe");
+  while(tfIdx<N.tf&&tfDone[tfIdx]!=null)tfIdx++;
+  if(tfIdx>=N.tf){
+    wrap.innerHTML=`<div class="c" style="text-align:center;padding:26px 16px"><h3 style="font-size:17px">أتممت جميع بطاقات «صح وخطأ»! 🎉</h3><p style="color:var(--s);margin:8px 0 14px">نتيجتك: <b>${S.tf} من ${N.tf}</b></p><div class="r"><button class="pr" onclick="go(2)">انتقل إلى «اختر» ←</button><button onclick="toggleTfView(true)">مراجعة القائمة 📋</button></div></div>`;
+    return;
+  }
+  const q0=TF[tfIdx],q1=TF[tfIdx+1],q2=TF[tfIdx+2];
+  wrap.innerHTML=`<div class="swipe-hints"><span class="sh-r">↪ يميناً: صواب ✓</span><span>بطاقة ${tfIdx+1} من ${N.tf}</span><span class="sh-l">يساراً: خطأ ✗ ↩</span></div>
+  <div class="deck-stage">${q2?`<div class="tcard bg2"><span class="qnum">سؤال ${tfIdx+3} / ${N.tf}</span><div class="qtxt"></div><div class="qfoot">بطاقة تالية</div></div>`:""}${q1?`<div class="tcard bg1"><span class="qnum">سؤال ${tfIdx+2} / ${N.tf}</span><div class="qtxt"></div><div class="qfoot">بطاقة تالية</div></div>`:""}
+  <div class="tcard top" id="topCard" data-i="${tfIdx}"><div class="stamp st-ok" id="stOk">صواب ✓</div><div class="stamp st-no" id="stNo">خطأ ✗</div><span class="qnum">سؤال ${tfIdx+1} / ${N.tf}</span><div class="qtxt">${q0[0]}</div><div class="qfoot">اسحب البطاقة يميناً (صح) أو يساراً (خطأ)</div></div></div>
+  <div class="fb-box" id="tfFb"><span style="color:var(--s);font-size:13px;text-align:center">اسحب البطاقة أو اضغط على الزرين بالأسفل</span></div>
+  <div class="swipe-btns"><button class="sw-btn b-ok" id="btnSwipeOk">صواب (يمين) ✓</button><button class="sw-btn b-no" id="btnSwipeNo">خطأ (يسار) ✗</button></div>`;
+  initCardDrag();
+}
+
+function initCardDrag(){
+  const card=$("#topCard"),stOk=$("#stOk"),stNo=$("#stNo");if(!card)return;
+  let sx=0,sy=0,dx=0,dy=0,drag=false,lock=false;
+  card.addEventListener("pointerdown",e=>{if(lock)return;drag=true;sx=e.clientX;sy=e.clientY;dx=0;dy=0;card.style.transition="none";card.setPointerCapture(e.pointerId)});
+  card.addEventListener("pointermove",e=>{
+    if(!drag||lock)return;dx=e.clientX-sx;dy=(e.clientY-sy)*.32;card.style.transform=`translate3d(${dx}px,${dy}px,0) rotate(${dx*.06}deg)`;
+    const p=Math.min(1,Math.abs(dx)/100);
+    if(dx>18){stOk.style.opacity=p;stOk.style.transform=`rotate(10deg) scale(${.85+p*.2})`;stNo.style.opacity=0}
+    else if(dx<-18){stNo.style.opacity=p;stNo.style.transform=`rotate(-10deg) scale(${.85+p*.2})`;stOk.style.opacity=0}
+    else{stOk.style.opacity=0;stNo.style.opacity=0}
+  });
+  const end=()=>{
+    if(!drag||lock)return;drag=false;card.style.transition="transform .88s cubic-bezier(.16,1,.3,1),opacity .88s cubic-bezier(.16,1,.3,1)";
+    if(dx>70){lock=true;triggerSwipeAnswer(1)}else if(dx<-70){lock=true;triggerSwipeAnswer(0)}
+    else{card.style.transform="";stOk.style.opacity=0;stNo.style.opacity=0}
+  };
+  card.addEventListener("pointerup",end);card.addEventListener("pointercancel",end);
+  $("#btnSwipeOk").onclick=()=>{if(!lock){lock=true;triggerSwipeAnswer(1)}};
+  $("#btnSwipeNo").onclick=()=>{if(!lock){lock=true;triggerSwipeAnswer(0)}};
+}
+
+function triggerSwipeAnswer(val){
+  const card=$("#topCard"),stOk=$("#stOk"),stNo=$("#stNo");if(!card)return;
+  const idx=+card.dataset.i;
+  if(val===1){stOk.style.opacity=1;card.style.transform="translate3d(400px,-15px,0) rotate(20deg)"}
+  else{stNo.style.opacity=1;card.style.transform="translate3d(-400px,-15px,0) rotate(-20deg)"}
+  card.style.opacity="0";
+  const b1=$(".tcard.bg1"),b2=$(".tcard.bg2");
+  if(b1){b1.style.transition="transform .85s cubic-bezier(.16,1,.3,1)";b1.style.transform="scale(1) translateY(0)"}
+  if(b2){b2.style.transition="transform .85s cubic-bezier(.16,1,.3,1)";b2.style.transform="scale(.94) translateY(12px)"}
+  recordTfAnswer(idx,val,true);
+}
+
+function recordTfAnswer(idx,val,fromSwipe){
+  if(tfDone[idx]!=null)return;tfDone[idx]=val;
+  const q=TF[idx],r=val===q[1];A.tf++;if(r)S.tf++;up();react(r);
+  const lc=$(`#b1-list .c[data-i="${idx}"]`);
+  if(lc&&!lc.dataset.done){
+    lc.dataset.done=1;const b=lc.querySelector(`[data-v="${val}"]`);if(b)b.classList.add(r?"ok":"no");
+    if(!r)lc.querySelector(`[data-v="${q[1]}"]`).classList.add("ok");
+    lc.querySelector(".n").textContent=(r?"أحسنت! ":"الصواب: "+(q[1]?"صح":"خطأ")+". ")+q[2];
+  }
+  if(fromSwipe){
+    const fb=$("#tfFb");
+    if(fb){fb.className="fb-box "+(r?"ok-fb":"no-fb");fb.innerHTML=`<b>${r?"أحسنت! إجابة صحيحة 👏":"انتبه! الصواب: "+(q[1]?"صواب ✓":"خطأ ✗")}</b><span style="font-size:12.8px;margin-top:3px">${q[2]||""}</span>`}
+    setTimeout(()=>{tfIdx=idx+1;const old=fb?fb.outerHTML:"";renderSwipeDeck();const nfb=$("#tfFb");if(nfb&&old)nfb.outerHTML=old},800);
+  }
+}
+
+function toggleTfView(forceList){
+  tfListMode=forceList!==undefined?forceList:!tfListMode;
+  $("#b1-swipe").style.display=tfListMode?"none":"block";
+  $("#b1-list").style.display=tfListMode?"block":"none";
+  $("#toggleTfMode").textContent=tfListMode?"وضع بطاقات السحب 🎴":"عرض القائمة 📋";
+  if(!tfListMode)renderSwipeDeck();
+}
+$("#toggleTfMode").onclick=()=>toggleTfView();
+
+function build(){
+  S={tf:0,mc:0,mt:0};A={tf:0,mc:0,mt:0};tfDone=[];tfIdx=0;
+  $("#b1-list").innerHTML=TF.map((x,i)=>`<div class="c" data-i="${i}"><b>${i+1}. ${x[0]}</b><div class="r" style="margin-top:10px"><button data-v="1">صح ✓</button><button data-v="0">خطأ ✗</button></div><span class="n"></span></div>`).join("");
+  renderSwipeDeck();
+  $("#b2").innerHTML=MC.map((x,i)=>`<div class="c" data-i="${i}"><b>${i+1}. ${x[0]}</b>${x[1].map((o,j)=>`<button class="o" data-j="${j}">${o}</button>`).join("")}</div>`).join("");
+  $("#b3").innerHTML=MT.map(m=>`<div class="c"><h3>${m[0]}</h3><div class="m"><div>${sh(m[1].map((p,k)=>[p[0],k])).map(p=>`<button class="mi" data-s="a" data-k="${p[1]}">${p[0]}</button>`).join("")}</div><div>${sh(m[1].map((p,k)=>[p[1],k])).map(p=>`<button class="mi" data-s="b" data-k="${p[1]}">${p[0]}</button>`).join("")}</div></div></div>`).join("");
+  up();
+}
+
+const MSG=["افتح بطاقات الملخص أو اضغط «فتح الكل» بالأعلى","اسحب البطاقة يميناً للصواب ويساراً للخطأ","اختر الإجابة الصحيحة الدقيقة","وصّل كل عنصر بما يناسبه"],GOOD=["أحسنت! 🎉","ممتاز!","إجابة فقهية دقيقة 👏","رائع، كمّل!"],BAD=["انتبه للقيد الفقهي","راجع المسألة في الملخص 📖","ركز في الخلاف والراجح"];let ct,st;
+function say(m){const e=$("#say");e.textContent=m;e.classList.add("on");clearTimeout(st);st=setTimeout(()=>e.classList.remove("on"),2500)}
+function react(ok,m){const k=$("#cat");k.classList.remove("happy","sad","hop","dr");void k.offsetWidth;k.classList.add(ok?"happy":"sad",ok?"hop":"dr");say(m||(ok?GOOD:BAD)[Math.random()*(ok?4:3)|0]);clearTimeout(ct);ct=setTimeout(()=>k.classList.remove("happy","sad","hop","dr"),2500)}
+function deny(i){react(0,["","افتح بطاقات الملخص أولاً (أو اضغط فتح الكل 🔓 بالأعلى)","أنهِ «صح وخطأ» أولاً","أنهِ «اختر» أولاً","أنهِ المراحل لتظهر نتيجتك"][i]);$("#nav").children[i].animate([{translate:"0"},{translate:"-5px"},{translate:"5px"},{translate:"0"}],{duration:280})}
+function go(i){if(!ul(i))return deny(i);document.querySelectorAll(".pane,nav button").forEach(x=>x.classList.remove("on"));$("#nav").children[i].classList.add("on");$("#p"+i).classList.add("on");$("#ht").textContent=i==4?"النتيجة الكلية":"فقه المعاملات — "+TABS[i][0];scrollTo({top:0,behavior:"smooth"});if(i==4){res();const p=Math.round((S.tf+S.mc+S.mt)/ALL*100);setTimeout(()=>react(p>=65,p>=85?"ما شاء الله! نتيجة رائعة 🏆":p>=65?"نتيجة جيدة، كمّل!":"راجع الملخص وأعد المحاولة"),450)}else say(MSG[i])}
+
+function res(){
+  const sc=S.tf+S.mc+S.mt,dn=A.tf+A.mc+A.mt,pct=Math.round(sc/ALL*100),fin=dn==ALL;
+  const g=pct>=90?"ممتاز":pct>=80?"جيد جداً":pct>=65?"جيد":pct>=50?"مقبول":"ضعيف";
+  const col=pct>=85?"var(--ok)":pct>=65?"var(--amb)":"var(--no)";
+  const rows=[["صح وخطأ","tf"],["اختر","mc"],["وصّل","mt"]],w=rows.slice().sort((a,b)=>S[a[1]]/N[a[1]]-S[b[1]]/N[b[1]])[0][0];
+  const v=!dn?"ابدأ بحل الاختبارات لتظهر نتيجتك.":!fin?`أنهيت ${dn} من ${ALL} سؤالاً — أكمل الباقي لتظهر النتيجة النهائية.`:pct>=85?"مستواك ممتاز ومتقن للبابين الأول والثاني!":pct>=65?`مستوى جيد، يُفضّل مراجعة قسم «${w}».`:"تحتاج إلى إعادة الاختبار بعد مراجعة الملخص.";
+  const C=2*Math.PI*52;
+  $("#r").innerHTML=`<div class="c" style="text-align:center"><svg class="ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--gb)" stroke-width="10"/><circle id="rg" cx="60" cy="60" r="52" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s cubic-bezier(.2,1.3,.4,1)"/><text x="60" y="68" text-anchor="middle" font-size="28" font-weight="800" fill="currentColor">${pct}%</text></svg><div style="font-size:22px;font-weight:800;color:${col}">${dn?g:"—"}${dn&&!fin?" (مؤقت)":""}</div><p style="color:var(--s);margin:6px 0 0">${v}</p></div>
+  <div class="c"><h3>تفاصيل الأقسام</h3>${rows.map(r=>`<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:13px"><span>${r[0]}</span><b>${S[r[1]]} / ${N[r[1]]}</b></div><div class="bar"><i data-w="${S[r[1]]/N[r[1]]*100}"></i></div></div>`).join("")}<span class="n">الإجمالي: ${sc} من ${ALL} · تم حل ${dn} سؤالاً</span></div>
+  <div class="r"><button class="pr" id="rt">إعادة الاختبار</button><button id="rv">مراجعة الملخص</button></div>`;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{$("#rg").style.strokeDashoffset=C*(1-pct/100);document.querySelectorAll("#r [data-w]").forEach(e=>e.style.width=e.dataset.w+"%")}))
+}
+
+$("#openAllBtn").onclick=()=>{
+  freeMode=true;
+  document.querySelectorAll("#p0 details").forEach(d=>{d.open=true;if(!d.dataset.s){d.dataset.s=1;d.classList.add("seen");seen++}});
+  lockUI();react(1,"تم فتح جميع البطاقات والأقسام! 🎉");
+};
+
+document.addEventListener("pointerdown",e=>{const p=e.target.closest("button,details.c");if(p){const r=p.getBoundingClientRect();p.style.setProperty("--x",e.clientX-r.left+"px");p.style.setProperty("--y",e.clientY-r.top+"px")}});
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;
+  if(t.closest("nav"))return go(+t.dataset.p);
+  if(t.id=="rt"){build();return go(1)}if(t.id=="rv")return go(0);
+  const c=t.closest(".c");if(!c)return;
+  if(t.dataset.v!=null&&!c.dataset.done){recordTfAnswer(+c.dataset.i,+t.dataset.v,false)}
+  else if(t.dataset.j!=null&&!c.dataset.done){c.dataset.done=1;const q=MC[c.dataset.i],r=+t.dataset.j==q[2];A.mc++;if(r)S.mc++;t.classList.add(r?"ok":"no");c.querySelector(`[data-j="${q[2]}"]`).classList.add("ok");up();react(r)}
+  else if(t.dataset.s){if(t.classList.contains("d"))return;
+    if(t.dataset.s=="a"){c.querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));t.classList.add("sel")}
+    else{const a=c.querySelector(".sel");if(!a)return;a.classList.remove("sel");if(a.dataset.k==t.dataset.k){a.classList.add("d");t.classList.add("d");A.mt++;if(!a.dataset.err)S.mt++;up();react(1)}else{a.dataset.err=1;react(0);t.classList.add("x");setTimeout(()=>t.classList.remove("x"),500)}}
+  }
+});
+document.addEventListener("toggle",e=>{const d=e.target;if(d.open&&!d.dataset.s){d.dataset.s=1;d.classList.add("seen");seen++;lockUI();if(seen==TOT)react(1,"فتحت كل البطاقات! 🎉 تفتّحت «صح وخطأ»")}},true);
+
+(()=>{const k=$("#cat"),c=k.querySelector(".cat");let dn=0,lh=0;
+const hr=(x,y)=>{const h=document.createElement("span");h.className="ht";h.textContent=["♥","💗","✨"][Math.random()*3|0];h.style.left=x+(Math.random()*24-12)+"px";h.style.top=y+"px";k.appendChild(h);setTimeout(()=>h.remove(),1100)};
+const ps=e=>{const r=k.getBoundingClientRect(),q=c.getBoundingClientRect();c.style.setProperty("--tl",Math.max(-8,Math.min(8,(e.clientX-q.left-q.width/2)/q.width*16))+"deg");return[e.clientX-r.left,e.clientY-r.top]};
+c.addEventListener("pointerdown",e=>{dn=1;c.setPointerCapture(e.pointerId);k.classList.add("pet");const p=ps(e);hr(p[0],p[1]);say(["مياو 🐾","بررر ✨"][Math.random()*2|0]);navigator.vibrate&&navigator.vibrate(12)});
+c.addEventListener("pointermove",e=>{if(!dn)return;const p=ps(e),n=Date.now();if(n-lh>250){lh=n;hr(p[0],p[1])}});
+const u=()=>{dn=0;k.classList.remove("pet");c.style.setProperty("--tl","0deg")};
+c.addEventListener("pointerup",u);c.addEventListener("pointercancel",u)})();
+
+(()=>{const r=(a,b)=>a+Math.random()*(b-a);let h="";for(let L=0;L<3;L++)for(let i=0;i<26;i++){const x=r(-5,405),t=[48,36,24][L]*r(.7,1.3),l=r(-8,8);h+=`<path class="g${L+1}" style="animation-duration:${r(5.5,9.5).toFixed(1)}s;animation-delay:-${r(0,8).toFixed(1)}s;transform-origin:${x+2}px 70px" d="M${x} 70Q${x+l*.3} ${70-t*.6} ${x+l} ${70-t}Q${x+l*.6+3} ${70-t*.5} ${x+5} 70z"/>`}
+const e=document.createElementNS("http://www.w3.org/2000/svg","svg");e.id="gr";e.setAttribute("viewBox","0 0 400 70");e.setAttribute("preserveAspectRatio","xMidYMax slice");e.innerHTML=h;document.body.prepend(e)})();
+
+build();go(0);
+</script></body></html>
